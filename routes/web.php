@@ -18,3 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::resource('biodatas', 'BiodataController');
+
+Route::resource('biodatas', 'BiodataController');
+
+Route::resource('ternaks', 'TernakController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
