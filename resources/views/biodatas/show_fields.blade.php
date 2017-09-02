@@ -12,6 +12,7 @@
 
 <!-- Nik Field -->
 <div class="form-group">
+
     {!! Form::label('nik', 'Nik:') !!}
     <p>{!! $biodata->nik !!}</p>
 </div>

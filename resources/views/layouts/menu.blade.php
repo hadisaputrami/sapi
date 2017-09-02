@@ -6,6 +6,10 @@
     <a href="{!! route('articles.index') !!}"><i class="fa fa-edit"></i><span>Articles</span></a>
 </li>
 
+<li class="{{ Request::is('biodatas*') ? 'active' : '' }}">
+    <a href="{!! route('biodatas.index') !!}"><i class="fa fa-edit"></i><span>Biodatas</span></a>
+</li>
+
 <li class="{{ Request::is('dataUsahas*') ? 'active' : '' }}">
     <a href="{!! route('dataUsahas.index') !!}"><i class="fa fa-edit"></i><span>DataUsahas</span></a>
 </li>
@@ -65,4 +69,5 @@
 <li class="{{ Request::is('users*') ? 'active' : '' }}">
     <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>Users</span></a>
 </li>
+
 

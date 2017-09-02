@@ -8,10 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Biodata
  * @package App\Models
- * @version August 31, 2017, 6:30 am UTC
+ * @version September 2, 2017, 2:38 am UTC
  *
  * @property \App\Models\Agama agama
  * @property \App\Models\User user
+ * @property \Illuminate\Database\Eloquent\Collection Kontak
+ * @property \Illuminate\Database\Eloquent\Collection permissionRole
+ * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property \Illuminate\Database\Eloquent\Collection ternaks
  * @property integer users_id
  * @property string nik
@@ -89,5 +92,13 @@ class Biodata extends Model
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function kontaks()
+    {
+        return $this->hasMany(\App\Models\Kontak::class);
     }
 }

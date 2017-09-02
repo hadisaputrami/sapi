@@ -1,9 +1,10 @@
 <!-- Users Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('users_id', 'Users Id:') !!}
-    {!! Form::number('users_id', null, ['class' => 'form-control']) !!}
-</div>
-
+{!! Form::hidden('users_id',Auth::id(), ['class' => 'form-control','required'=>'required']) !!}
+<!-- User Id Field -->
+<!--<div class="form-group col-sm-6">
+    {!! Form::label('user_id', 'User Id:') !!}
+    {!! Form::number('user_id', null, ['class' => 'form-control']) !!}
+</div> -->
 <!-- Nik Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('nik', 'Nik:') !!}
@@ -19,7 +20,7 @@
 <!-- Jenis Kelamin Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('jenis_kelamin', 'Jenis Kelamin:') !!}
-    {!! Form::text('jenis_kelamin', null, ['class' => 'form-control']) !!}
+    {!! Form::select('jenis_kelamin',['laki-laki'=>'laki-laki', 'perempuan'=>'perempuan'], null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Status Perkawinan Field -->
@@ -36,8 +37,8 @@
 
 <!-- Agama Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('agama_id', 'Agama Id:') !!}
-    {!! Form::number('agama_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('agama_id', 'Agama:') !!}
+    {!! Form::select('agama_id', $agamas, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Foto Field -->

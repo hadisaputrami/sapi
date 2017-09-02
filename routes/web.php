@@ -26,7 +26,6 @@ Route::resource('biodatas', 'BiodataController');
 
 Route::resource('ternaks', 'TernakController');
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
@@ -63,3 +62,5 @@ Route::resource('transaksiPenjualans', 'TransaksiPenjualanController');
 Route::resource('transaksiPenjualanHasStatusPenjualans', 'TransaksiPenjualanHasStatusPenjualanController');
 
 Route::resource('users', 'UserController');
+
+Route::resource('biodatas', 'BiodataController');
