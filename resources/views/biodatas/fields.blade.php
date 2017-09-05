@@ -1,3 +1,12 @@
+{{-- Croping Image
+<link rel="stylesheet" href="{{ asset('jcrop/css/jquery.Jcrop.min.css') }}" />
+<script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ asset('jcrop/js/jquery.Jcrop.min.js') }}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+--}}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
 <!-- Users Id Field -->
 {!! Form::hidden('users_id',Auth::id(), ['class' => 'form-control','required'=>'required']) !!}
 <!-- User Id Field -->
@@ -26,7 +35,9 @@
 <!-- Status Perkawinan Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('status_perkawinan', 'Status Perkawinan:') !!}
-    {!! Form::text('status_perkawinan', null, ['class' => 'form-control']) !!}
+    {!! Form::select('status_perkawinan', ['Belum Menikah'=>'Belum Menikah', 'Menikah'=>'Menikah'],null, ['class' => 'form-control']) !!}
+    {!! $errors->first('status_perkawinan', '<p class="help-block">:message</p>') !!}
+           
 </div>
 
 <!-- Pendidikan Terakhir Field -->
@@ -44,7 +55,30 @@
 <!-- Foto Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('foto', 'Foto:') !!}
-    {!! Form::text('foto', null, ['class' => 'form-control']) !!}
+    {!! Form::file('foto',  ['class' => 'form-control']) !!}
+                    <br \>
+                    <img id="cropfoto" src="{{isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?asset($biodatas->foto):asset('assets/images/surat.png'):asset('assets/images/surat.png')}}" alt="your image"  width="200" height="267"  />
+                    {{ Form::hidden('foto', isset($biodatas->foto)?file_exists( public_path() . '/' . $biodatas->foto)?$biodatas->foto:'':'') }}
+
+                    <script type="text/javascript">
+                        function readFoto(input) {
+                            if (input.files && input.files[0]) {
+                                var reader = new FileReader();
+
+                                reader.onload = function (e) {
+                                    $('#cropfoto').attr('src', e.target.result);
+                                }
+                                reader.readAsDataURL(input.files[0]);
+                            }
+                        }
+                        $("#foto").change(function(){
+                            readFoto(this);
+                        });
+                    </script>
+
+
+                    {!! $errors->first('foto', '<p class="help-block">:message</p>') !!}
+                
 </div>
 
 <!-- Kontak Field -->
@@ -53,8 +87,9 @@
     {!! Form::text('kontak', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Submit Field -->
-<div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('biodatas.index') !!}" class="btn btn-default">Cancel</a>
-</div>
+ <!-- Submit Field -->
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-4">
+                        {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Save', ['class' => 'btn btn-primary']) !!}
+                    </div>
+                </div>

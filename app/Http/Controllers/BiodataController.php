@@ -79,11 +79,35 @@ class BiodataController extends AppBaseController
      */
     public function store(CreateBiodataRequest $request)
     {
-        $input = $request->all();
+        $requestData = $request->all();
 
-        $biodata = $this->biodataRepository->create($input);
+        $biodata = $this->biodataRepository->create($requestData);
 
-        Flash::success('Biodata saved successfully.');
+        try{
+            DB::beginTransaction();
+             DB::beginTransaction();
+
+            $biodatum = Biodata::updateOrCreate(['users_id'=> Auth::id()],
+                $requestData);
+            $path1=null;
+
+            if( $request->hasFile('foto')) {
+                $ext=File::extension($request->file('foto')->getClientOriginalName());
+                $filename='foto'.$biodatum->id.'.'.$ext;
+                $path1 = $request->foto->storeAs('foto', $filename,'local_public');
+                chmod(public_path().'/'.$path1, 0777);
+            }
+            if($path1!=null){
+                $biodatum->foto=$path1;
+                $biodatum->save();
+            }
+
+            DB::commit();
+
+            Session::flash('flash_message', 'Biodata added!');
+        }catch(Exception $e){
+            DB::rollback();
+            }
 
         return redirect(route('biodatas.index'));
     }

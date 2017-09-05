@@ -12,7 +12,7 @@
 
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'dataUsahas.store']) !!}
+                    {!! Form::open(['route' => 'dataUsahas.store','files' => true]) !!}
 
                         @include('data_usahas.fields')
 
