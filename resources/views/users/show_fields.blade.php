@@ -22,12 +22,6 @@
     <p>{!! $user->password !!}</p>
 </div>
 
-<!-- Remember Token Field -->
-<div class="form-group">
-    {!! Form::label('remember_token', 'Remember Token:') !!}
-    <p>{!! $user->remember_token !!}</p>
-</div>
-
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
@@ -38,23 +32,5 @@
 <div class="form-group">
     {!! Form::label('updated_at', 'Updated At:') !!}
     <p>{!! $user->updated_at !!}</p>
-</div>
-
-<!-- Deleted At Field -->
-<div class="form-group">
-    {!! Form::label('deleted_at', 'Deleted At:') !!}
-    <p>{!! $user->deleted_at !!}</p>
-</div>
-
-<!-- Verified Field -->
-<div class="form-group">
-    {!! Form::label('verified', 'Verified:') !!}
-    <p>{!! $user->verified !!}</p>
-</div>
-
-<!-- Verification Token Field -->
-<div class="form-group">
-    {!! Form::label('verification_token', 'Verification Token:') !!}
-    <p>{!! $user->verification_token !!}</p>
 </div>
 

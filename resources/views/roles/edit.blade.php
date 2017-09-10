@@ -3,21 +3,22 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Role
+            Roles
         </h1>
-   </section>
-   <div class="content">
-       @include('adminlte-templates::common.errors')
-       <div class="box box-primary">
-           <div class="box-body">
-               <div class="row">
-                   {!! Form::model($role, ['route' => ['roles.update', $role->id], 'method' => 'patch']) !!}
+    </section>
+    <div class="content">
+        @include('adminlte-templates::common.errors')
+        <div class="box box-primary">
 
-                        @include('roles.fields')
+            <div class="box-body">
+                <div class="row">
+                    {!! Form::model($role, ['route' => ['roles.update', $role->id], 'method' => 'patch']) !!}
 
-                   {!! Form::close() !!}
-               </div>
-           </div>
-       </div>
-   </div>
+                    @include('roles.fields', ['submitButtonText' => 'Update'])
+
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

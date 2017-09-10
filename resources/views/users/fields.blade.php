@@ -16,27 +16,6 @@
     {!! Form::password('password', ['class' => 'form-control']) !!}
 </div>
 
-<!-- Remember Token Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('remember_token', 'Remember Token:') !!}
-    {!! Form::text('remember_token', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Verified Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('verified', 'Verified:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('verified', false) !!}
-        {!! Form::checkbox('verified', '1', null) !!} 1
-    </label>
-</div>
-
-<!-- Verification Token Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('verification_token', 'Verification Token:') !!}
-    {!! Form::text('verification_token', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}

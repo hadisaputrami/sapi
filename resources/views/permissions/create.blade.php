@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Permission
+            Permissions
         </h1>
     </section>
     <div class="content">
@@ -14,7 +14,7 @@
                 <div class="row">
                     {!! Form::open(['route' => 'permissions.store']) !!}
 
-                        @include('permissions.fields')
+                    @include('permissions.fields')
 
                     {!! Form::close() !!}
                 </div>
