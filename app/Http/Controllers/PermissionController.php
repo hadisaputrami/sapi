@@ -2,154 +2,119 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreatePermissionRequest;
-use App\Http\Requests\UpdatePermissionRequest;
-use App\Repositories\PermissionRepository;
-use App\Http\Controllers\AppBaseController;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use App\Permission;
 use Illuminate\Http\Request;
-use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
-use Response;
+use Session;
 
-class PermissionController extends AppBaseController
+class PermissionController extends Controller
 {
-    /** @var  PermissionRepository */
-    private $permissionRepository;
-
-    public function __construct(PermissionRepository $permissionRepo)
-    {
-        $this->permissionRepository = $permissionRepo;
-    }
-
     /**
-     * Display a listing of the Permission.
+     * Display a listing of the resource.
      *
-     * @param Request $request
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function index(Request $request)
     {
-        $this->permissionRepository->pushCriteria(new RequestCriteria($request));
-        $permissions = $this->permissionRepository->all();
-
-        return view('permissions.index')
-            ->with('permissions', $permissions);
+        $permissions = Permission::where('name','like','%'.(isset($request->search)?$request->search:'').'%')->paginate(isset($request->pagination)?$request->pagination:25);
+        $title='Tabel Permission';
+        return view('permissions.index', compact('permissions','title'));
     }
 
     /**
-     * Show the form for creating a new Permission.
+     * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
-        return view('permissions.create');
+        $title='Tambah Data Permission';
+        return view('permissions.create',compact('title'));
     }
 
     /**
-     * Store a newly created Permission in storage.
+     * Store a newly created resource in storage.
      *
-     * @param CreatePermissionRequest $request
+     * @param \Illuminate\Http\Request $request
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(CreatePermissionRequest $request)
+    public function store(Request $request)
     {
-        $input = $request->all();
+        
+        $requestData = $request->all();
+        
+        Permission::create($requestData);
 
-        $permission = $this->permissionRepository->create($input);
+        Session::flash('flash_message', 'Permission added!');
 
-        Flash::success('Permission saved successfully.');
-
-        return redirect(route('permissions.index'));
+        return redirect('permissions');
     }
 
     /**
-     * Display the specified Permission.
+     * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function show($id)
     {
-        $permission = $this->permissionRepository->findWithoutFail($id);
-
-        if (empty($permission)) {
-            Flash::error('Permission not found');
-
-            return redirect(route('permissions.index'));
-        }
-
-        return view('permissions.show')->with('permission', $permission);
+        $permission = Permission::findOrFail($id);
+        $title='Permission '.$permission->name;
+        return view('permissions.show', compact('permission','title'));
     }
 
     /**
-     * Show the form for editing the specified Permission.
+     * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function edit($id)
     {
-        $permission = $this->permissionRepository->findWithoutFail($id);
-
-        if (empty($permission)) {
-            Flash::error('Permission not found');
-
-            return redirect(route('permissions.index'));
-        }
-
-        return view('permissions.edit')->with('permission', $permission);
+        $permission = Permission::findOrFail($id);
+        $title='Ubah Permission '.$permission->name;
+        return view('permissions.edit', compact('permission','title'));
     }
 
     /**
-     * Update the specified Permission in storage.
+     * Update the specified resource in storage.
      *
-     * @param  int              $id
-     * @param UpdatePermissionRequest $request
+     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update($id, UpdatePermissionRequest $request)
+    public function update($id, Request $request)
     {
-        $permission = $this->permissionRepository->findWithoutFail($id);
+        
+        $requestData = $request->all();
+        
+        $permission = Permission::findOrFail($id);
+        $permission->update($requestData);
 
-        if (empty($permission)) {
-            Flash::error('Permission not found');
+        Session::flash('flash_message', 'Permission updated!');
 
-            return redirect(route('permissions.index'));
-        }
-
-        $permission = $this->permissionRepository->update($request->all(), $id);
-
-        Flash::success('Permission updated successfully.');
-
-        return redirect(route('permissions.index'));
+        return redirect('permissions');
     }
 
     /**
-     * Remove the specified Permission from storage.
+     * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
-        $permission = $this->permissionRepository->findWithoutFail($id);
+        Permission::destroy($id);
 
-        if (empty($permission)) {
-            Flash::error('Permission not found');
+        Session::flash('flash_message', 'Permission deleted!');
 
-            return redirect(route('permissions.index'));
-        }
-
-        $this->permissionRepository->delete($id);
-
-        Flash::success('Permission deleted successfully.');
-
-        return redirect(route('permissions.index'));
+        return redirect('permissions');
     }
 }

@@ -186,6 +186,8 @@ return [
 
         //JWT package
         'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
+
+        Zizaco\Entrust\EntrustServiceProvider::class,
     ],
 
     /*
@@ -240,8 +242,10 @@ return [
         'Flash' => Laracasts\Flash\Flash::class,
 
         //JWT package
-        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth'
+        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
 
+        //zizaco
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
     ],
 
 ];
