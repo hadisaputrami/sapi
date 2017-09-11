@@ -32,3 +32,6 @@ Route::group(['middleware' => 'jwt.auth'], function () {
         return 'ok';
     });
 });
+
+
+Route::resource('investors', 'InvestorAPIController');
