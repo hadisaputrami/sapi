@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Investor
  * @package App\Models
- * @version September 2, 2017, 1:57 am UTC
+ * @version September 10, 2017, 9:34 am UTC
  *
  * @property \App\Models\User user
  * @property \Illuminate\Database\Eloquent\Collection biodatas
  * @property \App\Models\InvestorHasTransaksiInvestasi investorHasTransaksiInvestasi
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
+ * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
  * @property \Illuminate\Database\Eloquent\Collection ternaks
  * @property string|\Carbon\Carbon update_at
  * @property string nama_pemilik_rek
@@ -36,7 +37,6 @@ class Investor extends Model
 
 
     public $fillable = [
-        'update_at',
         'nama_pemilik_rek',
         'nama_bank',
         'no_rek',
