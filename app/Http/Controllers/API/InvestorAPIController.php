@@ -4,9 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Requests\API\CreateInvestorAPIRequest;
 use App\Http\Requests\API\UpdateInvestorAPIRequest;
-use App\Http\Controllers\API\InvestorAPIController;
 use Illuminate\Support\Facades\DB;
-
 use App\Role;
 use App\User;
 use App\Models\Investor;
@@ -59,7 +57,7 @@ class InvestorAPIController extends AppBaseController
     public function store(CreateInvestorAPIRequest $request)
     {
         $input = $request->all();
-        $requestInvestor = $request->all();
+        $requestInvestor = $input;
 
      //   $investors = $this->investorRepository->create($input);
             
