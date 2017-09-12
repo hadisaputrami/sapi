@@ -91,6 +91,39 @@
                 @endif
             </div>
 
+            <div class="form-group has-feedback{{ $errors->has('nama_pemilik_rek') ? ' has-error' : '' }}">
+                <input type="text" class="form-control" name="nama_pemilik_rek" value="{{ old('nama_pemilik_rek') }}" placeholder="Nama Pemelik Rekening">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+                @if ($errors->has('nama_pemilik_rek'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('nama_pemilik_rek') }}</strong>
+                    </span>
+                @endif
+            </div>
+
+            <div class="form-group has-feedback{{ $errors->has('nama_bank') ? ' has-error' : '' }}">
+                <input type="text" class="form-control" name="nama_bank" value="{{ old('nama_bank') }}" placeholder="Nama Bank">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+                @if ($errors->has('nama_bank'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('nama_bank') }}</strong>
+                    </span>
+                @endif
+            </div>
+
+             <div class="form-group has-feedback{{ $errors->has('no_rek') ? ' has-error' : '' }}">
+                <input type="text" class="form-control" name="no_rek" value="{{ old('no_rek') }}" placeholder="No Rekening">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+                @if ($errors->has('no_rek'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('no_rek') }}</strong>
+                    </span>
+                @endif
+            </div>
+
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">

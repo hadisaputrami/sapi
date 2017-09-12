@@ -6,7 +6,9 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use App\Models\Investor;
+use App\Role;
+use DB;
 class RegisterController extends Controller
 {
     /*
@@ -62,10 +64,36 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        try{
+
+            DB::beginTransaction();
+            $user=User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+            ]);
+
+            $role=Role::where('name','investor')->firstOrFail();
+            $user->attach($role);
+         
+            $data['users_id']=$user->id;
+            $investor=Investor::create([
+                'nama_pemilik_rek' => $data['nama_pemilik_rek'],
+                'nama_bank' => $data['nama_bank'],
+                'no_rek' => $data['no_rek']
+            ]);
+/*
+            '' => $data['nama_pemilik_rek'],
+            'nama_bank' => $data['nama_bank'],
+            'no_rek' => $data['no_rek']
+*/
+            DB::commit();
+
+            
+        }catch(Exception $e){
+            DB::rollback();
+        }
+           //Session::flash('flash_me
+
     }
 }
