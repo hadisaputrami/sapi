@@ -653,11 +653,7 @@
                 "test",
                 "view"
             ],
-<<<<<<< HEAD
-            "time": "2017-09-06 17:09:56"
-=======
             "time": "2017-09-06T17:09:56+00:00"
->>>>>>> 73573034f7d7cda3d8826ac1537d1c4452ac02c6
         },
         {
             "name": "infyomlabs/swagger-generator",
@@ -1179,11 +1175,7 @@
             ],
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "http://laravelcollective.com",
-<<<<<<< HEAD
-            "time": "2017-08-12 15:52:38"
-=======
             "time": "2017-08-12T15:52:38+00:00"
->>>>>>> 73573034f7d7cda3d8826ac1537d1c4452ac02c6
         },
         {
             "name": "league/flysystem",
@@ -1555,11 +1547,7 @@
                 "parser",
                 "php"
             ],
-<<<<<<< HEAD
-            "time": "2017-09-02 17:10:46"
-=======
             "time": "2017-09-02T17:10:46+00:00"
->>>>>>> 73573034f7d7cda3d8826ac1537d1c4452ac02c6
         },
         {
             "name": "paragonie/random_compat",
@@ -1667,11 +1655,7 @@
                 "model",
                 "repository"
             ],
-<<<<<<< HEAD
-            "time": "2017-09-06 01:48:23"
-=======
             "time": "2017-09-06T01:48:23+00:00"
->>>>>>> 73573034f7d7cda3d8826ac1537d1c4452ac02c6
         },
         {
             "name": "prettus/laravel-validation",
@@ -3579,11 +3563,7 @@
                 "spy",
                 "stub"
             ],
-<<<<<<< HEAD
-            "time": "2017-09-04 11:05:03"
-=======
             "time": "2017-09-04T11:05:03+00:00"
->>>>>>> 73573034f7d7cda3d8826ac1537d1c4452ac02c6
         },
         {
             "name": "phpunit/php-code-coverage",
