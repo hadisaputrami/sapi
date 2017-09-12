@@ -30,10 +30,5 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     });
 });
 
-<<<<<<< HEAD
 Route::resource('users', 'UserAPIController');
 Route::resource('transaksi_investasis', 'TransaksiInvestasiAPIController');
-=======
-
-Route::resource('investors', 'InvestorAPIController');
->>>>>>> 19de74d5401a33a4b50c1794ed339c2cf17a6922
