@@ -64,3 +64,7 @@ Route::resource('transaksiPenjualanHasStatusPenjualans', 'TransaksiPenjualanHasS
 Route::resource('users', 'UserController');
 
 Route::resource('biodatas', 'BiodataController');
+
+Route::resource('ternakNonInvestasis', 'TernakNonInvestasiController');
+
+Route::resource('ternaks', 'TernakController');

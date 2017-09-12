@@ -8,17 +8,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class TransaksiInvestasi
  * @package App\Models
- * @version September 2, 2017, 2:07 am UTC
+ * @version September 12, 2017, 5:31 am UTC
  *
+ * @property \App\Models\Asuransi asuransi
  * @property \App\Models\PaketInvestasi paketInvestasi
+ * @property \App\Models\TernakInvestasi ternakInvestasi
  * @property \Illuminate\Database\Eloquent\Collection biodatas
  * @property \Illuminate\Database\Eloquent\Collection InvestorHasTransaksiInvestasi
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
+ * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
  * @property \Illuminate\Database\Eloquent\Collection ternaks
+ * @property \Illuminate\Database\Eloquent\Collection TransaksiInvestasiHasStatusTransaksiInvestasi
  * @property string kode_transaksi
  * @property integer paket_investasis_id
- * @property boolean asuransi
+ * @property boolean asuransis
  * @property integer ternak_investasis_id
  * @property integer asuransis_id
  */
@@ -69,9 +73,25 @@ class TransaksiInvestasi extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
+    public function asuransi()
+    {
+        return $this->belongsTo(\App\Models\Asuransi::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
     public function paketInvestasi()
     {
         return $this->belongsTo(\App\Models\PaketInvestasi::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function ternakInvestasi()
+    {
+        return $this->belongsTo(\App\Models\TernakInvestasi::class);
     }
 
     /**
@@ -80,5 +100,13 @@ class TransaksiInvestasi extends Model
     public function investorHasTransaksiInvestasis()
     {
         return $this->hasMany(\App\Models\InvestorHasTransaksiInvestasi::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function transaksiInvestasiHasStatusTransaksiInvestasis()
+    {
+        return $this->hasMany(\App\Models\TransaksiInvestasiHasStatusTransaksiInvestasi::class);
     }
 }

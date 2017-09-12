@@ -23,7 +23,7 @@
 <!-- Tanggal Lahir Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('tanggal_lahir', 'Tanggal Lahir:') !!}
-    {!! Form::date('tanggal_lahir', isset($biodatas->tanggal_lahir)?\Carbon\Carbon::parse($biodatas->tanggal_lahir)->format('Y-m-d'):null, ['class' => 'form-control','required'=>'required','id'=>'datepicker','placeholder' => 'Tanggal/Bulan/Tahun']) !!}
+    {!! Form::text('tanggal_lahir',isset($biodatas->tanggal_lahir)?\Carbon\Carbon::parse($biodatas->tanggal_lahir)->format('Y-m-d'):null, ['class' => 'form-control','required'=>'required','id'=>'datepicker','placeholder' => 'Tanggal/Bulan/Tahun']) !!}
 </div>
 
 <!-- Jenis Kelamin Field -->
