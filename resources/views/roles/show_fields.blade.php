@@ -1,36 +1,45 @@
+
 <!-- Id Field -->
 <div class="form-group">
     {!! Form::label('id', 'Id:') !!}
     <p>{!! $role->id !!}</p>
 </div>
 
-<!-- Name Field -->
+<!-- Nama Field -->
 <div class="form-group">
-    {!! Form::label('name', 'Name:') !!}
+    {!! Form::label('nama', 'Nama:') !!}
     <p>{!! $role->name !!}</p>
 </div>
 
-<!-- Display Name Field -->
+<!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('display_name', 'Display Name:') !!}
     <p>{!! $role->display_name !!}</p>
 </div>
 
-<!-- Description Field -->
 <div class="form-group">
-    {!! Form::label('description', 'Description:') !!}
-    <p>{!! $role->description !!}</p>
+    {!! Form::label('permission', 'Permission:') !!}
+    <p>
+        @foreach($role->perms as $perm)
+            {{$perm->display_name.','}}
+        @endforeach
+    </p>
 </div>
 
-<!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $role->created_at !!}</p>
+    {!! Form::label('description', 'Deskripsi:') !!}
+    <p>{!! $role->description !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
     {!! Form::label('updated_at', 'Updated At:') !!}
     <p>{!! $role->updated_at !!}</p>
+</div>
+
+<!-- Deleted At Field -->
+<div class="form-group">
+    {!! Form::label('deleted_at', 'Deleted At:') !!}
+    <p>{!! $role->deleted_at !!}</p>
 </div>
 

@@ -6,23 +6,23 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Role
+ * Class TernakNonInvestasi
  * @package App\Models
- * @version September 2, 2017, 2:03 am UTC
+ * @version September 9, 2017, 2:47 pm UTC
  *
+ * @property \App\Models\Ternak ternak
  * @property \Illuminate\Database\Eloquent\Collection biodatas
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property \Illuminate\Database\Eloquent\Collection ternaks
- * @property string name
- * @property string display_name
- * @property string description
+ * @property decimal massa_awal
+ * @property integer ternaks_id
  */
-class Role extends Model
+class TernakNonInvestasi extends Model
 {
     use SoftDeletes;
 
-    public $table = 'roles';
+    public $table = 'ternak_non_investasis';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -32,9 +32,8 @@ class Role extends Model
 
 
     public $fillable = [
-        'name',
-        'display_name',
-        'description'
+        'massa_awal',
+        'ternaks_id'
     ];
 
     /**
@@ -44,9 +43,7 @@ class Role extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string',
-        'display_name' => 'string',
-        'description' => 'string'
+        'ternaks_id' => 'integer'
     ];
 
     /**
@@ -59,18 +56,10 @@ class Role extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function permissions()
+    public function ternak()
     {
-        return $this->belongsToMany(\App\Models\Permission::class, 'permission_role');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     **/
-    public function users()
-    {
-        return $this->belongsToMany(\App\Models\User::class, 'role_user');
+        return $this->belongsTo(\App\Models\Ternak::class);
     }
 }

@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
+
 @section('content')
     <section class="content-header">
         <h1>
-            Role
+            Role {{$role->name}}
         </h1>
     </section>
     <div class="content">

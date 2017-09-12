@@ -71,3 +71,11 @@
 </li>
 
 
+<li class="{{ Request::is('ternakNonInvestasis*') ? 'active' : '' }}">
+    <a href="{!! route('ternakNonInvestasis.index') !!}"><i class="fa fa-edit"></i><span>TernakNonInvestasis</span></a>
+</li>
+
+<li class="{{ Request::is('ternaks*') ? 'active' : '' }}">
+    <a href="{!! route('ternaks.index') !!}"><i class="fa fa-edit"></i><span>Ternaks</span></a>
+</li>
+

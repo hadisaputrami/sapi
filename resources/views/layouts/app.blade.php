@@ -15,6 +15,9 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
+    <!-- Datepicker -->
+    <link rel="stylesheet" href="{{asset('assets/plugins/datepicker/datepicker3.css')}}">
+
     @yield('css')
 </head>
 
@@ -149,16 +152,15 @@
     <!-- AdminLTE App -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/js/app.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
+    <!-- Datepicker -->
+    <script src="{{asset('assets/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+
     <script type="application/javascript">
         //Date picker
         $('#datepicker').datepicker({
             autoclose: true,
             format: 'yyyy-mm-dd'
         });
-    </script>
     </script>
 
     @yield('scripts')

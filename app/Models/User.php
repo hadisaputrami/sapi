@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class User
  * @package App\Models
- * @version September 2, 2017, 2:09 am UTC
+ * @version September 12, 2017, 5:34 am UTC
  *
  * @property \Illuminate\Database\Eloquent\Collection Admin
  * @property \Illuminate\Database\Eloquent\Collection Biodata
@@ -17,7 +17,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection Peternak
  * @property \Illuminate\Database\Eloquent\Collection roleUser
+ * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
  * @property \Illuminate\Database\Eloquent\Collection ternaks
+ * @property \Illuminate\Database\Eloquent\Collection TransaksiInvestasiHasStatusTransaksiInvestasi
  * @property \Illuminate\Database\Eloquent\Collection TransaksiPenjualansHasStatusPenjualan
  * @property string name
  * @property string email
@@ -118,6 +120,14 @@ class User extends Model
     public function roles()
     {
         return $this->belongsToMany(\App\Models\Role::class, 'role_user');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function transaksiInvestasiHasStatusTransaksiInvestasis()
+    {
+        return $this->hasMany(\App\Models\TransaksiInvestasiHasStatusTransaksiInvestasi::class);
     }
 
     /**
