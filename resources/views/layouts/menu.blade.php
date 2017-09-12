@@ -63,7 +63,7 @@
 </li>
 
 <li class="{{ Request::is('transaksiPenjualanHasStatusPenjualans*') ? 'active' : '' }}">
-    <a href="{!! route('transaksiPenjualanHasStatusPenjualans.index') !!}"><i class="fa fa-edit"></i><span>TransaksiPenjualanHasStatusPenjualans</span></a>
+    <a href="{!! route('tranPenHasStatusPen.index') !!}"><i class="fa fa-edit"></i><span>TransaksiPenjualanHasStatusPenjualans</span></a>
 </li>
 
 <li class="{{ Request::is('users*') ? 'active' : '' }}">
@@ -77,5 +77,10 @@
 
 <li class="{{ Request::is('ternaks*') ? 'active' : '' }}">
     <a href="{!! route('ternaks.index') !!}"><i class="fa fa-edit"></i><span>Ternaks</span></a>
+</li>
+
+
+<li class="{{ Request::is('jenisTernaks*') ? 'active' : '' }}">
+    <a href="{!! route('jenisTernaks.index') !!}"><i class="fa fa-edit"></i><span>JenisTernaks</span></a>
 </li>
 

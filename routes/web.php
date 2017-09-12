@@ -59,7 +59,7 @@ Route::resource('transaksiInvestasis', 'TransaksiInvestasiController');
 
 Route::resource('transaksiPenjualans', 'TransaksiPenjualanController');
 
-Route::resource('transaksiPenjualanHasStatusPenjualans', 'TransaksiPenjualanHasStatusPenjualanController');
+Route::resource('tranPenHasStatusPen', 'TransaksiPenjualanHasStatusPenjualanController');
 
 Route::resource('users', 'UserController');
 
@@ -68,3 +68,7 @@ Route::resource('biodatas', 'BiodataController');
 Route::resource('ternakNonInvestasis', 'TernakNonInvestasiController');
 
 Route::resource('ternaks', 'TernakController');
+
+Route::resource('ternakNonInvestasis', 'TernakNonInvestasiController');
+
+Route::resource('jenisTernaks', 'JenisTernakController');

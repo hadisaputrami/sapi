@@ -10,6 +10,14 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\JenisTernak;
+use App\Models\Peternak;
+use App\Models\Ternak;
+use Illuminate\Support\Facades\Auth;
+use Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class TernakController extends AppBaseController
 {
@@ -32,8 +40,10 @@ class TernakController extends AppBaseController
         $this->ternakRepository->pushCriteria(new RequestCriteria($request));
         $ternaks = $this->ternakRepository->all();
 
-        return view('ternaks.index')
-            ->with('ternaks', $ternaks);
+        $jenisTernak =JenisTernak::pluck('nama_jenis_ternaks','id');
+
+        return view('ternaks.index',
+            compact('ternaks','jenisTernak'));
     }
 
     /**
@@ -43,7 +53,9 @@ class TernakController extends AppBaseController
      */
     public function create()
     {
-        return view('ternaks.create');
+         $jenisTernak =JenisTernak::pluck('nama_jenis_ternaks','id');
+        return view('ternaks.create',
+            compact('jenisTernak'));
     }
 
     /**

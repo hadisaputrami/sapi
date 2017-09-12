@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class TernakNonInvestasi
  * @package App\Models
- * @version September 9, 2017, 2:47 pm UTC
+ * @version September 10, 2017, 9:16 am UTC
  *
  * @property \App\Models\Ternak ternak
  * @property \Illuminate\Database\Eloquent\Collection biodatas
