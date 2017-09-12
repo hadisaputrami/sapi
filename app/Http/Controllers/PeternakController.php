@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Role;
 
 class PeternakController extends AppBaseController
 {
@@ -56,6 +57,33 @@ class PeternakController extends AppBaseController
     public function store(CreatePeternakRequest $request)
     {
         $input = $request->all();
+
+        $requestUser=$requestData;
+        $requestPeternak=$requestData;
+
+        try{
+            DB::beginTransaction();
+            $user=User::create([
+                'name' => $requestUser['name'],
+                'email' => $requestUser['email'],
+                'password' => bcrypt($requestUser['password']),
+            ]);
+
+            $role=Role::where('name','Peternak')->firstOrFail();
+            $user->attach($role);
+         
+
+            $requestPeternak['users_id']=$user->id;
+            $peternak=Peternak::create($requestPeternak);
+        
+            DB::commit();
+
+            Session::flash('flash_message', 'Peternak Berhasil Registrasi');
+        }catch(Exception $e){
+            DB::rollback();
+
+            Session::flash('flash_message', 'Peternak Gagal Registrasi');
+        }
 
         $peternak = $this->peternakRepository->create($input);
 
@@ -114,6 +142,24 @@ class PeternakController extends AppBaseController
      */
     public function update($id, UpdatePeternakRequest $request)
     {
+
+        $requestData = $request->all();
+
+         try{
+            DB::beginTransaction();
+
+            $requestPeternak['users_id']=$user->id;
+            $peternak=Peternak::create($requestPeternak);
+           
+            DB::commit();
+
+            Session::flash('flash_message', 'Peternak Berhasil Diubah');
+        }catch(Exception $e){
+            DB::rollback();
+
+            Session::flash('flash_message', 'Data Gagal Diubah');
+        }
+
         $peternak = $this->peternakRepository->findWithoutFail($id);
 
         if (empty($peternak)) {
