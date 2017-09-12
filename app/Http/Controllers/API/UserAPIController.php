@@ -1,17 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\API\CreateUserAPIRequest;
+use App\Http\Requests\API\UpdateUserAPIRequest;
+use App\Models\User;
 use App\Repositories\UserRepository;
-use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
+use App\Http\Controllers\AppBaseController;
+use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class UserController extends AppBaseController
+/**
+ * Class UserController
+ * @package App\Http\Controllers\API
+ */
+
+class UserAPIController extends AppBaseController
 {
     /** @var  UserRepository */
     private $userRepository;
@@ -23,6 +29,7 @@ class UserController extends AppBaseController
 
     /**
      * Display a listing of the User.
+     * GET|HEAD /users
      *
      * @param Request $request
      * @return Response
@@ -30,42 +37,32 @@ class UserController extends AppBaseController
     public function index(Request $request)
     {
         $this->userRepository->pushCriteria(new RequestCriteria($request));
+        $this->userRepository->pushCriteria(new LimitOffsetCriteria($request));
         $users = $this->userRepository->all();
 
-        return view('users.index')
-            ->with('users', $users);
-    }
-
-    /**
-     * Show the form for creating a new User.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        return view('users.create');
+        return $this->sendResponse($users->toArray(), 'Users retrieved successfully');
     }
 
     /**
      * Store a newly created User in storage.
+     * POST /users
      *
-     * @param CreateUserRequest $request
+     * @param CreateUserAPIRequest $request
      *
      * @return Response
      */
-    public function store(CreateUserRequest $request)
+    public function store(CreateUserAPIRequest $request)
     {
         $input = $request->all();
 
-        $user = $this->userRepository->create($input);
+        $users = $this->userRepository->create($input);
 
-        Flash::success('User saved successfully.');
-
-        return redirect(route('users.index'));
+        return $this->sendResponse($users->toArray(), 'User saved successfully');
     }
 
     /**
      * Display the specified User.
+     * GET|HEAD /users/{id}
      *
      * @param  int $id
      *
@@ -73,64 +70,44 @@ class UserController extends AppBaseController
      */
     public function show($id)
     {
+        /** @var User $user */
         $user = $this->userRepository->findWithoutFail($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
-
-            return redirect(route('users.index'));
+            return $this->sendError('User not found');
         }
 
-        return view('users.show')->with('user', $user);
-    }
-
-    /**
-     * Show the form for editing the specified User.
-     *
-     * @param  int $id
-     *
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $user = $this->userRepository->findWithoutFail($id);
-
-        if (empty($user)) {
-            Flash::error('User not found');
-
-            return redirect(route('users.index'));
-        }
-
-        return view('users.edit')->with('user', $user);
+        return $this->sendResponse($user->toArray(), 'User retrieved successfully');
     }
 
     /**
      * Update the specified User in storage.
+     * PUT/PATCH /users/{id}
      *
-     * @param  int              $id
-     * @param UpdateUserRequest $request
+     * @param  int $id
+     * @param UpdateUserAPIRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateUserRequest $request)
+    public function update($id, UpdateUserAPIRequest $request)
     {
+        $input = $request->all();
+
+        /** @var User $user */
         $user = $this->userRepository->findWithoutFail($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
-
-            return redirect(route('users.index'));
+            return $this->sendError('User not found');
         }
 
-        $user = $this->userRepository->update($request->all(), $id);
+        $user = $this->userRepository->update($input, $id);
 
-        Flash::success('User updated successfully.');
-
-        return redirect(route('users.index'));
+        return $this->sendResponse($user->toArray(), 'User updated successfully');
     }
 
     /**
      * Remove the specified User from storage.
+     * DELETE /users/{id}
      *
      * @param  int $id
      *
@@ -138,19 +115,16 @@ class UserController extends AppBaseController
      */
     public function destroy($id)
     {
+        /** @var User $user */
         $user = $this->userRepository->findWithoutFail($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
-
-            return redirect(route('users.index'));
+            return $this->sendError('User not found');
         }
 
-        $this->userRepository->delete($id);
+        $user->delete();
 
-        Flash::success('User deleted successfully.');
-
-        return redirect(route('users.index'));
+        return $this->sendResponse($id, 'User deleted successfully');
     }
 
     public function register(Request $request){
