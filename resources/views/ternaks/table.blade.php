@@ -4,7 +4,7 @@
         <th>Dob</th>
         <th>Tanggal Masuk</th>
         <th>Peternaks Id</th>
-        <th>Jenis Ternaks Id</th>
+        <th>Jenis Ternaks </th>
         <th colspan="3">Action</th>
     </thead>
     <tbody>

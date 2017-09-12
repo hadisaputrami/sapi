@@ -25,7 +25,7 @@
 <!-- Jenis Ternaks Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('jenis_ternaks_id', 'Jenis Ternaks Id:') !!}
-    {!! Form::number('jenis_ternaks_id', null, ['class' => 'form-control']) !!}
+    {!! Form::select('jenis_ternaks_id',$jenisTernak, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->
