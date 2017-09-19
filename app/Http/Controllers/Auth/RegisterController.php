@@ -81,11 +81,7 @@ class RegisterController extends Controller
 
             $data['users_id'] = $user->id;
             Investor::create($data);
-            /*
-                        '' => $data['nama_pemilik_rek'],
-                        'nama_bank' => $data['nama_bank'],
-                        'no_rek' => $data['no_rek']
-            */
+
             DB::commit();
 
 
