@@ -77,7 +77,7 @@ class RegisterController extends Controller
             $user->attach($role);
          
             $data['users_id']=$user->id;
-            $investor=Investor::create([
+            Investor::create([
                 'nama_pemilik_rek' => $data['nama_pemilik_rek'],
                 'nama_bank' => $data['nama_bank'],
                 'no_rek' => $data['no_rek']
