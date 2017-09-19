@@ -19,7 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 Route::resource('biodatas', 'BiodataController');
 
 Route::resource('ternaks', 'TernakController');
@@ -67,3 +66,7 @@ Route::resource('ternaks', 'TernakController');
 Route::resource('ternakNonInvestasis', 'TernakNonInvestasiController');
 
 Route::resource('jenisTernaks', 'JenisTernakController');
+
+Route::resource('user_role', 'UserRoleController', ['except' => [
+    'create', 'store', 'show', 'destroy',
+]]);
