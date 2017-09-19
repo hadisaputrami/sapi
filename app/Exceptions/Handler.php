@@ -5,6 +5,8 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -44,6 +46,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+
+        if ($exception instanceof TokenMismatchException) {
+            return redirect()->back()->withInput($request->except('password'))->withErrors(['Validasi Token Kadaluarsa. Silahkan coba lagi']);
+        }
+
+        //Pesan belum bisa
+        if ($exception instanceof NotFoundHttpException) {
+            return redirect()->route('home')->with('message', 'Halaman Tidak Ditemukan');
+        }
         return parent::render($request, $exception);
     }
 
