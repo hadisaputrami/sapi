@@ -22,12 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('biodatas', 'BiodataController');
 
-Route::resource('biodatas', 'BiodataController');
-
 Route::resource('ternaks', 'TernakController');
-
-
-Route::get('/home', 'HomeController@index');
 
 Route::resource('agamas', 'AgamaController');
 
