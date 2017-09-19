@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\Ternak;
+use App\Models\JenisTernak;
 
 class TernakNonInvestasiController extends AppBaseController
 {
@@ -42,8 +44,10 @@ class TernakNonInvestasiController extends AppBaseController
      * @return Response
      */
     public function create()
-    {
-        return view('ternak_non_investasis.create');
+    {         
+        $jenisTernak =JenisTernak::pluck('nama_jenis_ternaks','id');
+        return view('ternak_non_investasis.create',
+            compact('jenisTernak'));
     }
 
     /**
@@ -56,8 +60,27 @@ class TernakNonInvestasiController extends AppBaseController
     public function store(CreateTernakNonInvestasiRequest $request)
     {
         $input = $request->all();
+        $requestData = $input;
 
         $ternakNonInvestasi = $this->ternakNonInvestasiRepository->create($input);
+        $input['ternaks_id']=$ternak->id;
+
+        try {
+            DB::beginTransaction();
+
+            $ternakNonInvestasi = TernakNonInvestasi::create(['ternaks_id'=> Auth::id()],
+                $input);
+            $ternak= Ternak::create([
+                'kode'=>$requestData['kode'],
+                'dob'=>$requestData['dob'],
+                'tanggal_masuk'=>$requestData['tanggal_masuk'],
+                
+                ]);
+            
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollback();
+        }
 
         Flash::success('Ternak Non Investasi saved successfully.');
 

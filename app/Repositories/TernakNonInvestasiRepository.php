@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class TernakNonInvestasiRepository
  * @package App\Repositories
- * @version September 9, 2017, 2:47 pm UTC
+ * @version September 10, 2017, 9:16 am UTC
  *
  * @method TernakNonInvestasi findWithoutFail($id, $columns = ['*'])
  * @method TernakNonInvestasi find($id, $columns = ['*'])
