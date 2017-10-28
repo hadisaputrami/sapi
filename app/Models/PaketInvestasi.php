@@ -37,7 +37,7 @@ class PaketInvestasi extends Model
     public $fillable = [
         'nama',
         'harga',
-        'massa',
+        'rentang_massa',
         'lama_kontrak',
         'deskripsi'
     ];
