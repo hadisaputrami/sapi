@@ -70,3 +70,5 @@ Route::resource('jenisTernaks', 'JenisTernakController');
 Route::resource('user_role', 'UserRoleController', ['except' => [
     'create', 'store', 'show', 'destroy',
 ]]);
+
+Route::resource('jenisTernaks', 'JenisTernakController');
