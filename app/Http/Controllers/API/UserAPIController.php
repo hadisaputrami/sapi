@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Requests\API\ChangePasswordUserAPIRequest;
 use App\Http\Requests\API\CreateUserAPIRequest;
 use App\Http\Requests\API\UpdateUserAPIRequest;
-use App\Models\User;
+use App\Role;
+use App\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
+use Mockery\Exception;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -28,50 +35,150 @@ class UserAPIController extends AppBaseController
     }
 
     /**
-     * Display a listing of the User.
-     * GET|HEAD /users
-     *
      * @param Request $request
      * @return Response
+     *
+     * @SWG\Get(
+     *      path="/users",
+     *      summary="Get a listing of the Users.",
+     *      tags={"User"},
+     *      description="Get all Users",
+     *      produces={"application/json"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="array",
+     *                  @SWG\Items(ref="#/definitions/User")
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
      */
-    public function index(Request $request)
+/*    public function index(Request $request)
     {
         $this->userRepository->pushCriteria(new RequestCriteria($request));
         $this->userRepository->pushCriteria(new LimitOffsetCriteria($request));
         $users = $this->userRepository->all();
 
         return $this->sendResponse($users->toArray(), 'Users retrieved successfully');
-    }
+    }*/
 
     /**
-     * Store a newly created User in storage.
-     * POST /users
-     *
      * @param CreateUserAPIRequest $request
-     *
      * @return Response
+     *
+     * @SWG\Post(
+     *      path="/users",
+     *      summary="Store a newly created User in storage",
+     *      tags={"User"},
+     *      description="Store User",
+     *      produces={"application/json"},
+     *      @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          description="User that should be stored",
+     *          required=false,
+     *          @SWG\Schema(ref="#/definitions/User")
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#/definitions/User"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
      */
     public function store(CreateUserAPIRequest $request)
     {
         $input = $request->all();
 
-        $users = $this->userRepository->create($input);
+        try {
+            DB::beginTransaction();
+            $users = $this->userRepository->create([
+                'name'=>$input['name'],
+                'kontak'=>$input['kontak'],
+                'email'=>$input['email'],
+                'nik'=>$input['nik'],
+                'password'=>bcrypt($input['password'])
+            ]);
 
-        return $this->sendResponse($users->toArray(), 'User saved successfully');
+            $role = Role::where('name', 'pelanggan')->firstOrFail();
+            $users->attachRole($role);
+            DB::commit();
+            return $this->sendResponse($users->toArray(), 'User saved successfully');
+        }catch (Exception $e){
+            DB::rollBack();
+            return $this->sendError($e->getMessage());
+        }
     }
 
     /**
-     * Display the specified User.
-     * GET|HEAD /users/{id}
-     *
-     * @param  int $id
-     *
+     * @param int $id
      * @return Response
+     *
+     * @SWG\Get(
+     *      path="/users/{id}",
+     *      summary="Display the specified User",
+     *      tags={"User"},
+     *      description="Get User",
+     *      produces={"application/json"},
+     *      @SWG\Parameter(
+     *          name="id",
+     *          description="id of User",
+     *          type="integer",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#/definitions/User"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
      */
-    public function show($id)
+    public function show()
     {
         /** @var User $user */
-        $user = $this->userRepository->findWithoutFail($id);
+        $user = Auth::user();
 
         if (empty($user)) {
             return $this->sendError('User not found');
@@ -81,41 +188,124 @@ class UserAPIController extends AppBaseController
     }
 
     /**
-     * Update the specified User in storage.
-     * PUT/PATCH /users/{id}
-     *
-     * @param  int $id
+     * @param int $id
      * @param UpdateUserAPIRequest $request
-     *
      * @return Response
+     *
+     * @SWG\Put(
+     *      path="/users/{id}",
+     *      summary="Update the specified User in storage",
+     *      tags={"User"},
+     *      description="Update User",
+     *      produces={"application/json"},
+     *      @SWG\Parameter(
+     *          name="id",
+     *          description="id of User",
+     *          type="integer",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          description="User that should be updated",
+     *          required=false,
+     *          @SWG\Schema(ref="#/definitions/User")
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#/definitions/User"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
      */
-    public function update($id, UpdateUserAPIRequest $request)
+    public function update(UpdateUserAPIRequest $request)
     {
-        $input = $request->all();
+        $input = $request->except(['foto','kontak']);
 
         /** @var User $user */
-        $user = $this->userRepository->findWithoutFail($id);
+        $user = Auth::user();
 
         if (empty($user)) {
             return $this->sendError('User not found');
         }
 
-        $user = $this->userRepository->update($input, $id);
+        try{
+            DB::beginTransaction();
 
-        return $this->sendResponse($user->toArray(), 'User updated successfully');
+            $user = User::find(Auth::id());
+
+            $user->update($input);
+
+            if( $request->hasFile('foto')) {
+                $path = $request->foto->storeAs('foto_profil', $user->id.'.'.$request->foto->extension(),'local_public');
+                $user->foto=$path;
+                $user->save();
+            }
+            DB::commit();
+            return $this->sendResponse($user->toArray(), 'User updated successfully');
+
+        }catch (Exception $e){
+            DB::rollBack();
+            return $this->sendError("Update Data Gagal. Karena :".$e->getMessage());
+        }
     }
 
     /**
-     * Remove the specified User from storage.
-     * DELETE /users/{id}
-     *
-     * @param  int $id
-     *
+     * @param int $id
      * @return Response
+     *
+     * @SWG\Delete(
+     *      path="/users/{id}",
+     *      summary="Remove the specified User from storage",
+     *      tags={"User"},
+     *      description="Delete User",
+     *      produces={"application/json"},
+     *      @SWG\Parameter(
+     *          name="id",
+     *          description="id of User",
+     *          type="integer",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="string"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
      */
-    public function destroy($id)
+/*    public function destroy($id)
     {
-        /** @var User $user */
+
         $user = $this->userRepository->findWithoutFail($id);
 
         if (empty($user)) {
@@ -125,28 +315,45 @@ class UserAPIController extends AppBaseController
         $user->delete();
 
         return $this->sendResponse($id, 'User deleted successfully');
-    }
+    }*/
 
-    public function register(Request $request){
-        $user = $this->user->create([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => bcrypt($request->get('password'))
-        ]);
-        return response()->json(['status'=>true,'message'=>'User created successfully','data'=>$user]);
-    }
-
-    public function login(Request $request)
+    public function storeTokenDevice(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-        $token = null;
+        $input = $request->only('token_device');
+
         try {
-            if (!$token = JWTAuth::attempt($credentials)) {
-                return response()->json(['invalid_email_or_password'], 422);
-            }
-        } catch (JWTAuthException $e) {
-            return response()->json(['failed_to_create_token'], 500);
+            DB::beginTransaction();
+
+            $users=Auth::user();
+            $users->token_device=$input['token_device'];
+            $users->save();
+
+            DB::commit();
+            return $this->sendResponse($users->toArray(), 'User saved successfully');
+        }catch (Exception $e){
+            DB::rollBack();
+            return $this->sendError($e->getMessage());
         }
-        return response()->json(compact('token'));
     }
+
+    public function changePassword(ChangePasswordUserAPIRequest $request)
+    {
+            $request_data = $request->only(['current-password','password','password_confirmation']);
+
+                $current_password = Auth::User()->password;
+                if(Hash::check($request_data['current-password'], $current_password))
+                {
+                    $user_id = Auth::User()->id;
+                    $user = User::find($user_id);
+                    $user->password = bcrypt($request_data['password']);;
+                    $user->save();
+                    return $this->sendResponse($user->toArray(), 'Password has changed successfully');
+                }
+                else
+                {
+                    return $this->sendError("Password Salah");
+                }
+    }
+
+
 }

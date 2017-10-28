@@ -32,3 +32,6 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 
 Route::resource('users', 'UserAPIController');
 Route::resource('transaksi_investasis', 'TransaksiInvestasiAPIController');
+
+Route::resource('ternaks', 'TernakAPIController');
+Route::resource('paket_investasis', 'PaketInvestasiAPIController');
