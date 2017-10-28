@@ -137,7 +137,7 @@ class UserAPIController extends AppBaseController
                             if( !is_null($users->email) && !isset($users->email) ){
                                 try{
                                     Mail::to($users->email)->send(new NewUserEmail($users));
-                                }catch (Exception $e){}
+                                }catch (\Exception $e){}
                             }
 
             DB::commit();
@@ -386,7 +386,7 @@ class UserAPIController extends AppBaseController
             Mail::to($user->email)->send(new ResetPasswordEmail($data));
 
             DB::commit();
-        }catch (Exception $e){
+        }catch (\Exception $e){
             DB::rollBack();
             return $this->sendError($e->getMessage());
         }
