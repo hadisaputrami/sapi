@@ -12,7 +12,7 @@
         <tr>
             <td>{!! $paketInvestasi->nama !!}</td>
             <td>{!! $paketInvestasi->harga !!}</td>
-            <td>{!! $paketInvestasi->massa !!}</td>
+            <td>{!! $paketInvestasi->rentang_massa !!}</td>
             <td>{!! $paketInvestasi->lama_kontrak !!}</td>
             <td>{!! $paketInvestasi->deskripsi !!}</td>
             <td>

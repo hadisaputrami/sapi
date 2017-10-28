@@ -12,7 +12,7 @@
 
 <!-- Massa Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('rentang_massa', 'Massa (Kg):') !!}
+    {!! Form::label('rentang_massa', 'Rentang Massa (Kg):') !!}
     {!! Form::text('rentang_massa', null, ['class' => 'form-control']) !!}
 </div>
 
