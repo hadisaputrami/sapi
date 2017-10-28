@@ -185,9 +185,10 @@ return [
         \InfyOm\AdminLTETemplates\AdminLTETemplatesServiceProvider::class, 
 
         //JWT package
-        'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 
         Zizaco\Entrust\EntrustServiceProvider::class,
+        LaravelFCM\FCMServiceProvider::class
     ],
 
     /*
@@ -242,10 +243,13 @@ return [
         'Flash' => Laracasts\Flash\Flash::class,
 
         //JWT package
-        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
 
         //zizaco
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+
+        'FCM'      => LaravelFCM\Facades\FCM::class,
+        'FCMGroup' => LaravelFCM\Facades\FCMGroup::class, // Optional
     ],
 
 ];

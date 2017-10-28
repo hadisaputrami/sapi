@@ -4,7 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Requests\API\ChangePasswordUserAPIRequest;
 use App\Http\Requests\API\CreateUserAPIRequest;
+use App\Http\Requests\API\ResetPasswordUserAPIRequest;
 use App\Http\Requests\API\UpdateUserAPIRequest;
+use App\Mail\NewUserEmail;
+use App\Mail\ResetPasswordEmail;
 use App\Role;
 use App\User;
 use App\Repositories\UserRepository;
@@ -13,6 +16,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Mockery\Exception;
@@ -129,6 +133,13 @@ class UserAPIController extends AppBaseController
 
             $role = Role::where('name', 'pelanggan')->firstOrFail();
             $users->attachRole($role);
+
+                            if( !is_null($users->email) && !isset($users->email) ){
+                                try{
+                                    Mail::to($users->email)->send(new NewUserEmail($users));
+                                }catch (Exception $e){}
+                            }
+
             DB::commit();
             return $this->sendResponse($users->toArray(), 'User saved successfully');
         }catch (Exception $e){
@@ -355,5 +366,41 @@ class UserAPIController extends AppBaseController
                 }
     }
 
+    public function resetPassword(ResetPasswordUserAPIRequest $request)
+    {
+        $input = $request->only(['kontak','email']);
+
+        $user = User::where('kontak',$input['kontak'])->where('email',$input['email'])->first();
+
+        if (empty($user)) {
+            return $this->sendError('User dengan kontak dan email tidak ditemukan');
+        }
+
+        try {
+            DB::beginTransaction();
+            $generatePassword=$this->generateRandomString(7);
+            $user->password = bcrypt($generatePassword);
+            $user->save();
+            $data=['kontak'=>$user->kontak,
+                'password'=>$generatePassword];
+            Mail::to($user->email)->send(new ResetPasswordEmail($data));
+
+            DB::commit();
+        }catch (Exception $e){
+            DB::rollBack();
+            return $this->sendError($e->getMessage());
+        }
+        return $this->sendResponse("Silahkan cek email inbox/spam ".$user->email,"Password berhasil di reset");
+    }
+
+    public function generateRandomString($length) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
 
 }
