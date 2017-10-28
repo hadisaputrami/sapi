@@ -188,7 +188,7 @@ return [
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 
         Zizaco\Entrust\EntrustServiceProvider::class,
-        LaravelFCM\FCMServiceProvider::class
+        \LaravelFCM\FCMServiceProvider::class
     ],
 
     /*
