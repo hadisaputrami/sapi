@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \App\Models\JenisPembayaran jenisPembayaran
  * @property \App\Models\StatusPenjualan statusPenjualan
  * @property \App\Models\TransaksiPenjualan transaksiPenjualan
- * @property \App\Models\User user
+ * @property \App\User user
  * @property \Illuminate\Database\Eloquent\Collection biodatas
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
  * @property \Illuminate\Database\Eloquent\Collection roleUser
@@ -91,6 +91,6 @@ class TransaksiPenjualanHasStatusPenjualan extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(\App\User::class);
     }
 }

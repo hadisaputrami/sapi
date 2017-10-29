@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Factory as Faker;
-use App\Models\User;
+use App\User;
 use App\Repositories\UserRepository;
 
 trait MakeUserTrait
