@@ -127,7 +127,6 @@ class UserAPIController extends AppBaseController
                 'name'=>$input['name'],
                 'kontak'=>$input['kontak'],
                 'email'=>$input['email'],
-                'nik'=>$input['nik'],
                 'password'=>bcrypt($input['password'])
             ]);
 

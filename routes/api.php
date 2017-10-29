@@ -13,24 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => ['auth:api']], function () {
-    //
-
-});
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::post('auth/register', 'UserController@register');
-Route::post('auth/login', 'UserController@login');
 Route::group(['middleware' => 'jwt.auth'], function () {
-    Route::get('/ok', function (){
-        return 'ok';
-    });
+
 });
 
-Route::resource('users', 'UserAPIController');
+Route::post('users','UserAPIController@store');
+Route::post('token','AuthenticateAPIController@authenticate');
+Route::post('reset_password', 'UserAPIController@resetPassword');
+
 Route::resource('transaksi_investasis', 'TransaksiInvestasiAPIController');
 
 Route::resource('ternaks', 'TernakAPIController');
