@@ -50,7 +50,7 @@ class PaketInvestasi extends Model
     protected $casts = [
         'id' => 'integer',
         'nama' => 'string',
-        'harga' => 'string',
+        'harga' => 'integer',
         'massa' => 'string',
         'lama_kontrak' => 'string',
         'deskripsi' => 'string'

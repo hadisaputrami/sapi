@@ -1,7 +1,7 @@
 <table class="table table-responsive" id="paketInvestasis-table">
     <thead>
         <th>Nama</th>
-        <th>Harga</th>
+        <th>Harga (Rp.)</th>
         <th>Massa</th>
         <th>Lama Kontrak</th>
         <th>Deskripsi</th>
