@@ -50,7 +50,10 @@ class Peternak extends Model
      * @var array
      */
     public static $rules = [
-        
+        'name' => 'required|string|max:255',
+        'kontak'=>'required|string|unique:users|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string|min:6|confirmed',
     ];
 
     /**
@@ -58,7 +61,7 @@ class Peternak extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\User::class);
+        return $this->belongsTo(\App\User::class,'users_id');
     }
 
     /**

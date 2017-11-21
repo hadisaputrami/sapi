@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePeternakRequest;
 use App\Http\Requests\UpdatePeternakRequest;
+use App\Models\Peternak;
 use App\Repositories\PeternakRepository;
 use App\Http\Controllers\AppBaseController;
+use App\User;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Mockery\Exception;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Role;
@@ -58,34 +63,33 @@ class PeternakController extends AppBaseController
     {
         $input = $request->all();
 
-        $requestUser=$requestData;
-        $requestPeternak=$requestData;
+        $requestUser=$input;
+        $requestPeternak=$input;
 
         try{
             DB::beginTransaction();
             $user=User::create([
                 'name' => $requestUser['name'],
                 'email' => $requestUser['email'],
+                'kontak'=>$requestUser['kontak'],
                 'password' => bcrypt($requestUser['password']),
             ]);
 
-            $role=Role::where('name','Peternak')->firstOrFail();
-            $user->attach($role);
-         
+            $role=Role::where('name','peternak')->firstOrFail();
+            $user->attachRole($role);
 
-            $requestPeternak['users_id']=$user->id;
-            $peternak=Peternak::create($requestPeternak);
+            Peternak::create([
+                'users_id'=>$user->id
+            ]);
         
             DB::commit();
 
             Session::flash('flash_message', 'Peternak Berhasil Registrasi');
-        }catch(Exception $e){
+        }catch(\Exception $e){
             DB::rollback();
 
             Session::flash('flash_message', 'Peternak Gagal Registrasi');
         }
-
-        $peternak = $this->peternakRepository->create($input);
 
         Flash::success('Peternak saved successfully.');
 

@@ -1,12 +1,12 @@
 <table class="table table-responsive" id="peternaks-table">
     <thead>
-        <th>Users Id</th>
+        <th>Nama Peternak</th>
         <th colspan="3">Action</th>
     </thead>
     <tbody>
     @foreach($peternaks as $peternak)
         <tr>
-            <td>{!! $peternak->users_id !!}</td>
+            <td>{!! $peternak->user->name or "" !!}</td>
             <td>
                 {!! Form::open(['route' => ['peternaks.destroy', $peternak->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

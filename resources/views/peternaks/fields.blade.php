@@ -1,8 +1,8 @@
 <!-- Users Id Field -->
-<div class="form-group col-sm-6">
+{{--<div class="form-group col-sm-6">
     {!! Form::label('users_id', 'Users Id:') !!}
     {!! Form::number('users_id', null, ['class' => 'form-control']) !!}
-</div>
+</div>--}}
 
 <!-- Name Field -->
 <div class="form-group col-sm-6">
@@ -16,25 +16,21 @@
     {!! Form::email('email', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Name Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('kontak', 'Kontak:') !!}
+    {!! Form::number('kontak', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Password Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('password', 'Password:') !!}
     {!! Form::password('password', ['class' => 'form-control']) !!}
 </div>
 
-<!-- Remember Token Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('remember_token', 'Remember Token:') !!}
-    {!! Form::text('remember_token', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Verified Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('verified', 'Verified:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('verified', false) !!}
-        {!! Form::checkbox('verified', '1', null) !!} 1
-    </label>
+    {!! Form::label('password_confirmation', 'Password Konfirmasi:') !!}
+    {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->
