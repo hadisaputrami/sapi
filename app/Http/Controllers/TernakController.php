@@ -54,8 +54,10 @@ class TernakController extends AppBaseController
     public function create()
     {
          $jenisTernak =JenisTernak::pluck('nama_jenis_ternaks','id');
+         $peternak=Peternak::with('user')->get()->pluck('user.name','id');
+
         return view('ternaks.create',
-            compact('jenisTernak'));
+            compact('jenisTernak','peternak'));
     }
 
     /**
@@ -112,8 +114,8 @@ class TernakController extends AppBaseController
 
             return redirect(route('ternaks.index'));
         }
-
-        return view('ternaks.edit')->with('ternak', $ternak);
+        $peternak=Peternak::with('user')->get()->pluck('user.name','id');
+        return view('ternaks.edit',compact('peternak'))->with('ternak', $ternak);
     }
 
     /**
