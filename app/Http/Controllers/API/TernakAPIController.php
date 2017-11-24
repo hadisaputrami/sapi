@@ -36,7 +36,9 @@ class TernakAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $ternaks = Ternak::with(['peternak','jenisTernak'])->get();
+        $ternaks = Ternak::with(['peternak','jenisTernak','ternakInvestasis'=>function($query){
+            $query->progresses->last();
+        },'ternakNonInvestasis'])->get();
 
         return $this->sendResponse($ternaks->toArray(), 'Ternaks retrieved successfully');
     }

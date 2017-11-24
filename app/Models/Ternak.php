@@ -84,7 +84,15 @@ class Ternak extends Model
      **/
     public function ternakNonInvestasis()
     {
-        return $this->hasMany(\App\Models\TernakNonInvestasi::class);
+        return $this->hasMany(\App\Models\TernakNonInvestasi::class,'ternaks_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function ternakInvestasis()
+    {
+        return $this->hasMany(\App\Models\TernakInvestasi::class,'ternaks_id');
     }
 
     /**
