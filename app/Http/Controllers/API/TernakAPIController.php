@@ -36,9 +36,7 @@ class TernakAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->ternakRepository->pushCriteria(new RequestCriteria($request));
-        $this->ternakRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $ternaks = $this->ternakRepository->all();
+        $ternaks = Ternak::with(['peternak','jenisTernak'])->all();
 
         return $this->sendResponse($ternaks->toArray(), 'Ternaks retrieved successfully');
     }
