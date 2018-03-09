@@ -13,6 +13,7 @@ use Response;
 use App\Models\JenisTernak;
 use App\Models\Peternak;
 use App\Models\Ternak;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Support\Facades\DB;
@@ -41,9 +42,10 @@ class TernakController extends AppBaseController
         $ternaks = $this->ternakRepository->all();
 
         $jenisTernak =JenisTernak::pluck('nama_jenis_ternaks','id');
+        $peternaks=Peternak::pluck('name','id');
 
         return view('ternaks.index',
-            compact('ternaks','jenisTernak'));
+            compact('ternaks','jenisTernak','peternaks'));
     }
 
     /**
@@ -54,8 +56,10 @@ class TernakController extends AppBaseController
     public function create()
     {
          $jenisTernak =JenisTernak::pluck('nama_jenis_ternaks','id');
-        return view('ternaks.create',
-            compact('jenisTernak'));
+         $peternaks=Peternak::pluck('name','id');
+
+         return view('ternaks.create',
+            compact('jenisTernak','peternaks'));
     }
 
     /**
