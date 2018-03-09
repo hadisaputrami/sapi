@@ -18,8 +18,8 @@
 
 <!-- Peternaks Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('peternaks_id', 'Peternaks:') !!}
-    {!! Form::select('peternaks_id', $peternaks, null, ['class' => 'form-control']) !!}
+    {!! Form::label('peternaks_id', 'Peternaks Id:') !!}
+    {!! Form::select('peternaks_id', $peternak ,null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Jenis Ternaks Id Field -->

@@ -71,7 +71,12 @@ class Ternak extends Model
      **/
     public function peternak()
     {
-        return $this->belongsTo(\App\Models\Peternak::class);
+        return $this->belongsTo(\App\Models\Peternak::class,'peternaks_id');
+    }
+
+    public function jenisTernak()
+    {
+        return $this->belongsTo(\App\Models\JenisTernak::class,'jenis_ternaks_id');
     }
 
     /**
@@ -79,7 +84,15 @@ class Ternak extends Model
      **/
     public function ternakNonInvestasis()
     {
-        return $this->hasMany(\App\Models\TernakNonInvestasi::class);
+        return $this->hasMany(\App\Models\TernakNonInvestasi::class,'ternaks_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function ternakInvestasis()
+    {
+        return $this->hasMany(\App\Models\TernakInvestasi::class,'ternaks_id');
     }
 
     /**

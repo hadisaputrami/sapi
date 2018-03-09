@@ -25,3 +25,5 @@ Route::resource('transaksi_investasis', 'TransaksiInvestasiAPIController');
 
 Route::resource('ternaks', 'TernakAPIController');
 Route::resource('paket_investasis', 'PaketInvestasiAPIController');
+
+Route::resource('ternak_investasis', 'TernakInvestasiAPIController');
