@@ -67,8 +67,22 @@ Route::resource('ternakNonInvestasis', 'TernakNonInvestasiController');
 
 Route::resource('jenisTernaks', 'JenisTernakController');
 
+Route::resource('roles', 'RoleController');
+
 Route::resource('user_role', 'UserRoleController', ['except' => [
     'create', 'store', 'show', 'destroy',
 ]]);
 
+Route::get('user/verify/{verification_code}', 'AuthController@verifyUser');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.request');
+Route::post('password/reset', 'Auth\ResetPasswordController@postReset')->name('password.reset');
+
+ Route::resource('permissions', 'PermissionController');
+
+    Route::resource('users', 'UserController');
+
 Route::resource('jenisTernaks', 'JenisTernakController');
+
+Route::resource('articles', 'ArticleController');
+
+Route::resource('biodatas', 'BiodataController');
