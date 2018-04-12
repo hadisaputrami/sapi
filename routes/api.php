@@ -27,11 +27,6 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 
     Route::post('token_device','UserAPIController@storeTokenDevice');
 });
-
-Route::post('register','UserAPIController@store');
-
-Route::post('token','AuthenticateAPIController@authenticate');
-
 Route::post('users','UserAPIController@store');
 Route::post('token','AuthenticateAPIController@authenticate');
 Route::post('reset_password', 'UserAPIController@resetPassword');
