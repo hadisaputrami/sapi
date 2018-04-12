@@ -14,8 +14,23 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('user', 'UserAPIController@getAuthUser');
+    Route::resource('users', 'UserAPIController',['except' => [
+        'create','show','update'
+    ]]);
 
+    Route::get('users/show','UserAPIController@show');
+
+    Route::post('users/update','UserAPIController@update');
+
+    Route::post('users/password','UserAPIController@changePassword');
+
+    Route::post('token_device','UserAPIController@storeTokenDevice');
 });
+
+Route::post('register','UserAPIController@store');
+
+Route::post('token','AuthenticateAPIController@authenticate');
 
 Route::post('users','UserAPIController@store');
 Route::post('token','AuthenticateAPIController@authenticate');

@@ -130,7 +130,7 @@ class UserAPIController extends AppBaseController
                 'password'=>bcrypt($input['password'])
             ]);
 
-            $role = Role::where('name', 'pelanggan')->firstOrFail();
+            $role = Role::where('name', 'investor')->firstOrFail();
             $users->attachRole($role);
 
                             if( !is_null($users->email) && !isset($users->email) ){

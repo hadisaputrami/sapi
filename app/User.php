@@ -10,13 +10,52 @@ class User extends Authenticatable
 {
     use Notifiable;
     use EntrustUserTrait;
+    //use SoftDeletes;
+
+    public $table = 'users';
+
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
+
+
+    protected $dates = ['deleted_at'];
+
+
+    public $fillable = [
+        'name',
+        'email',
+        'password',
+        'remember_token',
+        'verified',
+        'verification_token',
+        'device_token',
+        'kontak'
+    ];
+
     /**
-     * The attributes that are mass assignable.
+     * The attributes that should be casted to native types.
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password','kontak','nik','tanggal_lahir','jenis_kelamin','foto','alamat','kota','provinsi'
+    protected $casts = [
+        'id' => 'integer',
+        'name' => 'string',
+        'email' => 'string',
+        'password' => 'string',
+        'remember_token' => 'string',
+        'verified' => 'boolean',
+        'verification_token' => 'string',
+        'device_token' => 'string',
+        'kontak' => 'string'
+    ];
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+
     ];
 
     /**
@@ -28,9 +67,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public static $rules = [
 
-    ];
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
     /**
      * Validation rules
@@ -39,8 +90,8 @@ class User extends Authenticatable
      */
     public static $rules_create = [
         'name' => 'required|string|max:255',
+        'email' => 'string|email|max:255',
         'kontak'=>'required|string|unique:users|max:255',
-        'email' => 'required|string|email|max:255|unique:users',
         'password' => 'required|string|min:6|confirmed',
     ];
 
@@ -52,5 +103,6 @@ class User extends Authenticatable
     public static $rules_update = [
         'name' => 'required|string|max:255',
         'kontak'=>'required|string|unique:users|max:255',
+        'email' => 'string|email|max:255',
     ];
 }
