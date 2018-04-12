@@ -1,8 +1,10 @@
 <table class="table table-responsive" id="articles-table">
     <thead>
-        <th>Judul</th>
+        <tr>
+            <th>Judul</th>
         <th>Informasi</th>
-        <th colspan="3">Action</th>
+            <th colspan="3">Action</th>
+        </tr>
     </thead>
     <tbody>
     @foreach($articles as $article)

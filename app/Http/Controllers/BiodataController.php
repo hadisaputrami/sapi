@@ -10,15 +10,6 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-use App\Models\Agama;
-use App\Models\Biodata;
-use App\Models\Kontak;
-use Illuminate\Support\Facades\Auth;
-use Session;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
-
 
 class BiodataController extends AppBaseController
 {
@@ -41,20 +32,8 @@ class BiodataController extends AppBaseController
         $this->biodataRepository->pushCriteria(new RequestCriteria($request));
         $biodatas = $this->biodataRepository->all();
 
-        $biodatas = Biodata::where('users_id', Auth::id())
-            ->first();
-        $agamas =Agama::pluck('nama','id');
-        
-        return view('biodatas.index',
-            compact('biodatas','agamas'));
-   
-        /*$biodatas = Biodata::where('user_id', Auth::id())
-            ->first();
-        $agamas =Agama::pluck('nama','id');
-      
-        return view('biodatas.index',
-            compact('biodatas','agamas'));*/
-
+        return view('biodatas.index')
+            ->with('biodatas', $biodatas);
     }
 
     /**
@@ -64,10 +43,7 @@ class BiodataController extends AppBaseController
      */
     public function create()
     {
-        $agamas =Agama::pluck('nama','id');
-        return view('biodatas.create',
-            compact('agamas'));
-       
+        return view('biodatas.create');
     }
 
     /**
@@ -79,35 +55,11 @@ class BiodataController extends AppBaseController
      */
     public function store(CreateBiodataRequest $request)
     {
-        $requestData = $request->all();
+        $input = $request->all();
 
-        $biodata = $this->biodataRepository->create($requestData);
+        $biodata = $this->biodataRepository->create($input);
 
-        try{
-            DB::beginTransaction();
-             DB::beginTransaction();
-
-            $biodatum = Biodata::updateOrCreate(['users_id'=> Auth::id()],
-                $requestData);
-            $path1=null;
-
-            if( $request->hasFile('foto')) {
-                $ext=File::extension($request->file('foto')->getClientOriginalName());
-                $filename='foto'.$biodatum->id.'.'.$ext;
-                $path1 = $request->foto->storeAs('foto', $filename,'local_public');
-                chmod(public_path().'/'.$path1, 0777);
-            }
-            if($path1!=null){
-                $biodatum->foto=$path1;
-                $biodatum->save();
-            }
-
-            DB::commit();
-
-            Session::flash('flash_message', 'Biodata added!');
-        }catch(Exception $e){
-            DB::rollback();
-            }
+        Flash::success('Biodata saved successfully.');
 
         return redirect(route('biodatas.index'));
     }
