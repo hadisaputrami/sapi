@@ -40,7 +40,7 @@ class Investor extends Model
         'nama_pemilik_rek',
         'nama_bank',
         'no_rek',
-        'users_id'
+        'user_id'
     ];
 
     /**
@@ -53,7 +53,7 @@ class Investor extends Model
         'nama_pemilik_rek' => 'string',
         'nama_bank' => 'string',
         'no_rek' => 'string',
-        'users_id' => 'integer'
+        'user_id' => 'integer'
     ];
 
     /**
