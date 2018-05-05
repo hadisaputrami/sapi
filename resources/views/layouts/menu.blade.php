@@ -108,3 +108,15 @@
     <a href="{!! route('biodatas.index') !!}"><i class="fa fa-edit"></i><span>Biodatas</span></a>
 </li>
 
+<li class="{{ Request::is('agamas*') ? 'active' : '' }}">
+    <a href="{!! route('agamas.index') !!}"><i class="fa fa-edit"></i><span>Agamas</span></a>
+</li>
+
+<li class="{{ Request::is('biodatas*') ? 'active' : '' }}">
+    <a href="{!! route('biodatas.index') !!}"><i class="fa fa-edit"></i><span>Biodatas</span></a>
+</li>
+
+<li class="{{ Request::is('konfirmasiInvestors*') ? 'active' : '' }}">
+    <a href="{!! route('konfirmasiInvestors.index') !!}"><i class="fa fa-edit"></i><span>Konfirmasi Investors</span></a>
+</li>
+

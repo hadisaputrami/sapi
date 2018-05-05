@@ -86,3 +86,9 @@ Route::resource('jenisTernaks', 'JenisTernakController');
 Route::resource('articles', 'ArticleController');
 
 Route::resource('biodatas', 'BiodataController');
+
+Route::resource('agamas', 'AgamaController');
+
+Route::resource('biodatas', 'BiodataController');
+
+Route::resource('konfirmasiInvestors', 'KonfirmasiInvestorController');

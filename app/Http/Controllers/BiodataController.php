@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\Agama;
 
 class BiodataController extends AppBaseController
 {
@@ -32,8 +33,10 @@ class BiodataController extends AppBaseController
         $this->biodataRepository->pushCriteria(new RequestCriteria($request));
         $biodatas = $this->biodataRepository->all();
 
-        return view('biodatas.index')
-            ->with('biodatas', $biodatas);
+         $agamas =Agama::pluck('nama','id');
+
+        return view('biodatas.index',
+            compact('biodatas', 'agamas'));
     }
 
     /**
@@ -43,7 +46,10 @@ class BiodataController extends AppBaseController
      */
     public function create()
     {
-        return view('biodatas.create');
+
+        $agamas =Agama::pluck('nama','id');
+        return view('biodatas.create',
+            compact('agamas'));
     }
 
     /**

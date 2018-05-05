@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class AgamaRepository
  * @package App\Repositories
- * @version September 2, 2017, 1:55 am UTC
+ * @version May 4, 2018, 10:25 pm UTC
  *
  * @method Agama findWithoutFail($id, $columns = ['*'])
  * @method Agama find($id, $columns = ['*'])
