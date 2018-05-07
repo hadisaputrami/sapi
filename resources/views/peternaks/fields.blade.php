@@ -16,7 +16,7 @@
     {!! Form::email('email', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Name Field -->
+<!-- Kontak Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('kontak', 'Kontak:') !!}
     {!! Form::number('kontak', null, ['class' => 'form-control']) !!}

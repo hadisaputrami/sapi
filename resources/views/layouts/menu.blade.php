@@ -51,6 +51,10 @@
     <a href="{!! route('jenisPembayarans.index') !!}"><i class="fa fa-edit"></i><span>Jenis Pembayaran</span></a>
 </li>
 
+<li class="{{ Request::is('konfirmasiInvestors*') ? 'active' : '' }}">
+    <a href="{!! route('konfirmasiInvestors.index') !!}"><i class="fa fa-edit"></i><span>Konfirmasi Investors</span></a>
+</li>
+
 <li class="{{ Request::is('paketInvestasis*') ? 'active' : '' }}">
     <a href="{!! route('paketInvestasis.index') !!}"><i class="fa fa-edit"></i><span>PaketInvestasis</span></a>
 </li>
@@ -94,41 +98,5 @@
 
 <li class="{{ Request::is('jenisTernaks*') ? 'active' : '' }}">
     <a href="{!! route('jenisTernaks.index') !!}"><i class="fa fa-edit"></i><span>JenisTernaks</span></a>
-</li>
-
-<li class="{{ Request::is('jenisTernaks*') ? 'active' : '' }}">
-    <a href="{!! route('jenisTernaks.index') !!}"><i class="fa fa-edit"></i><span>Jenis Ternaks</span></a>
-</li>
-
-<li class="{{ Request::is('articles*') ? 'active' : '' }}">
-    <a href="{!! route('articles.index') !!}"><i class="fa fa-edit"></i><span>Articles</span></a>
-</li>
-
-<li class="{{ Request::is('biodatas*') ? 'active' : '' }}">
-    <a href="{!! route('biodatas.index') !!}"><i class="fa fa-edit"></i><span>Biodatas</span></a>
-</li>
-
-<li class="{{ Request::is('agamas*') ? 'active' : '' }}">
-    <a href="{!! route('agamas.index') !!}"><i class="fa fa-edit"></i><span>Agamas</span></a>
-</li>
-
-<li class="{{ Request::is('biodatas*') ? 'active' : '' }}">
-    <a href="{!! route('biodatas.index') !!}"><i class="fa fa-edit"></i><span>Biodatas</span></a>
-</li>
-
-<li class="{{ Request::is('konfirmasiInvestors*') ? 'active' : '' }}">
-    <a href="{!! route('konfirmasiInvestors.index') !!}"><i class="fa fa-edit"></i><span>Konfirmasi Investors</span></a>
-</li>
-
-<li class="{{ Request::is('konfirmasiInvestors*') ? 'active' : '' }}">
-    <a href="{!! route('konfirmasiInvestors.index') !!}"><i class="fa fa-edit"></i><span>Konfirmasi Investors</span></a>
-</li>
-
-<li class="{{ Request::is('konfirmasiInvestors*') ? 'active' : '' }}">
-    <a href="{!! route('konfirmasiInvestors.index') !!}"><i class="fa fa-edit"></i><span>Konfirmasi Investors</span></a>
-</li>
-
-<li class="{{ Request::is('paketInvestasis*') ? 'active' : '' }}">
-    <a href="{!! route('paketInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Paket Investasis</span></a>
 </li>
 

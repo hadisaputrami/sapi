@@ -71,7 +71,7 @@ class PeternakController extends AppBaseController
             $user=User::create([
                 'name' => $requestUser['name'],
                 'email' => $requestUser['email'],
-                'kontak'=>$requestUser['kontak'],
+                //'kontak'=>$requestUser['kontak'],
                 'password' => bcrypt($requestUser['password']),
             ]);
 
