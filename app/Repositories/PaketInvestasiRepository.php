@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class PaketInvestasiRepository
  * @package App\Repositories
- * @version October 28, 2017, 4:37 am UTC
+ * @version May 7, 2018, 9:05 pm UTC
  *
  * @method PaketInvestasi findWithoutFail($id, $columns = ['*'])
  * @method PaketInvestasi find($id, $columns = ['*'])
@@ -24,7 +24,8 @@ class PaketInvestasiRepository extends BaseRepository
         'harga',
         'massa',
         'lama_kontrak',
-        'deskripsi'
+        'deskripsi',
+        'return'
     ];
 
     /**

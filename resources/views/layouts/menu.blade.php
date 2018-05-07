@@ -120,3 +120,15 @@
     <a href="{!! route('konfirmasiInvestors.index') !!}"><i class="fa fa-edit"></i><span>Konfirmasi Investors</span></a>
 </li>
 
+<li class="{{ Request::is('konfirmasiInvestors*') ? 'active' : '' }}">
+    <a href="{!! route('konfirmasiInvestors.index') !!}"><i class="fa fa-edit"></i><span>Konfirmasi Investors</span></a>
+</li>
+
+<li class="{{ Request::is('konfirmasiInvestors*') ? 'active' : '' }}">
+    <a href="{!! route('konfirmasiInvestors.index') !!}"><i class="fa fa-edit"></i><span>Konfirmasi Investors</span></a>
+</li>
+
+<li class="{{ Request::is('paketInvestasis*') ? 'active' : '' }}">
+    <a href="{!! route('paketInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Paket Investasis</span></a>
+</li>
+

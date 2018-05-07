@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class KonfirmasiInvestor
  * @package App\Models
- * @version May 4, 2018, 11:30 pm UTC
+ * @version May 7, 2018, 9:01 pm UTC
  *
  * @property \App\Models\Investor investor
  * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
@@ -16,6 +16,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasiHasStatusTransaksiInvestasis
  * @property string status_konfirmasi
  * @property integer investors_id
+ * @property string bank_pengirim
+ * @property string bank_tujuan
+ * @property integer nominal
+ * @property string nama_pengirim
  */
 class KonfirmasiInvestor extends Model
 {
@@ -32,7 +36,11 @@ class KonfirmasiInvestor extends Model
 
     public $fillable = [
         'status_konfirmasi',
-        'investors_id'
+        'investors_id',
+        'bank_pengirim',
+        'bank_tujuan',
+        'nominal',
+        'nama_pengirim'
     ];
 
     /**
@@ -43,7 +51,11 @@ class KonfirmasiInvestor extends Model
     protected $casts = [
         'id' => 'integer',
         'status_konfirmasi' => 'string',
-        'investors_id' => 'integer'
+        'investors_id' => 'integer',
+        'bank_pengirim' => 'string',
+        'bank_tujuan' => 'string',
+        'nominal' => 'integer',
+        'nama_pengirim' => 'string'
     ];
 
     /**

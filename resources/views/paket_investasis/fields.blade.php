@@ -6,26 +6,32 @@
 
 <!-- Harga Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('harga', 'Harga (Rp.):') !!}
-    {!! Form::number('harga', null, ['class' => 'form-control']) !!}
+    {!! Form::label('harga', 'Harga:') !!}
+    {!! Form::text('harga', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Massa Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('rentang_massa', 'Rentang Massa (Kg):') !!}
-    {!! Form::text('rentang_massa', null, ['class' => 'form-control']) !!}
+    {!! Form::label('massa', 'Massa:') !!}
+    {!! Form::text('massa', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Lama Kontrak Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('lama_kontrak', 'Lama Kontrak (Bulan):') !!}
-    {!! Form::number('lama_kontrak', null, ['class' => 'form-control']) !!}
+    {!! Form::label('lama_kontrak', 'Lama Kontrak:') !!}
+    {!! Form::text('lama_kontrak', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Deskripsi Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('deskripsi', 'Deskripsi:') !!}
     {!! Form::text('deskripsi', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Return Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('return', 'Return:') !!}
+    {!! Form::number('return', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

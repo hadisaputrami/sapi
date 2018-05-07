@@ -36,8 +36,8 @@
 
 <!-- Massa Field -->
 <div class="form-group">
-    {!! Form::label('massa', 'Rentang Massa (Kg):') !!}
-    <p>{!! $paketInvestasi->rentang_massa !!}</p>
+    {!! Form::label('massa', 'Massa:') !!}
+    <p>{!! $paketInvestasi->massa !!}</p>
 </div>
 
 <!-- Lama Kontrak Field -->
@@ -50,5 +50,11 @@
 <div class="form-group">
     {!! Form::label('deskripsi', 'Deskripsi:') !!}
     <p>{!! $paketInvestasi->deskripsi !!}</p>
+</div>
+
+<!-- Return Field -->
+<div class="form-group">
+    {!! Form::label('return', 'Return:') !!}
+    <p>{!! $paketInvestasi->return !!}</p>
 </div>
 

@@ -92,3 +92,9 @@ Route::resource('agamas', 'AgamaController');
 Route::resource('biodatas', 'BiodataController');
 
 Route::resource('konfirmasiInvestors', 'KonfirmasiInvestorController');
+
+Route::resource('konfirmasiInvestors', 'KonfirmasiInvestorController');
+
+Route::resource('konfirmasiInvestors', 'KonfirmasiInvestorController');
+
+Route::resource('paketInvestasis', 'PaketInvestasiController');

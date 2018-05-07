@@ -3,6 +3,10 @@
         <tr>
             <th>Status Konfirmasi</th>
         <th>Investors Id</th>
+        <th>Bank Pengirim</th>
+        <th>Bank Tujuan</th>
+        <th>Nominal</th>
+        <th>Nama Pengirim</th>
             <th colspan="3">Action</th>
         </tr>
     </thead>
@@ -11,6 +15,10 @@
         <tr>
             <td>{!! $konfirmasiInvestor->status_konfirmasi !!}</td>
             <td>{!! $konfirmasiInvestor->investors_id !!}</td>
+            <td>{!! $konfirmasiInvestor->bank_pengirim !!}</td>
+            <td>{!! $konfirmasiInvestor->bank_tujuan !!}</td>
+            <td>{!! $konfirmasiInvestor->nominal !!}</td>
+            <td>{!! $konfirmasiInvestor->nama_pengirim !!}</td>
             <td>
                 {!! Form::open(['route' => ['konfirmasiInvestors.destroy', $konfirmasiInvestor->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

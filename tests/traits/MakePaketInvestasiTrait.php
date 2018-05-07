@@ -49,7 +49,8 @@ trait MakePaketInvestasiTrait
             'harga' => $fake->word,
             'massa' => $fake->word,
             'lama_kontrak' => $fake->word,
-            'deskripsi' => $fake->word
+            'deskripsi' => $fake->word,
+            'return' => $fake->randomDigitNotNull
         ], $paketInvestasiFields);
     }
 }

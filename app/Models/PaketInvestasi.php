@@ -8,18 +8,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class PaketInvestasi
  * @package App\Models
- * @version September 2, 2017, 2:02 am UTC
+ * @version May 7, 2018, 9:05 pm UTC
  *
- * @property \Illuminate\Database\Eloquent\Collection biodatas
- * @property \Illuminate\Database\Eloquent\Collection permissionRole
- * @property \Illuminate\Database\Eloquent\Collection roleUser
+ * @property \Illuminate\Database\Eloquent\Collection TernakInvestasi
  * @property \Illuminate\Database\Eloquent\Collection ternaks
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasiHasStatusTransaksiInvestasis
  * @property \Illuminate\Database\Eloquent\Collection TransaksiInvestasi
  * @property string nama
  * @property string harga
  * @property string massa
  * @property string lama_kontrak
  * @property string deskripsi
+ * @property integer return
  */
 class PaketInvestasi extends Model
 {
@@ -37,9 +37,10 @@ class PaketInvestasi extends Model
     public $fillable = [
         'nama',
         'harga',
-        'rentang_massa',
+        'massa',
         'lama_kontrak',
-        'deskripsi'
+        'deskripsi',
+        'return'
     ];
 
     /**
@@ -50,10 +51,11 @@ class PaketInvestasi extends Model
     protected $casts = [
         'id' => 'integer',
         'nama' => 'string',
-        'harga' => 'integer',
+        'harga' => 'string',
         'massa' => 'string',
         'lama_kontrak' => 'string',
-        'deskripsi' => 'string'
+        'deskripsi' => 'string',
+        'return' => 'integer'
     ];
 
     /**
@@ -64,6 +66,14 @@ class PaketInvestasi extends Model
     public static $rules = [
         
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function ternakInvestasis()
+    {
+        return $this->hasMany(\App\Models\TernakInvestasi::class);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

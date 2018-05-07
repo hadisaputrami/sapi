@@ -46,7 +46,11 @@ trait MakeKonfirmasiInvestorTrait
             'created_at' => $fake->date('Y-m-d H:i:s'),
             'updated_at' => $fake->date('Y-m-d H:i:s'),
             'deleted_at' => $fake->date('Y-m-d H:i:s'),
-            'investors_id' => $fake->randomDigitNotNull
+            'investors_id' => $fake->randomDigitNotNull,
+            'bank_pengirim' => $fake->word,
+            'bank_tujuan' => $fake->word,
+            'nominal' => $fake->randomDigitNotNull,
+            'nama_pengirim' => $fake->word
         ], $konfirmasiInvestorFields);
     }
 }
