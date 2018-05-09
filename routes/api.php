@@ -28,7 +28,6 @@ Route::post('users','UserAPIController@store');
 Route::post('token','AuthenticateAPIController@authenticate');
 Route::post('reset_password', 'UserAPIController@resetPassword');
 
-Route::resource('transaksi_investasis', 'TransaksiInvestasiAPIController');
 
 Route::resource('ternaks', 'TernakAPIController');
 
