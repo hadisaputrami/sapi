@@ -8,21 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class TransaksiInvestasi
  * @package App\Models
- * @version September 12, 2017, 5:31 am UTC
+ * @version May 9, 2018, 6:55 pm UTC
  *
- * @property \App\Models\Asuransi asuransi
  * @property \App\Models\PaketInvestasi paketInvestasi
  * @property \App\Models\TernakInvestasi ternakInvestasi
- * @property \Illuminate\Database\Eloquent\Collection biodatas
  * @property \Illuminate\Database\Eloquent\Collection InvestorHasTransaksiInvestasi
- * @property \Illuminate\Database\Eloquent\Collection permissionRole
- * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
- * @property \Illuminate\Database\Eloquent\Collection ternaks
  * @property \Illuminate\Database\Eloquent\Collection TransaksiInvestasiHasStatusTransaksiInvestasi
  * @property string kode_transaksi
  * @property integer paket_investasis_id
- * @property boolean asuransis
  * @property integer ternak_investasis_id
  * @property integer asuransis_id
  */
@@ -42,7 +36,6 @@ class TransaksiInvestasi extends Model
     public $fillable = [
         'kode_transaksi',
         'paket_investasis_id',
-        'asuransi',
         'ternak_investasis_id',
         'asuransis_id'
     ];
@@ -56,7 +49,6 @@ class TransaksiInvestasi extends Model
         'id' => 'integer',
         'kode_transaksi' => 'string',
         'paket_investasis_id' => 'integer',
-        'asuransi' => 'boolean',
         'ternak_investasis_id' => 'integer',
         'asuransis_id' => 'integer'
     ];
@@ -69,14 +61,6 @@ class TransaksiInvestasi extends Model
     public static $rules = [
         
     ];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function asuransi()
-    {
-        return $this->belongsTo(\App\Models\Asuransi::class);
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

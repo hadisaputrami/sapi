@@ -16,6 +16,7 @@ use Mockery\Exception;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Role;
+use App\Models\Biodata;
 
 class PeternakController extends AppBaseController
 {
@@ -71,9 +72,15 @@ class PeternakController extends AppBaseController
             $user=User::create([
                 'name' => $requestUser['name'],
                 'email' => $requestUser['email'],
-                //'kontak'=>$requestUser['kontak'],
                 'password' => bcrypt($requestUser['password']),
             ]);
+
+            $biodata=Biodata::create([
+                'users_id'=>$user->id,
+                'kontak'=>$requestUser['kontak']
+            ]);
+
+
 
             $role=Role::where('name','peternak')->firstOrFail();
             $user->attachRole($role);

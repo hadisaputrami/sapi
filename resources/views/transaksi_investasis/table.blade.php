@@ -1,18 +1,18 @@
 <table class="table table-responsive" id="transaksiInvestasis-table">
     <thead>
-        <th>Kode Transaksi</th>
+        <tr>
+            <th>Kode Transaksi</th>
         <th>Paket Investasis Id</th>
-        <th>Asuransi</th>
         <th>Ternak Investasis Id</th>
         <th>Asuransis Id</th>
-        <th colspan="3">Action</th>
+            <th colspan="3">Action</th>
+        </tr>
     </thead>
     <tbody>
     @foreach($transaksiInvestasis as $transaksiInvestasi)
         <tr>
             <td>{!! $transaksiInvestasi->kode_transaksi !!}</td>
             <td>{!! $transaksiInvestasi->paket_investasis_id !!}</td>
-            <td>{!! $transaksiInvestasi->asuransi !!}</td>
             <td>{!! $transaksiInvestasi->ternak_investasis_id !!}</td>
             <td>{!! $transaksiInvestasi->asuransis_id !!}</td>
             <td>

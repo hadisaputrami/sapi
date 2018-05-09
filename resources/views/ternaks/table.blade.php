@@ -13,7 +13,7 @@
             <td>{!! $ternak->kode !!}</td>
             <td>{!! $ternak->dob !!}</td>
             <td>{!! $ternak->tanggal_masuk !!}</td>
-            <td>{!! $ternak->peternaks_id !!}</td>
+            <td>{!! $ternak->user->name !!}</td>
             <td>{!! $ternak->jenis_ternaks_id !!}</td>
             <td>
                 {!! Form::open(['route' => ['ternaks.destroy', $ternak->id], 'method' => 'delete']) !!}

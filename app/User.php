@@ -28,8 +28,7 @@ class User extends Authenticatable
         'remember_token',
         'verified',
         'verification_token',
-        'device_token',
-        'kontak'
+        'device_token'
     ];
 
     /**
@@ -46,7 +45,6 @@ class User extends Authenticatable
         'verified' => 'boolean',
         'verification_token' => 'string',
         'device_token' => 'string',
-        'kontak' => 'string'
     ];
 
     /**
@@ -91,7 +89,6 @@ class User extends Authenticatable
     public static $rules_create = [
         'name' => 'required|string|max:255',
         'email' => 'string|email|max:255',
-        'kontak'=>'required|string|unique:users|max:255',
         'password' => 'required|string|min:6|confirmed',
     ];
 
@@ -102,7 +99,6 @@ class User extends Authenticatable
      */
     public static $rules_update = [
         'name' => 'required|string|max:255',
-        'kontak'=>'required|string|unique:users|max:255',
         'email' => 'string|email|max:255',
     ];
 }

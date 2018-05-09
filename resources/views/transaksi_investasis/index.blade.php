@@ -18,6 +18,9 @@
                     @include('transaksi_investasis.table')
             </div>
         </div>
+        <div class="text-center">
+        
+        </div>
     </div>
 @endsection
 

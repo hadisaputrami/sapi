@@ -47,3 +47,5 @@ Route::resource('konfirmasi_investors', 'KonfirmasiInvestorAPIController');
 Route::resource('konfirmasi_investors', 'KonfirmasiInvestorAPIController');
 
 Route::resource('paket_investasis', 'PaketInvestasiAPIController');
+
+Route::resource('transaksi_investasis', 'TransaksiInvestasiAPIController');

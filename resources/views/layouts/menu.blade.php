@@ -100,3 +100,7 @@
     <a href="{!! route('jenisTernaks.index') !!}"><i class="fa fa-edit"></i><span>JenisTernaks</span></a>
 </li>
 
+<li class="{{ Request::is('transaksiInvestasis*') ? 'active' : '' }}">
+    <a href="{!! route('transaksiInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Transaksi Investasis</span></a>
+</li>
+

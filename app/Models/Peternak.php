@@ -51,7 +51,6 @@ class Peternak extends Model
      */
     public static $rules = [
         'name' => 'required|string|max:255',
-        'kontak'=>'required|string|unique:users|max:255',
         'email' => 'required|string|email|max:255|unique:users',
         'password' => 'required|string|min:6|confirmed',
     ];

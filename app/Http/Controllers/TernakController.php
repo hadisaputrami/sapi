@@ -42,10 +42,10 @@ class TernakController extends AppBaseController
         $ternaks = $this->ternakRepository->all();
 
         $jenisTernak =JenisTernak::pluck('nama_jenis_ternaks','id');
-        $peternaks=Peternak::pluck('name','id');
+        //$peternaks=Peternak::pluck('name','id');
 
         return view('ternaks.index',
-            compact('ternaks','jenisTernak','peternaks'));
+            compact('ternaks','jenisTernak'));
     }
 
     /**

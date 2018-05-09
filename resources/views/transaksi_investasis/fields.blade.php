@@ -10,15 +10,6 @@
     {!! Form::number('paket_investasis_id', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Asuransi Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('asuransi', 'Asuransi:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('asuransi', false) !!}
-        {!! Form::checkbox('asuransi', '1', null) !!} 1
-    </label>
-</div>
-
 <!-- Ternak Investasis Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('ternak_investasis_id', 'Ternak Investasis Id:') !!}
