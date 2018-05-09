@@ -49,9 +49,14 @@ class Peternak extends Model
      *
      * @var array
      */
-    public static $rules = [
+    public static $rules_store = [
         'name' => 'required|string|max:255',
         'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string|min:6|confirmed',
+    ];
+
+        public static $rules_update = [
+        'name' => 'required|string|max:255',
         'password' => 'required|string|min:6|confirmed',
     ];
 

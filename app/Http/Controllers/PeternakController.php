@@ -91,15 +91,14 @@ class PeternakController extends AppBaseController
         
             DB::commit();
 
-            Session::flash('flash_message', 'Peternak Berhasil Registrasi');
+            Flash::success('Peternak Berhasil Registrasi.');
+
         }catch(\Exception $e){
             DB::rollback();
-
-            Session::flash('flash_message', 'Peternak Gagal Registrasi');
+            Flash::error('Peternak Gagal Registrasi');
         }
 
-        Flash::success('Peternak saved successfully.');
-
+        
         return redirect(route('peternaks.index'));
     }
 
@@ -154,13 +153,25 @@ class PeternakController extends AppBaseController
     public function update($id, UpdatePeternakRequest $request)
     {
 
-        $requestData = $request->all();
+        $requestData = $request->except('email');
+
+        $peternak = $this->peternakRepository->findWithoutFail($id);
+
+        if (empty($peternak)) {
+            Flash::error('Peternak not found');
+
+            return redirect(route('peternaks.index'));
+        }
 
          try{
             DB::beginTransaction();
 
-            $requestPeternak['users_id']=$user->id;
-            $peternak=Peternak::create($requestPeternak);
+            $peternak = $this->peternakRepository->update($request->all(), $id);
+            
+            $user=$peternak->user;
+            $user->name=$requestData['name'];
+            $user->save();
+            
            
             DB::commit();
 
@@ -171,15 +182,7 @@ class PeternakController extends AppBaseController
             Session::flash('flash_message', 'Data Gagal Diubah');
         }
 
-        $peternak = $this->peternakRepository->findWithoutFail($id);
-
-        if (empty($peternak)) {
-            Flash::error('Peternak not found');
-
-            return redirect(route('peternaks.index'));
-        }
-
-        $peternak = $this->peternakRepository->update($request->all(), $id);
+        
 
         Flash::success('Peternak updated successfully.');
 

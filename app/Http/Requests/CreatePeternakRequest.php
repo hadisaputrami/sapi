@@ -25,6 +25,6 @@ class CreatePeternakRequest extends FormRequest
      */
     public function rules()
     {
-        return Peternak::$rules;
+        return Peternak::$rules_store;
     }
 }

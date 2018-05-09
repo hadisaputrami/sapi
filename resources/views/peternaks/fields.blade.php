@@ -7,19 +7,19 @@
 <!-- Name Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('name', 'Name:') !!}
-    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+    {!! Form::text('name', isset($peternak)?$peternak->user->name:null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Email Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('email', 'Email:') !!}
-    {!! Form::email('email', null, ['class' => 'form-control']) !!}
+    {!! Form::email('email', isset($peternak)?$peternak->user->email:null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Kontak Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('kontak', 'Kontak:') !!}
-    {!! Form::number('kontak', null, ['class' => 'form-control']) !!}
+    {!! Form::number('kontak', isset($peternak)?$peternak->user->biodata:null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Password Field -->

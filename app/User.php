@@ -81,6 +81,11 @@ class User extends Authenticatable
         return [];
     }
 
+    public function biodata()
+    {
+        return $this->belongsTo(\App\Models\Biodata::class,'users_id');
+    }
+
     /**
      * Validation rules
      *
