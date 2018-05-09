@@ -1,10 +1,12 @@
 <table class="table table-responsive" id="investorHasTransaksiInvestasis-table">
     <thead>
-        <th>Transaksi Investasis Id</th>
+        <tr>
+            <th>Transaksi Investasis Id</th>
         <th>Nominal Investasi</th>
         <th>Scan Bukti Pembayaran</th>
         <th>Jenis Pembayarans Id</th>
-        <th colspan="3">Action</th>
+            <th colspan="3">Action</th>
+        </tr>
     </thead>
     <tbody>
     @foreach($investorHasTransaksiInvestasis as $investorHasTransaksiInvestasi)

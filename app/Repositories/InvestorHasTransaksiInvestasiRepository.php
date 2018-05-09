@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class InvestorHasTransaksiInvestasiRepository
  * @package App\Repositories
- * @version September 2, 2017, 1:58 am UTC
+ * @version May 9, 2018, 6:20 am UTC
  *
  * @method InvestorHasTransaksiInvestasi findWithoutFail($id, $columns = ['*'])
  * @method InvestorHasTransaksiInvestasi find($id, $columns = ['*'])
