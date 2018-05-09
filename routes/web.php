@@ -100,3 +100,5 @@ Route::resource('konfirmasiInvestors', 'KonfirmasiInvestorController');
 Route::resource('paketInvestasis', 'PaketInvestasiController');
 
 Route::resource('transaksiInvestasis', 'TransaksiInvestasiController');
+
+Route::resource('investorHasTransaksiInvestasis', 'InvestorHasTransaksiInvestasiController');

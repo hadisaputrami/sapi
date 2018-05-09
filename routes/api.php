@@ -28,7 +28,6 @@ Route::post('users','UserAPIController@store');
 Route::post('token','AuthenticateAPIController@authenticate');
 Route::post('reset_password', 'UserAPIController@resetPassword');
 
-Route::resource('transaksi_investasis', 'TransaksiInvestasiAPIController');
 
 Route::resource('ternaks', 'TernakAPIController');
 
@@ -49,3 +48,5 @@ Route::resource('konfirmasi_investors', 'KonfirmasiInvestorAPIController');
 Route::resource('paket_investasis', 'PaketInvestasiAPIController');
 
 Route::resource('transaksi_investasis', 'TransaksiInvestasiAPIController');
+
+Route::resource('investor_has_transaksi_investasis', 'InvestorHasTransaksiInvestasiAPIController');

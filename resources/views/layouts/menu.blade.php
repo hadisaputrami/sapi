@@ -104,3 +104,7 @@
     <a href="{!! route('transaksiInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Transaksi Investasis</span></a>
 </li>
 
+<li class="{{ Request::is('investorHasTransaksiInvestasis*') ? 'active' : '' }}">
+    <a href="{!! route('investorHasTransaksiInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Investor Has Transaksi Investasis</span></a>
+</li>
+
