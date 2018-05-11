@@ -39,7 +39,8 @@ class InvestorHasTransaksiInvestasi extends Model
         'transaksi_investasis_id',
         'nominal_investasi',
         'scan_bukti_pembayaran',
-        'jenis_pembayarans_id'
+        'jenis_pembayarans_id',
+        'jumlah_sapi'
     ];
 
     /**
@@ -52,7 +53,8 @@ class InvestorHasTransaksiInvestasi extends Model
         'transaksi_investasis_id' => 'integer',
         'nominal_investasi' => 'string',
         'scan_bukti_pembayaran' => 'string',
-        'jenis_pembayarans_id' => 'integer'
+        'jenis_pembayarans_id' => 'integer',
+        'jumlah_sapi'
     ];
 
     /**
@@ -61,7 +63,8 @@ class InvestorHasTransaksiInvestasi extends Model
      * @var array
      */
     public static $rules = [
-        
+
+
     ];
 
     /**

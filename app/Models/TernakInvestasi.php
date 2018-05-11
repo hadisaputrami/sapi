@@ -35,7 +35,7 @@ class TernakInvestasi extends Model
 
     public $fillable = [
         'ternaks_id',
-        'paket_investasis_id'
+        //'paket_investasis_id'
     ];
 
     /**
@@ -46,7 +46,7 @@ class TernakInvestasi extends Model
     protected $casts = [
         'id' => 'integer',
         'ternaks_id' => 'integer',
-        'paket_investasis_id' => 'integer'
+       // 'paket_investasis_id' => 'integer'
     ];
 
     /**
@@ -61,10 +61,10 @@ class TernakInvestasi extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function paketInvestasi()
-    {
-        return $this->belongsTo(\App\Models\PaketInvestasi::class);
-    }
+  // public function paketInvestasi()
+   // {
+        //return $this->belongsTo(\App\Models\PaketInvestasi::class);
+   // }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -87,6 +87,6 @@ class TernakInvestasi extends Model
      **/
     public function transaksiInvestasis()
     {
-        return $this->hasMany(\App\Models\TransaksiInvestasi::class);
+        return $this->belongsTo(\App\Models\TransaksiInvestasi::class);
     }
 }
