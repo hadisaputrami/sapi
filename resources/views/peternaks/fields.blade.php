@@ -19,7 +19,7 @@
 <!-- Kontak Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('kontak', 'Kontak:') !!}
-    {!! Form::number('kontak', isset($peternak)?$peternak->user->biodata->kontak:null, ['class' => 'form-control']) !!}
+    {!! Form::number('kontak', isset($peternak)?$peternak->user->biodata:kontaknull, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Password Field -->
