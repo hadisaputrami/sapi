@@ -75,7 +75,7 @@ class TransaksiInvestasi extends Model
      **/
     public function ternakInvestasi()
     {
-        return $this->belongsTo(\App\Models\TernakInvestasi::class);
+        return $this->hasMany(\App\Models\TernakInvestasi::class);
     }
 
     /**
