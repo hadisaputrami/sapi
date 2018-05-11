@@ -1,8 +1,4 @@
-<!-- Update At Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('update_at', 'Update At:') !!}
-    {!! Form::date('update_at', null, ['class' => 'form-control']) !!}
-</div>
+
 
 <!-- Nama Pemilik Rek Field -->
 <div class="form-group col-sm-6">
@@ -25,7 +21,7 @@
 <!-- Users Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('users_id', 'Users Id:') !!}
-    {!! Form::number('users_id', null, ['class' => 'form-control']) !!}
+    {!! Form::number('users_id', Auth::id(),null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

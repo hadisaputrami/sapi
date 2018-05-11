@@ -32,7 +32,6 @@ class BiodataController extends AppBaseController
     {
         $this->biodataRepository->pushCriteria(new RequestCriteria($request));
         $biodatas = $this->biodataRepository->all();
-
          $agamas =Agama::pluck('nama','id');
 
         return view('biodatas.index',
@@ -101,13 +100,17 @@ class BiodataController extends AppBaseController
     {
         $biodata = $this->biodataRepository->findWithoutFail($id);
 
+        $agamas =Agama::pluck('nama','id');
+
+
         if (empty($biodata)) {
             Flash::error('Biodata not found');
 
             return redirect(route('biodatas.index'));
         }
 
-        return view('biodatas.edit')->with('biodata', $biodata);
+        return view('biodatas.edit',
+            compact('biodata', 'agamas'));
     }
 
     /**

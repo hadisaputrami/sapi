@@ -1,6 +1,5 @@
 <table class="table table-responsive" id="investors-table">
     <thead>
-        <th>Update At</th>
         <th>Nama Pemilik Rek</th>
         <th>Nama Bank</th>
         <th>No Rek</th>
@@ -10,7 +9,6 @@
     <tbody>
     @foreach($investors as $investor)
         <tr>
-            <td>{!! $investor->update_at !!}</td>
             <td>{!! $investor->nama_pemilik_rek !!}</td>
             <td>{!! $investor->nama_bank !!}</td>
             <td>{!! $investor->no_rek !!}</td>

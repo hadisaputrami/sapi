@@ -83,7 +83,7 @@ class User extends Authenticatable
 
     public function biodata()
     {
-        return $this->belongsTo(\App\Models\Biodata::class,'users_id');
+        return $this->belongsTo(\App\Models\Biodata::class);
     }
 
     /**
@@ -105,5 +105,6 @@ class User extends Authenticatable
     public static $rules_update = [
         'name' => 'required|string|max:255',
         'email' => 'string|email|max:255',
+        
     ];
 }
