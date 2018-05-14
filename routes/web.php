@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('asuransis', 'AsuransiController');
+
 Route::resource('biodatas', 'BiodataController');
 
 Route::resource('ternaks', 'TernakController');
@@ -34,6 +36,10 @@ Route::resource('investors', 'InvestorController');
 Route::resource('investorHasTransaksiInvestasis', 'InvestorHasTransaksiInvestasiController');
 
 Route::resource('jenisPembayarans', 'JenisPembayaranController');
+
+Route::resource('jenisTernaks', 'JenisTernakController');
+
+Route::resource('konfirmasiInvestors', 'KonfirmasiInvestorController');
 
 Route::resource('permissions', 'PermissionController');
 
@@ -51,13 +57,15 @@ Route::resource('statusTransaksiInvestasis', 'StatusTransaksiInvestasiController
 
 Route::resource('transaksiInvestasis', 'TransaksiInvestasiController');
 
+Route::resource('transInvesHasStatusInves', 'TransInvesHasStatusInvesController');
+
 Route::resource('transaksiPenjualans', 'TransaksiPenjualanController');
 
-Route::resource('tranPenHasStatusPen', 'TransaksiPenjualanHasStatusPenjualanController');
+Route::resource('transPenjHasStatusPenj', 'TransaksiPenjualanHasStatusPenjualanController');
 
 Route::resource('users', 'UserController');
 
-Route::resource('biodatas', 'BiodataController');
+Route::resource('ternakInvestasis', 'TernakInvestasiController');
 
 Route::resource('ternakNonInvestasis', 'TernakNonInvestasiController');
 
@@ -76,55 +84,4 @@ Route::resource('user_role', 'UserRoleController', ['except' => [
 Route::get('user/verify/{verification_code}', 'AuthController@verifyUser');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.request');
 Route::post('password/reset', 'Auth\ResetPasswordController@postReset')->name('password.reset');
-
- Route::resource('permissions', 'PermissionController');
-
-    Route::resource('users', 'UserController');
-
-Route::resource('jenisTernaks', 'JenisTernakController');
-
-Route::resource('articles', 'ArticleController');
-
-Route::resource('biodatas', 'BiodataController');
-
-Route::resource('agamas', 'AgamaController');
-
-Route::resource('biodatas', 'BiodataController');
-
-Route::resource('konfirmasiInvestors', 'KonfirmasiInvestorController');
-
-Route::resource('konfirmasiInvestors', 'KonfirmasiInvestorController');
-
-Route::resource('konfirmasiInvestors', 'KonfirmasiInvestorController');
-
-Route::resource('paketInvestasis', 'PaketInvestasiController');
-
-Route::resource('transaksiInvestasis', 'TransaksiInvestasiController');
-
-Route::resource('investorHasTransaksiInvestasis', 'InvestorHasTransaksiInvestasiController');
-
-Route::resource('transInvesHasStatusTransiInves', 'TransaksiInvestasiHasStatusTransaksiInvestasiController');
-
-Route::resource('investorHasTransaksiInvestasis', 'InvestorHasTransaksiInvestasiController');
-
-Route::resource('ternakInvestasis', 'TernakInvestasiController');
-
-Route::resource('transaksiInvestasis', 'TransaksiInvestasiController');
-
-Route::resource('transPenjHasStatusPenj', 'TransaksiPenjualanHasStatusPenjualanController');
-
-Route::resource('transInvesHasStatusInves', 'TransInvesHasStatusInvesController');
-
-Route::resource('transaksiInvestasis', 'TransaksiInvestasiController');
-
-Route::resource('transaksiInvestasis', 'TransaksiInvestasiController');
-
-Route::resource('asuransis', 'AsuransiController');
-
-Route::resource('jenisPembayarans', 'JenisPembayaranController');
-
-Route::resource('jenisPembayarans', 'JenisPembayaranController');
-
-Route::resource('investorHasTransaksiInvestasis', 'InvestorHasTransaksiInvestasiController');
-
-Route::resource('ternaks', 'TernakController');
+Route::resource('permissions', 'PermissionController');

@@ -72,3 +72,5 @@ Route::resource('jenis_pembayarans', 'JenisPembayaranAPIController');
 Route::resource('investor_has_transaksi_investasis', 'InvestorHasTransaksiInvestasiAPIController');
 
 Route::resource('ternaks', 'TernakAPIController');
+
+Route::resource('jenis_ternaks', 'JenisTernakAPIController');

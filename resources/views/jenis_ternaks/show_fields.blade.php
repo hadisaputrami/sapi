@@ -4,10 +4,10 @@
     <p>{!! $jenisTernak->id !!}</p>
 </div>
 
-<!-- Nama Jenis Ternaks Field -->
+<!-- Jenis Ternak Field -->
 <div class="form-group">
-    {!! Form::label('nama_jenis_ternaks', 'Nama Jenis Ternaks:') !!}
-    <p>{!! $jenisTernak->nama_jenis_ternaks !!}</p>
+    {!! Form::label('jenis_ternak', 'Jenis Ternak:') !!}
+    <p>{!! $jenisTernak->jenis_ternak !!}</p>
 </div>
 
 <!-- Updated At Field -->

@@ -1,7 +1,7 @@
-<!-- Nama Jenis Ternaks Field -->
+<!-- Jenis Ternak Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('nama_jenis_ternaks', 'Nama Jenis Ternaks:') !!}
-    {!! Form::text('nama_jenis_ternaks', null, ['class' => 'form-control']) !!}
+    {!! Form::label('jenis_ternak', 'Jenis Ternak:') !!}
+    {!! Form::text('jenis_ternak', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

@@ -72,7 +72,7 @@ class Ternak extends Model
      **/
     public function peternak()
     {
-        return $this->belongsTo(\App\Models\Peternak::class);
+        return $this->belongsTo(\App\Models\Peternak::class,'peternaks_id');
     }
 
     /**
@@ -80,7 +80,7 @@ class Ternak extends Model
      **/
     public function jenisTernak()
     {
-        return $this->belongsTo(\App\Models\JenisTernak::class);
+        return $this->belongsTo(\App\Models\JenisTernak::class,'jenis_ternaks_id');
     }
 
     /**

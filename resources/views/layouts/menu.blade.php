@@ -117,3 +117,7 @@
     <a href="{!! route('ternaks.index') !!}"><i class="fa fa-edit"></i><span>Ternaks</span></a>
 </li>
 
+<li class="{{ Request::is('jenisTernaks*') ? 'active' : '' }}">
+    <a href="{!! route('jenisTernaks.index') !!}"><i class="fa fa-edit"></i><span>Jenis Ternaks</span></a>
+</li>
+

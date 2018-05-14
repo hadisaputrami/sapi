@@ -8,14 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class JenisTernak
  * @package App\Models
- * @version October 28, 2017, 4:53 am UTC
+ * @version May 14, 2018, 7:01 pm UTC
  *
- * @property \Illuminate\Database\Eloquent\Collection biodatas
- * @property \Illuminate\Database\Eloquent\Collection permissionRole
- * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
  * @property \Illuminate\Database\Eloquent\Collection Ternak
- * @property string nama_jenis_ternaks
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasiHasStatusTransaksiInvestasis
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasis
+ * @property string jenis_ternak
  */
 class JenisTernak extends Model
 {
@@ -31,7 +30,7 @@ class JenisTernak extends Model
 
 
     public $fillable = [
-        'nama_jenis_ternaks'
+        'jenis_ternak'
     ];
 
     /**
@@ -41,7 +40,7 @@ class JenisTernak extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'nama_jenis_ternaks' => 'string'
+        'jenis_ternak' => 'string'
     ];
 
     /**

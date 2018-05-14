@@ -11,7 +11,7 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\JenisTernak;
-use App\Models\peternak;
+use App\Models\Peternak;
 
 class TernakController extends AppBaseController
 {
@@ -46,7 +46,7 @@ class TernakController extends AppBaseController
     public function create()
     {
         $jenis=JenisTernak::pluck('jenis_ternak','id');
-        $peternak=peternak::pluck('name','id');
+        $peternak=Peternak::with('user')->get()->pluck('user.name','id');
         return view('ternaks.create',
             compact('jenis','peternak'));
     }

@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class JenisTernakRepository
  * @package App\Repositories
- * @version October 28, 2017, 4:53 am UTC
+ * @version May 14, 2018, 7:01 pm UTC
  *
  * @method JenisTernak findWithoutFail($id, $columns = ['*'])
  * @method JenisTernak find($id, $columns = ['*'])
@@ -20,7 +20,7 @@ class JenisTernakRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'nama_jenis_ternaks'
+        'jenis_ternak'
     ];
 
     /**
