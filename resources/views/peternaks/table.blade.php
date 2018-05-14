@@ -6,7 +6,7 @@
     <tbody>
     @foreach($peternaks as $peternak)
         <tr>
-            <td>{!! $peternak->user->name or "" !!}</td>
+            <td>{!! $peternak->user->name !!}</td>
             <td>
                 {!! Form::open(['route' => ['peternaks.destroy', $peternak->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

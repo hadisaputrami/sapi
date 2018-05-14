@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class TransaksiInvestasi
  * @package App\Models
- * @version May 11, 2018, 11:33 pm UTC
+ * @version May 14, 2018, 4:24 pm UTC
  *
+ * @property \App\Models\Asuransi asuransi
+ * @property \App\Models\PaketInvestasi paketInvestasi
  * @property \Illuminate\Database\Eloquent\Collection InvestorHasTransaksiInvestasi
  * @property \Illuminate\Database\Eloquent\Collection TernakInvestasi
  * @property \Illuminate\Database\Eloquent\Collection ternaks
@@ -57,6 +59,22 @@ class TransaksiInvestasi extends Model
     public static $rules = [
         
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function asuransi()
+    {
+        return $this->belongsTo(\App\Models\Asuransi::class,'asuransis_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function paketInvestasi()
+    {
+        return $this->belongsTo(\App\Models\PaketInvestasi::class,'paket_investasis_id');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

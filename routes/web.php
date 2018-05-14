@@ -114,3 +114,17 @@ Route::resource('transaksiInvestasis', 'TransaksiInvestasiController');
 Route::resource('transPenjHasStatusPenj', 'TransaksiPenjualanHasStatusPenjualanController');
 
 Route::resource('transInvesHasStatusInves', 'TransInvesHasStatusInvesController');
+
+Route::resource('transaksiInvestasis', 'TransaksiInvestasiController');
+
+Route::resource('transaksiInvestasis', 'TransaksiInvestasiController');
+
+Route::resource('asuransis', 'AsuransiController');
+
+Route::resource('jenisPembayarans', 'JenisPembayaranController');
+
+Route::resource('jenisPembayarans', 'JenisPembayaranController');
+
+Route::resource('investorHasTransaksiInvestasis', 'InvestorHasTransaksiInvestasiController');
+
+Route::resource('ternaks', 'TernakController');

@@ -8,14 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class InvestorHasTransaksiInvestasi
  * @package App\Models
- * @version May 11, 2018, 10:32 pm UTC
+ * @version May 14, 2018, 6:38 pm UTC
  *
  * @property \App\Models\Investor investor
  * @property \App\Models\TransaksiInvestasi transaksiInvestasi
  * @property \App\Models\JenisPembayaran jenisPembayaran
+ * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
  * @property \Illuminate\Database\Eloquent\Collection ternaks
  * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasiHasStatusTransaksiInvestasis
  * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasis
+ * @property integer investors_id
  * @property integer transaksi_investasis_id
  * @property string nominal_investasi
  * @property string scan_bukti_pembayaran
@@ -36,6 +38,7 @@ class InvestorHasTransaksiInvestasi extends Model
 
 
     public $fillable = [
+        'investors_id',
         'transaksi_investasis_id',
         'nominal_investasi',
         'scan_bukti_pembayaran',
@@ -54,7 +57,8 @@ class InvestorHasTransaksiInvestasi extends Model
         'nominal_investasi' => 'string',
         'scan_bukti_pembayaran' => 'string',
         'jenis_pembayarans_id' => 'integer',
-        'jumlah_sapi' => 'string'
+        'jumlah_sapi' => 'string',
+        'id' => 'integer'
     ];
 
     /**
@@ -71,7 +75,7 @@ class InvestorHasTransaksiInvestasi extends Model
      **/
     public function investor()
     {
-        return $this->belongsTo(\App\Models\Investor::class);
+        return $this->belongsTo(\App\Models\Investor::class,'investors_id');
     }
 
     /**
@@ -79,7 +83,7 @@ class InvestorHasTransaksiInvestasi extends Model
      **/
     public function transaksiInvestasi()
     {
-        return $this->belongsTo(\App\Models\TransaksiInvestasi::class);
+        return $this->belongsTo(\App\Models\TransaksiInvestasi::class,'transaksi_investasis_id');
     }
 
     /**
@@ -87,6 +91,6 @@ class InvestorHasTransaksiInvestasi extends Model
      **/
     public function jenisPembayaran()
     {
-        return $this->belongsTo(\App\Models\JenisPembayaran::class);
+        return $this->belongsTo(\App\Models\JenisPembayaran::class,'jenis_pembayarans_id');
     }
 }

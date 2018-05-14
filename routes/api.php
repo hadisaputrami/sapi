@@ -60,3 +60,15 @@ Route::resource('transaksi_investasis', 'TransaksiInvestasiAPIController');
 Route::resource('trans_penj_has_status_penj', 'TransaksiPenjualanHasStatusPenjualanAPIController');
 
 Route::resource('trans_inves_has_status_inves', 'TransInvesHasStatusInvesAPIController');
+
+Route::resource('transaksi_investasis', 'TransaksiInvestasiAPIController');
+
+Route::resource('asuransis', 'AsuransiAPIController');
+
+Route::resource('jenis_pembayarans', 'JenisPembayaranAPIController');
+
+Route::resource('jenis_pembayarans', 'JenisPembayaranAPIController');
+
+Route::resource('investor_has_transaksi_investasis', 'InvestorHasTransaksiInvestasiAPIController');
+
+Route::resource('ternaks', 'TernakAPIController');

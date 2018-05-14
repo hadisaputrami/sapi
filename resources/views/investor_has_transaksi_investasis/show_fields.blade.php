@@ -52,3 +52,9 @@
     <p>{!! $investorHasTransaksiInvestasi->jumlah_sapi !!}</p>
 </div>
 
+<!-- Id Field -->
+<div class="form-group">
+    {!! Form::label('id', 'Id:') !!}
+    <p>{!! $investorHasTransaksiInvestasi->id !!}</p>
+</div>
+

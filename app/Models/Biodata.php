@@ -78,5 +78,9 @@ class Biodata extends Model
         return $this->belongsTo(\App\Models\Agama::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(\App\User::class,'users_id');
+    }
     
 }

@@ -1,7 +1,8 @@
 <table class="table table-responsive" id="investorHasTransaksiInvestasis-table">
     <thead>
         <tr>
-            <th>Transaksi Investasis Id</th>
+            <th>Investors Id</th>
+        <th>Transaksi Investasis Id</th>
         <th>Nominal Investasi</th>
         <th>Scan Bukti Pembayaran</th>
         <th>Jenis Pembayarans Id</th>
@@ -12,6 +13,7 @@
     <tbody>
     @foreach($investorHasTransaksiInvestasis as $investorHasTransaksiInvestasi)
         <tr>
+            <td>{!! $investorHasTransaksiInvestasi->investors_id !!}</td>
             <td>{!! $investorHasTransaksiInvestasi->transaksi_investasis_id !!}</td>
             <td>{!! $investorHasTransaksiInvestasi->nominal_investasi !!}</td>
             <td>{!! $investorHasTransaksiInvestasi->scan_bukti_pembayaran !!}</td>

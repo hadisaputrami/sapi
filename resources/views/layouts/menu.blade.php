@@ -31,6 +31,10 @@
     <a href="{!! route('articles.index') !!}"><i class="fa fa-edit"></i><span>Article</span></a>
 </li>
 
+<li class="{{ Request::is('asuransis*') ? 'active' : '' }}">
+    <a href="{!! route('asuransis.index') !!}"><i class="fa fa-edit"></i><span>Asuransis</span></a>
+</li>
+
 <li class="{{ Request::is('biodatas*') ? 'active' : '' }}">
     <a href="{!! route('biodatas.index') !!}"><i class="fa fa-edit"></i><span>Biodata</span></a>
 </li>
@@ -96,15 +100,20 @@
     <a href="{!! route('ternaks.index') !!}"><i class="fa fa-edit"></i><span>Ternaks</span></a>
 </li>
 
-
-
-
-
 <li class="{{ Request::is('transPenjHasStatusPenj*') ? 'active' : '' }}">
     <a href="{!! route('transPenjHasStatusPenj.index') !!}"><i class="fa fa-edit"></i><span>Transaksi Penjualan Has Status Penjualans</span></a>
 </li>
 
 <li class="{{ Request::is('transInvesHasStatusInves*') ? 'active' : '' }}">
     <a href="{!! route('transInvesHasStatusInves.index') !!}"><i class="fa fa-edit"></i><span>Trans Inves Has Status Inves</span></a>
+</li>
+
+
+<li class="{{ Request::is('investorHasTransaksiInvestasis*') ? 'active' : '' }}">
+    <a href="{!! route('investorHasTransaksiInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Investor Has Transaksi Investasis</span></a>
+</li>
+
+<li class="{{ Request::is('ternaks*') ? 'active' : '' }}">
+    <a href="{!! route('ternaks.index') !!}"><i class="fa fa-edit"></i><span>Ternaks</span></a>
 </li>
 

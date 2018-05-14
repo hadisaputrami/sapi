@@ -1,7 +1,13 @@
+<!-- Investors Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('investors_id', 'Investors Id:') !!}
+    {!! Form::number('investors_id', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Transaksi Investasis Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('transaksi_investasis_id', 'Transaksi Investasis Id:') !!}
-    {!! Form::number('transaksi_investasis_id', null, ['class' => 'form-control']) !!}
+    {!! Form::select('transaksi_investasis_id',$transaksi_investasi, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Nominal Investasi Field -->
@@ -19,7 +25,7 @@
 <!-- Jenis Pembayarans Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('jenis_pembayarans_id', 'Jenis Pembayarans Id:') !!}
-    {!! Form::number('jenis_pembayarans_id', null, ['class' => 'form-control']) !!}
+    {!! Form::select('jenis_pembayarans_id',$jenis_pembayaran, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Jumlah Sapi Field -->

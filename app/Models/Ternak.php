@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Ternak
  * @package App\Models
- * @version September 9, 2017, 2:48 pm UTC
+ * @version May 14, 2018, 6:49 pm UTC
  *
  * @property \App\Models\Peternak peternak
- * @property \Illuminate\Database\Eloquent\Collection biodatas
- * @property \Illuminate\Database\Eloquent\Collection permissionRole
- * @property \Illuminate\Database\Eloquent\Collection roleUser
+ * @property \App\Models\JenisTernak jenisTernak
+ * @property \Illuminate\Database\Eloquent\Collection TernakInvestasi
  * @property \Illuminate\Database\Eloquent\Collection TernakNonInvestasi
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasiHasStatusTransaksiInvestasis
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasis
  * @property \Illuminate\Database\Eloquent\Collection TransaksiPenjualan
  * @property string kode
  * @property date dob
@@ -71,20 +72,15 @@ class Ternak extends Model
      **/
     public function peternak()
     {
-        return $this->belongsTo(\App\Models\Peternak::class,'peternaks_id');
-    }
-
-    public function jenisTernak()
-    {
-        return $this->belongsTo(\App\Models\JenisTernak::class,'jenis_ternaks_id');
+        return $this->belongsTo(\App\Models\Peternak::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function ternakNonInvestasis()
+    public function jenisTernak()
     {
-        return $this->hasMany(\App\Models\TernakNonInvestasi::class,'ternaks_id');
+        return $this->belongsTo(\App\Models\JenisTernak::class);
     }
 
     /**
@@ -92,7 +88,15 @@ class Ternak extends Model
      **/
     public function ternakInvestasis()
     {
-        return $this->hasMany(\App\Models\TernakInvestasi::class,'ternaks_id');
+        return $this->hasMany(\App\Models\TernakInvestasi::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function ternakNonInvestasis()
+    {
+        return $this->hasMany(\App\Models\TernakNonInvestasi::class);
     }
 
     /**

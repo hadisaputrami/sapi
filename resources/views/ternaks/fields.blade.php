@@ -19,13 +19,13 @@
 <!-- Peternaks Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('peternaks_id', 'Peternaks Id:') !!}
-    {!! Form::select('peternaks_id', $peternak ,null, ['class' => 'form-control']) !!}
+    {!! Form::select('peternaks_id',$peternak,null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Jenis Ternaks Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('jenis_ternaks_id', 'Jenis Ternaks:') !!}
-    {!! Form::select('jenis_ternaks_id',$jenisTernak, null, ['class' => 'form-control']) !!}
+    {!! Form::label('jenis_ternaks_id', 'Jenis Ternaks Id:') !!}
+    {!! Form::select('jenis_ternaks_id',$jenis, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

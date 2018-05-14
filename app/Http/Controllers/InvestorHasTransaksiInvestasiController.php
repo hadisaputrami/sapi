@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\TransaksiInvestasi;
+use App\Models\JenisPembayaran;
 
 class InvestorHasTransaksiInvestasiController extends AppBaseController
 {
@@ -43,7 +45,11 @@ class InvestorHasTransaksiInvestasiController extends AppBaseController
      */
     public function create()
     {
-        return view('investor_has_transaksi_investasis.create');
+
+        $transaksi_investasi =TransaksiInvestasi::pluck('kode_transaksi','id');
+        $jenis_pembayaran=JenisPembayaran::pluck('nama','id');
+        return view('investor_has_transaksi_investasis.create',
+            compact('transaksi_investasi','jenis_pembayaran'));
     }
 
     /**

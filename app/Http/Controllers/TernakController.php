@@ -11,14 +11,7 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\JenisTernak;
-use App\Models\Peternak;
-use App\Models\Ternak;
-use App\User;
-use Illuminate\Support\Facades\Auth;
-use Session;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
+use App\Models\peternak;
 
 class TernakController extends AppBaseController
 {
@@ -41,11 +34,8 @@ class TernakController extends AppBaseController
         $this->ternakRepository->pushCriteria(new RequestCriteria($request));
         $ternaks = $this->ternakRepository->all();
 
-        $jenisTernak =JenisTernak::pluck('nama_jenis_ternaks','id');
-        //$peternaks=Peternak::pluck('name','id');
-
-        return view('ternaks.index',
-            compact('ternaks','jenisTernak'));
+        return view('ternaks.index')
+            ->with('ternaks', $ternaks);
     }
 
     /**
@@ -55,12 +45,10 @@ class TernakController extends AppBaseController
      */
     public function create()
     {
-         $jenisTernak =JenisTernak::pluck('nama_jenis_ternaks','id');
-         $peternak=Peternak::with('user')->get()->pluck('user.name','id');
-
+        $jenis=JenisTernak::pluck('jenis_ternak','id');
+        $peternak=peternak::pluck('name','id');
         return view('ternaks.create',
-            compact('jenisTernak','peternak'));
-
+            compact('jenis','peternak'));
     }
 
     /**
@@ -117,8 +105,8 @@ class TernakController extends AppBaseController
 
             return redirect(route('ternaks.index'));
         }
-        $peternak=Peternak::with('user')->get()->pluck('user.name','id');
-        return view('ternaks.edit',compact('peternak'))->with('ternak', $ternak);
+
+        return view('ternaks.edit')->with('ternak', $ternak);
     }
 
     /**

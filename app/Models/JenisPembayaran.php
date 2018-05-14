@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class JenisPembayaran
  * @package App\Models
- * @version September 2, 2017, 1:59 am UTC
+ * @version May 14, 2018, 4:37 pm UTC
  *
- * @property \Illuminate\Database\Eloquent\Collection biodatas
  * @property \Illuminate\Database\Eloquent\Collection InvestorHasTransaksiInvestasi
- * @property \Illuminate\Database\Eloquent\Collection permissionRole
- * @property \Illuminate\Database\Eloquent\Collection roleUser
+ * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
  * @property \Illuminate\Database\Eloquent\Collection ternaks
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasiHasStatusTransaksiInvestasis
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasis
  * @property \Illuminate\Database\Eloquent\Collection TransaksiPenjualansHasStatusPenjualan
  * @property string nama
  * @property string keterangan

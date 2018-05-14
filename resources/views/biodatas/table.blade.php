@@ -14,11 +14,11 @@
     <tbody>
     @foreach($biodatas as $biodata)
         <tr>
-            <td>{!! $biodata->users_id !!}</td>
+            <td>{!! $biodata->user->name !!}</td>
             <td>{!! $biodata->tanggal_lahir !!}</td>
             <td>{!! $biodata->jenis_kelamin !!}</td>
             <td>{!! $biodata->pendidikan_terakhir !!}</td>
-            <td>{!! $biodata->agama_id !!}</td>
+            <td>{!! $biodata->agama->nama !!}</td>
             <td>{!! $biodata->foto !!}</td>
             <td>{!! $biodata->kontak !!}</td>
             <td>

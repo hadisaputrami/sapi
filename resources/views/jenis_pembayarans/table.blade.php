@@ -1,8 +1,10 @@
 <table class="table table-responsive" id="jenisPembayarans-table">
     <thead>
-        <th>Nama</th>
+        <tr>
+            <th>Nama</th>
         <th>Keterangan</th>
-        <th colspan="3">Action</th>
+            <th colspan="3">Action</th>
+        </tr>
     </thead>
     <tbody>
     @foreach($jenisPembayarans as $jenisPembayaran)

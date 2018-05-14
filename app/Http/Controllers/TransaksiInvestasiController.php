@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\PaketInvestasi;
+use App\Models\Asuransi;
 
 class TransaksiInvestasiController extends AppBaseController
 {
@@ -43,7 +45,10 @@ class TransaksiInvestasiController extends AppBaseController
      */
     public function create()
     {
-        return view('transaksi_investasis.create');
+        $paket=PaketInvestasi::pluck('nama','id');
+        $asuransi=Asuransi::pluck('premi','id');
+        return view('transaksi_investasis.create',
+            compact('paket','asuransi'));
     }
 
     /**

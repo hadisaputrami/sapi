@@ -11,8 +11,8 @@
     @foreach($transaksiInvestasis as $transaksiInvestasi)
         <tr>
             <td>{!! $transaksiInvestasi->kode_transaksi !!}</td>
-            <td>{!! $transaksiInvestasi->paket_investasis_id !!}</td>
-            <td>{!! $transaksiInvestasi->asuransis_id !!}</td>
+            <td>{!! $transaksiInvestasi->paketInvestasi->nama !!}</td>
+            <td>{!! $transaksiInvestasi->asuransi->premi !!}</td>
             <td>
                 {!! Form::open(['route' => ['transaksiInvestasis.destroy', $transaksiInvestasi->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

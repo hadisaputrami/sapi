@@ -42,6 +42,7 @@ trait MakeInvestorHasTransaksiInvestasiTrait
         $fake = Faker::create();
 
         return array_merge([
+            'investors_id' => $fake->randomDigitNotNull,
             'transaksi_investasis_id' => $fake->randomDigitNotNull,
             'created_at' => $fake->date('Y-m-d H:i:s'),
             'updated_at' => $fake->date('Y-m-d H:i:s'),
