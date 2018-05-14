@@ -12,7 +12,7 @@
 
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'transPenjHasStatusPenj.store']) !!}
+                    {!! Form::open(['route' => 'transaksiPenjualanHasStatusPenjualans.store']) !!}
 
                         @include('transaksi_penjualan_has_status_penjualans.fields')
 
