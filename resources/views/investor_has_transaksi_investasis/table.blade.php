@@ -13,11 +13,11 @@
     <tbody>
     @foreach($investorHasTransaksiInvestasis as $investorHasTransaksiInvestasi)
         <tr>
-            <td>{!! $investorHasTransaksiInvestasi->investors_id !!}</td>
-            <td>{!! $investorHasTransaksiInvestasi->transaksi_investasis_id !!}</td>
+            <td>{!! $investorHasTransaksiInvestasi->investor->user->name !!}</td>
+            <td>{!! $investorHasTransaksiInvestasi->transaksiInvestasi->kode_transaksi !!}</td>
             <td>{!! $investorHasTransaksiInvestasi->nominal_investasi !!}</td>
             <td>{!! $investorHasTransaksiInvestasi->scan_bukti_pembayaran !!}</td>
-            <td>{!! $investorHasTransaksiInvestasi->jenis_pembayarans_id !!}</td>
+            <td>{!! $investorHasTransaksiInvestasi->jenisPembayaran->nama !!}</td>
             <td>{!! $investorHasTransaksiInvestasi->jumlah_sapi !!}</td>
             <td>
                 {!! Form::open(['route' => ['investorHasTransaksiInvestasis.destroy', $investorHasTransaksiInvestasi->id], 'method' => 'delete']) !!}
