@@ -51,6 +51,10 @@
     <a href="{!! route('jenisPembayarans.index') !!}"><i class="fa fa-edit"></i><span>Jenis Pembayaran</span></a>
 </li>
 
+<li class="{{ Request::is('jenisTernaks*') ? 'active' : '' }}">
+    <a href="{!! route('jenisTernaks.index') !!}"><i class="fa fa-edit"></i><span>JenisTernaks</span></a>
+</li>
+
 <li class="{{ Request::is('konfirmasiInvestors*') ? 'active' : '' }}">
     <a href="{!! route('konfirmasiInvestors.index') !!}"><i class="fa fa-edit"></i><span>Konfirmasi Investors</span></a>
 </li>
@@ -83,9 +87,6 @@
     <a href="{!! route('transaksiPenjualans.index') !!}"><i class="fa fa-edit"></i><span>TransaksiPenjualans</span></a>
 </li>
 
-<li class="{{ Request::is('transaksiPenjualanHasStatusPenjualans*') ? 'active' : '' }}">
-    <a href="{!! route('tranPenHasStatusPen.index') !!}"><i class="fa fa-edit"></i><span>TransaksiPenjualanHasStatusPenjualans</span></a>
-</li>
 
 <li class="{{ Request::is('ternakNonInvestasis*') ? 'active' : '' }}">
     <a href="{!! route('ternakNonInvestasis.index') !!}"><i class="fa fa-edit"></i><span>TernakNonInvestasis</span></a>
@@ -96,15 +97,14 @@
 </li>
 
 
-<li class="{{ Request::is('jenisTernaks*') ? 'active' : '' }}">
-    <a href="{!! route('jenisTernaks.index') !!}"><i class="fa fa-edit"></i><span>JenisTernaks</span></a>
+
+
+
+<li class="{{ Request::is('transPenjHasStatusPenj*') ? 'active' : '' }}">
+    <a href="{!! route('transPenjHasStatusPenj.index') !!}"><i class="fa fa-edit"></i><span>Transaksi Penjualan Has Status Penjualans</span></a>
 </li>
 
-<li class="{{ Request::is('transaksiInvestasis*') ? 'active' : '' }}">
-    <a href="{!! route('transaksiInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Transaksi Investasis</span></a>
-</li>
-
-<li class="{{ Request::is('investorHasTransaksiInvestasis*') ? 'active' : '' }}">
-    <a href="{!! route('investorHasTransaksiInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Investor Has Transaksi Investasis</span></a>
+<li class="{{ Request::is('transInvesHasStatusInves*') ? 'active' : '' }}">
+    <a href="{!! route('transInvesHasStatusInves.index') !!}"><i class="fa fa-edit"></i><span>Trans Inves Has Status Inves</span></a>
 </li>
 

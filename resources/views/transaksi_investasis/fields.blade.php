@@ -10,12 +10,6 @@
     {!! Form::number('paket_investasis_id', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Ternak Investasis Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('ternak_investasis_id', 'Ternak Investasis Id:') !!}
-    {!! Form::number('ternak_investasis_id', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Asuransis Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('asuransis_id', 'Asuransis Id:') !!}

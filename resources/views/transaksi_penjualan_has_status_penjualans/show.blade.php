@@ -11,7 +11,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('transaksi_penjualan_has_status_penjualans.show_fields')
-                    <a href="{!! route('transaksiPenjualanHasStatusPenjualans.index') !!}" class="btn btn-default">Back</a>
+                    <a href="{!! route('transPenjHasStatusPenj.index') !!}" class="btn btn-default">Back</a>
                 </div>
             </div>
         </div>

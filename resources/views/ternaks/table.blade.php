@@ -14,7 +14,7 @@
             <td>{!! $ternak->dob !!}</td>
             <td>{!! $ternak->tanggal_masuk !!}</td>
             <td>{!! $ternak->user->name !!}</td>
-            <td>{!! $ternak->jenis_ternaks_id !!}</td>
+            <td>{!! $ternak->jenisTernak->nama_jenis_ternaks or "" !!}</td>
             <td>
                 {!! Form::open(['route' => ['ternaks.destroy', $ternak->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

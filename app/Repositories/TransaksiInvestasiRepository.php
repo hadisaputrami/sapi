@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class TransaksiInvestasiRepository
  * @package App\Repositories
- * @version May 9, 2018, 6:55 pm UTC
+ * @version May 11, 2018, 11:33 pm UTC
  *
  * @method TransaksiInvestasi findWithoutFail($id, $columns = ['*'])
  * @method TransaksiInvestasi find($id, $columns = ['*'])
@@ -22,7 +22,6 @@ class TransaksiInvestasiRepository extends BaseRepository
     protected $fieldSearchable = [
         'kode_transaksi',
         'paket_investasis_id',
-        'ternak_investasis_id',
         'asuransis_id'
     ];
 

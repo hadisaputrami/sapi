@@ -8,19 +8,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class InvestorHasTransaksiInvestasi
  * @package App\Models
- * @version September 2, 2017, 1:58 am UTC
+ * @version May 11, 2018, 10:32 pm UTC
  *
  * @property \App\Models\Investor investor
  * @property \App\Models\TransaksiInvestasi transaksiInvestasi
  * @property \App\Models\JenisPembayaran jenisPembayaran
- * @property \Illuminate\Database\Eloquent\Collection biodatas
- * @property \Illuminate\Database\Eloquent\Collection permissionRole
- * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property \Illuminate\Database\Eloquent\Collection ternaks
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasiHasStatusTransaksiInvestasis
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasis
  * @property integer transaksi_investasis_id
  * @property string nominal_investasi
  * @property string scan_bukti_pembayaran
  * @property integer jenis_pembayarans_id
+ * @property string jumlah_sapi
  */
 class InvestorHasTransaksiInvestasi extends Model
 {
@@ -54,7 +54,7 @@ class InvestorHasTransaksiInvestasi extends Model
         'nominal_investasi' => 'string',
         'scan_bukti_pembayaran' => 'string',
         'jenis_pembayarans_id' => 'integer',
-        'jumlah_sapi'
+        'jumlah_sapi' => 'string'
     ];
 
     /**
@@ -63,8 +63,7 @@ class InvestorHasTransaksiInvestasi extends Model
      * @var array
      */
     public static $rules = [
-
-
+        
     ];
 
     /**

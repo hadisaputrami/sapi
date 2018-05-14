@@ -48,7 +48,8 @@ trait MakeInvestorHasTransaksiInvestasiTrait
             'deleted_at' => $fake->date('Y-m-d H:i:s'),
             'nominal_investasi' => $fake->word,
             'scan_bukti_pembayaran' => $fake->word,
-            'jenis_pembayarans_id' => $fake->randomDigitNotNull
+            'jenis_pembayarans_id' => $fake->randomDigitNotNull,
+            'jumlah_sapi' => $fake->word
         ], $investorHasTransaksiInvestasiFields);
     }
 }

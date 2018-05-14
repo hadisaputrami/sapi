@@ -5,6 +5,7 @@
         <th>Nominal Investasi</th>
         <th>Scan Bukti Pembayaran</th>
         <th>Jenis Pembayarans Id</th>
+        <th>Jumlah Sapi</th>
             <th colspan="3">Action</th>
         </tr>
     </thead>
@@ -15,6 +16,7 @@
             <td>{!! $investorHasTransaksiInvestasi->nominal_investasi !!}</td>
             <td>{!! $investorHasTransaksiInvestasi->scan_bukti_pembayaran !!}</td>
             <td>{!! $investorHasTransaksiInvestasi->jenis_pembayarans_id !!}</td>
+            <td>{!! $investorHasTransaksiInvestasi->jumlah_sapi !!}</td>
             <td>
                 {!! Form::open(['route' => ['investorHasTransaksiInvestasis.destroy', $investorHasTransaksiInvestasi->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

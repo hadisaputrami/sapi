@@ -8,16 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class TransaksiInvestasi
  * @package App\Models
- * @version May 9, 2018, 6:55 pm UTC
+ * @version May 11, 2018, 11:33 pm UTC
  *
- * @property \App\Models\PaketInvestasi paketInvestasi
- * @property \App\Models\TernakInvestasi ternakInvestasi
  * @property \Illuminate\Database\Eloquent\Collection InvestorHasTransaksiInvestasi
- * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
+ * @property \Illuminate\Database\Eloquent\Collection TernakInvestasi
+ * @property \Illuminate\Database\Eloquent\Collection ternaks
  * @property \Illuminate\Database\Eloquent\Collection TransaksiInvestasiHasStatusTransaksiInvestasi
  * @property string kode_transaksi
  * @property integer paket_investasis_id
- * @property integer ternak_investasis_id
  * @property integer asuransis_id
  */
 class TransaksiInvestasi extends Model
@@ -36,7 +34,6 @@ class TransaksiInvestasi extends Model
     public $fillable = [
         'kode_transaksi',
         'paket_investasis_id',
-        'ternak_investasis_id',
         'asuransis_id'
     ];
 
@@ -49,7 +46,6 @@ class TransaksiInvestasi extends Model
         'id' => 'integer',
         'kode_transaksi' => 'string',
         'paket_investasis_id' => 'integer',
-        'ternak_investasis_id' => 'integer',
         'asuransis_id' => 'integer'
     ];
 
@@ -63,27 +59,19 @@ class TransaksiInvestasi extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function paketInvestasi()
-    {
-        return $this->belongsTo(\App\Models\PaketInvestasi::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function ternakInvestasi()
-    {
-        return $this->hasMany(\App\Models\TernakInvestasi::class);
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
     public function investorHasTransaksiInvestasis()
     {
         return $this->hasMany(\App\Models\InvestorHasTransaksiInvestasi::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function ternakInvestasis()
+    {
+        return $this->hasMany(\App\Models\TernakInvestasi::class);
     }
 
     /**

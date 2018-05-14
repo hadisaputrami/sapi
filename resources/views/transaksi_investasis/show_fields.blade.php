@@ -34,12 +34,6 @@
     <p>{!! $transaksiInvestasi->paket_investasis_id !!}</p>
 </div>
 
-<!-- Ternak Investasis Id Field -->
-<div class="form-group">
-    {!! Form::label('ternak_investasis_id', 'Ternak Investasis Id:') !!}
-    <p>{!! $transaksiInvestasi->ternak_investasis_id !!}</p>
-</div>
-
 <!-- Asuransis Id Field -->
 <div class="form-group">
     {!! Form::label('asuransis_id', 'Asuransis Id:') !!}

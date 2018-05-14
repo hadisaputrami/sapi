@@ -8,17 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class TernakInvestasi
  * @package App\Models
- * @version November 24, 2017, 9:26 am UTC
+ * @version May 11, 2018, 11:32 pm UTC
  *
- * @property \App\Models\PaketInvestasi paketInvestasi
  * @property \App\Models\Ternak ternak
- * @property \Illuminate\Database\Eloquent\Collection permissionRole
+ * @property \App\Models\TransaksiInvestasi transaksiInvestasi
  * @property \Illuminate\Database\Eloquent\Collection Progress
- * @property \Illuminate\Database\Eloquent\Collection roleUser
  * @property \Illuminate\Database\Eloquent\Collection ternaks
- * @property \Illuminate\Database\Eloquent\Collection TransaksiInvestasi
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasiHasStatusTransaksiInvestasis
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasis
  * @property integer ternaks_id
- * @property integer paket_investasis_id
+ * @property integer transaksi_investasis_id
  */
 class TernakInvestasi extends Model
 {
@@ -35,7 +34,7 @@ class TernakInvestasi extends Model
 
     public $fillable = [
         'ternaks_id',
-        //'paket_investasis_id'
+        'transaksi_investasis_id'
     ];
 
     /**
@@ -46,7 +45,7 @@ class TernakInvestasi extends Model
     protected $casts = [
         'id' => 'integer',
         'ternaks_id' => 'integer',
-       // 'paket_investasis_id' => 'integer'
+        'transaksi_investasis_id' => 'integer'
     ];
 
     /**
@@ -61,17 +60,17 @@ class TernakInvestasi extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-  // public function paketInvestasi()
-   // {
-        //return $this->belongsTo(\App\Models\PaketInvestasi::class);
-   // }
+    public function ternak()
+    {
+        return $this->belongsTo(\App\Models\Ternak::class);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function ternak()
+    public function transaksiInvestasi()
     {
-        return $this->belongsTo(\App\Models\Ternak::class);
+        return $this->belongsTo(\App\Models\TransaksiInvestasi::class);
     }
 
     /**
@@ -79,14 +78,6 @@ class TernakInvestasi extends Model
      **/
     public function progresses()
     {
-        return $this->hasMany(\App\Models\Progres::class,'ternak_investasis_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function transaksiInvestasis()
-    {
-        return $this->belongsTo(\App\Models\TransaksiInvestasi::class);
+        return $this->hasMany(\App\Models\Progress::class);
     }
 }

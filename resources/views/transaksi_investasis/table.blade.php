@@ -3,7 +3,6 @@
         <tr>
             <th>Kode Transaksi</th>
         <th>Paket Investasis Id</th>
-        <th>Ternak Investasis Id</th>
         <th>Asuransis Id</th>
             <th colspan="3">Action</th>
         </tr>
@@ -13,7 +12,6 @@
         <tr>
             <td>{!! $transaksiInvestasi->kode_transaksi !!}</td>
             <td>{!! $transaksiInvestasi->paket_investasis_id !!}</td>
-            <td>{!! $transaksiInvestasi->ternak_investasis_id !!}</td>
             <td>{!! $transaksiInvestasi->asuransis_id !!}</td>
             <td>
                 {!! Form::open(['route' => ['transaksiInvestasis.destroy', $transaksiInvestasi->id], 'method' => 'delete']) !!}

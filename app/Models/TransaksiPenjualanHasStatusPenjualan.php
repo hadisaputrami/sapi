@@ -8,16 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class TransaksiPenjualanHasStatusPenjualan
  * @package App\Models
- * @version September 2, 2017, 2:08 am UTC
+ * @version May 11, 2018, 11:45 pm UTC
  *
  * @property \App\Models\JenisPembayaran jenisPembayaran
  * @property \App\Models\StatusPenjualan statusPenjualan
  * @property \App\Models\TransaksiPenjualan transaksiPenjualan
- * @property \App\User user
- * @property \Illuminate\Database\Eloquent\Collection biodatas
- * @property \Illuminate\Database\Eloquent\Collection permissionRole
- * @property \Illuminate\Database\Eloquent\Collection roleUser
+ * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
  * @property \Illuminate\Database\Eloquent\Collection ternaks
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasiHasStatusTransaksiInvestasis
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasis
  * @property integer status_penjualans_id
  * @property integer users_id
  * @property integer jenis_pembayarans_id
@@ -84,13 +83,5 @@ class TransaksiPenjualanHasStatusPenjualan extends Model
     public function transaksiPenjualan()
     {
         return $this->belongsTo(\App\Models\TransaksiPenjualan::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function user()
-    {
-        return $this->belongsTo(\App\User::class);
     }
 }

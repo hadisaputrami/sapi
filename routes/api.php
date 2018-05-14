@@ -50,3 +50,13 @@ Route::resource('paket_investasis', 'PaketInvestasiAPIController');
 Route::resource('transaksi_investasis', 'TransaksiInvestasiAPIController');
 
 Route::resource('investor_has_transaksi_investasis', 'InvestorHasTransaksiInvestasiAPIController');
+
+Route::resource('investor_has_transaksi_investasis', 'InvestorHasTransaksiInvestasiAPIController');
+
+Route::resource('ternak_investasis', 'TernakInvestasiAPIController');
+
+Route::resource('transaksi_investasis', 'TransaksiInvestasiAPIController');
+
+Route::resource('trans_penj_has_status_penj', 'TransaksiPenjualanHasStatusPenjualanAPIController');
+
+Route::resource('trans_inves_has_status_inves', 'TransInvesHasStatusInvesAPIController');

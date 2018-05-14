@@ -46,3 +46,9 @@
     <p>{!! $investorHasTransaksiInvestasi->jenis_pembayarans_id !!}</p>
 </div>
 
+<!-- Jumlah Sapi Field -->
+<div class="form-group">
+    {!! Form::label('jumlah_sapi', 'Jumlah Sapi:') !!}
+    <p>{!! $investorHasTransaksiInvestasi->jumlah_sapi !!}</p>
+</div>
+

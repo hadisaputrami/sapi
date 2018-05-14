@@ -47,7 +47,6 @@ trait MakeTransaksiInvestasiTrait
             'deleted_at' => $fake->date('Y-m-d H:i:s'),
             'updated_at' => $fake->date('Y-m-d H:i:s'),
             'paket_investasis_id' => $fake->randomDigitNotNull,
-            'ternak_investasis_id' => $fake->randomDigitNotNull,
             'asuransis_id' => $fake->randomDigitNotNull
         ], $transaksiInvestasiFields);
     }
