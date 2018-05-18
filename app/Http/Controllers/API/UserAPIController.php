@@ -132,7 +132,7 @@ class UserAPIController extends AppBaseController
 
                 $biodata=Biodata::create([
                 'users_id'=>$users->id,
-                'kontak'=>$requestUser['kontak']
+                'kontak'=>$input['kontak']
             ]);
 
             $role = Role::where('name', 'investor')->firstOrFail();
