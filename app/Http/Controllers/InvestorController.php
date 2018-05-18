@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\Investor;
 
 class InvestorController extends AppBaseController
 {
@@ -43,7 +44,9 @@ class InvestorController extends AppBaseController
      */
     public function create()
     {
-        return view('investors.create');
+        $investor=Investor::with('user')->get()->pluck('user.name','id');
+        return view('investors.create',
+            compact('investor'));
     }
 
     /**
@@ -94,6 +97,7 @@ class InvestorController extends AppBaseController
     public function edit($id)
     {
         $investor = $this->investorRepository->findWithoutFail($id);
+        $investors=Investor::with('user')->get()->pluck('user.name','id');
 
         if (empty($investor)) {
             Flash::error('Investor not found');
@@ -101,7 +105,8 @@ class InvestorController extends AppBaseController
             return redirect(route('investors.index'));
         }
 
-        return view('investors.edit')->with('investor', $investor);
+        return view('investors.edit',
+            compact('investor','investors'));
     }
 
     /**

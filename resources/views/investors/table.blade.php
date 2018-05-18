@@ -12,7 +12,7 @@
             <td>{!! $investor->nama_pemilik_rek !!}</td>
             <td>{!! $investor->nama_bank !!}</td>
             <td>{!! $investor->no_rek !!}</td>
-            <td>{!! $investor->users_id !!}</td>
+            <td>{!! $investor->user->name or ""!!}</td>
             <td>
                 {!! Form::open(['route' => ['investors.destroy', $investor->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

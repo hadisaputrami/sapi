@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class TernakInvestasi
  * @package App\Models
- * @version May 11, 2018, 11:32 pm UTC
+ * @version May 15, 2018, 8:14 pm UTC
  *
  * @property \App\Models\Ternak ternak
  * @property \App\Models\TransaksiInvestasi transaksiInvestasi
+ * @property \Illuminate\Database\Eloquent\Collection konfirmasiInvestors
  * @property \Illuminate\Database\Eloquent\Collection Progress
  * @property \Illuminate\Database\Eloquent\Collection ternaks
  * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasiHasStatusTransaksiInvestasis
@@ -62,7 +63,7 @@ class TernakInvestasi extends Model
      **/
     public function ternak()
     {
-        return $this->belongsTo(\App\Models\Ternak::class);
+        return $this->belongsTo(\App\Models\Ternak::class,'ternaks_id');
     }
 
     /**
@@ -70,7 +71,7 @@ class TernakInvestasi extends Model
      **/
     public function transaksiInvestasi()
     {
-        return $this->belongsTo(\App\Models\TransaksiInvestasi::class);
+        return $this->belongsTo(\App\Models\TransaksiInvestasi::class,'transaksi_investasis_id');
     }
 
     /**

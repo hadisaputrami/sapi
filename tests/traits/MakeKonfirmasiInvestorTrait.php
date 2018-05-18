@@ -42,7 +42,7 @@ trait MakeKonfirmasiInvestorTrait
         $fake = Faker::create();
 
         return array_merge([
-            'status_konfirmasi' => $fake->word,
+            'status_konfirmasis_id' => $fake->randomDigitNotNull,
             'created_at' => $fake->date('Y-m-d H:i:s'),
             'updated_at' => $fake->date('Y-m-d H:i:s'),
             'deleted_at' => $fake->date('Y-m-d H:i:s'),

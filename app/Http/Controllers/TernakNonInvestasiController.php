@@ -11,7 +11,6 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\Ternak;
-use App\Models\JenisTernak;
 
 class TernakNonInvestasiController extends AppBaseController
 {
@@ -44,10 +43,10 @@ class TernakNonInvestasiController extends AppBaseController
      * @return Response
      */
     public function create()
-    {         
-        $jenisTernak =JenisTernak::pluck('nama_jenis_ternaks','id');
+    {
+        $ternak=Ternak::pluck('kode','id');
         return view('ternak_non_investasis.create',
-            compact('jenisTernak'));
+            compact('ternak'));
     }
 
     /**
@@ -60,27 +59,8 @@ class TernakNonInvestasiController extends AppBaseController
     public function store(CreateTernakNonInvestasiRequest $request)
     {
         $input = $request->all();
-        $requestData = $input;
 
         $ternakNonInvestasi = $this->ternakNonInvestasiRepository->create($input);
-        $input['ternaks_id']=$ternak->id;
-
-        try {
-            DB::beginTransaction();
-
-            $ternakNonInvestasi = TernakNonInvestasi::create(['ternaks_id'=> Auth::id()],
-                $input);
-            $ternak= Ternak::create([
-                'kode'=>$requestData['kode'],
-                'dob'=>$requestData['dob'],
-                'tanggal_masuk'=>$requestData['tanggal_masuk'],
-                
-                ]);
-            
-            DB::commit();
-        } catch (Exception $e) {
-            DB::rollback();
-        }
 
         Flash::success('Ternak Non Investasi saved successfully.');
 
@@ -117,6 +97,9 @@ class TernakNonInvestasiController extends AppBaseController
     public function edit($id)
     {
         $ternakNonInvestasi = $this->ternakNonInvestasiRepository->findWithoutFail($id);
+        $ternak=Ternak::pluck('kode','id');
+
+
 
         if (empty($ternakNonInvestasi)) {
             Flash::error('Ternak Non Investasi not found');
@@ -124,7 +107,8 @@ class TernakNonInvestasiController extends AppBaseController
             return redirect(route('ternakNonInvestasis.index'));
         }
 
-        return view('ternak_non_investasis.edit')->with('ternakNonInvestasi', $ternakNonInvestasi);
+        return view('ternak_non_investasis.edit',
+            compact('ternak','ternakNonInvestasi'));
     }
 
     /**

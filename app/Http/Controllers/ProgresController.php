@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\TernakInvestasi;
 
 class ProgresController extends AppBaseController
 {
@@ -43,6 +44,7 @@ class ProgresController extends AppBaseController
      */
     public function create()
     {
+        $ternak=TernakInvestasi::pluck('');
         return view('progres.create');
     }
 

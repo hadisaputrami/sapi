@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class TernakNonInvestasi
  * @package App\Models
- * @version September 10, 2017, 9:16 am UTC
+ * @version May 16, 2018, 4:08 pm UTC
  *
  * @property \App\Models\Ternak ternak
- * @property \Illuminate\Database\Eloquent\Collection biodatas
- * @property \Illuminate\Database\Eloquent\Collection permissionRole
- * @property \Illuminate\Database\Eloquent\Collection roleUser
+ * @property \Illuminate\Database\Eloquent\Collection konfirmasiInvestors
+ * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
  * @property \Illuminate\Database\Eloquent\Collection ternaks
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasiHasStatusTransaksiInvestasis
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasis
  * @property decimal massa_awal
  * @property integer ternaks_id
  */
@@ -60,6 +61,6 @@ class TernakNonInvestasi extends Model
      **/
     public function ternak()
     {
-        return $this->belongsTo(\App\Models\Ternak::class);
+        return $this->belongsTo(\App\Models\Ternak::class,'ternaks_id');
     }
 }

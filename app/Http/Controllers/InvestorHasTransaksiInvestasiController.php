@@ -12,6 +12,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\TransaksiInvestasi;
 use App\Models\JenisPembayaran;
+use App\Models\Investor;
 
 class InvestorHasTransaksiInvestasiController extends AppBaseController
 {
@@ -46,10 +47,12 @@ class InvestorHasTransaksiInvestasiController extends AppBaseController
     public function create()
     {
 
+        $investor=Investor::with('user')->get()->pluck('user.name','id');
         $transaksi_investasi =TransaksiInvestasi::pluck('kode_transaksi','id');
         $jenis_pembayaran=JenisPembayaran::pluck('nama','id');
+
         return view('investor_has_transaksi_investasis.create',
-            compact('transaksi_investasi','jenis_pembayaran'));
+            compact('transaksi_investasi','jenis_pembayaran','investor'));
     }
 
     /**
@@ -100,6 +103,9 @@ class InvestorHasTransaksiInvestasiController extends AppBaseController
     public function edit($id)
     {
         $investorHasTransaksiInvestasi = $this->investorHasTransaksiInvestasiRepository->findWithoutFail($id);
+        $investor=Investor::with('user')->get()->pluck('user.name','id');
+        $transaksi_investasi =TransaksiInvestasi::pluck('kode_transaksi','id');
+        $jenis_pembayaran=JenisPembayaran::pluck('nama','id');
 
         if (empty($investorHasTransaksiInvestasi)) {
             Flash::error('Investor Has Transaksi Investasi not found');
@@ -107,7 +113,8 @@ class InvestorHasTransaksiInvestasiController extends AppBaseController
             return redirect(route('investorHasTransaksiInvestasis.index'));
         }
 
-        return view('investor_has_transaksi_investasis.edit')->with('investorHasTransaksiInvestasi', $investorHasTransaksiInvestasi);
+        return view('investor_has_transaksi_investasis.edit',
+            compact('investor','transaksi_investasi','jenis_pembayaran','investorHasTransaksiInvestasi'));
     }
 
     /**

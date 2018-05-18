@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-
+use App\Models\StatusKonfirmasi;
+use App\Models\Investor;
 class KonfirmasiInvestorController extends AppBaseController
 {
     /** @var  KonfirmasiInvestorRepository */
@@ -43,7 +44,10 @@ class KonfirmasiInvestorController extends AppBaseController
      */
     public function create()
     {
-        return view('konfirmasi_investors.create');
+        $status=StatusKonfirmasi::pluck('nama','id');
+        $investor=Investor::with('user')->get()->pluck('user.name','id');
+        return view('konfirmasi_investors.create',
+            compact('status','investor'));
     }
 
     /**

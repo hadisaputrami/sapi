@@ -4,10 +4,10 @@
     <p>{!! $konfirmasiInvestor->id !!}</p>
 </div>
 
-<!-- Status Konfirmasi Field -->
+<!-- Status Konfirmasis Id Field -->
 <div class="form-group">
-    {!! Form::label('status_konfirmasi', 'Status Konfirmasi:') !!}
-    <p>{!! $konfirmasiInvestor->status_konfirmasi !!}</p>
+    {!! Form::label('status_konfirmasis_id', 'Status Konfirmasis Id:') !!}
+    <p>{!! $konfirmasiInvestor->status_konfirmasis_id !!}</p>
 </div>
 
 <!-- Created At Field -->

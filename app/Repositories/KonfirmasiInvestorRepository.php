@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class KonfirmasiInvestorRepository
  * @package App\Repositories
- * @version May 7, 2018, 9:01 pm UTC
+ * @version May 15, 2018, 7:18 pm UTC
  *
  * @method KonfirmasiInvestor findWithoutFail($id, $columns = ['*'])
  * @method KonfirmasiInvestor find($id, $columns = ['*'])
@@ -20,7 +20,7 @@ class KonfirmasiInvestorRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'status_konfirmasi',
+        'status_konfirmasis_id',
         'investors_id',
         'bank_pengirim',
         'bank_tujuan',

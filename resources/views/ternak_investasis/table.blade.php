@@ -9,8 +9,8 @@
     <tbody>
     @foreach($ternakInvestasis as $ternakInvestasi)
         <tr>
-            <td>{!! $ternakInvestasi->ternaks_id !!}</td>
-            <td>{!! $ternakInvestasi->transaksi_investasis_id !!}</td>
+            <td>{!! $ternakInvestasi->ternak->kode or ""!!}</td>
+            <td>{!! $ternakInvestasi->transaksiInvestasi->kode_transaksi or ""!!}</td>
             <td>
                 {!! Form::open(['route' => ['ternakInvestasis.destroy', $ternakInvestasi->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

@@ -1,7 +1,7 @@
 <!-- Investors Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('investors_id', 'Investors Id:') !!}
-    {!! Form::number('investors_id', null, ['class' => 'form-control']) !!}
+    {!! Form::select('investors_id',$investor, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Transaksi Investasis Id Field -->

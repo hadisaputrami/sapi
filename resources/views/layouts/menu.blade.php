@@ -48,7 +48,7 @@
 </li>
 
 <li class="{{ Request::is('investorHasTransaksiInvestasis*') ? 'active' : '' }}">
-    <a href="{!! route('investorHasTransaksiInvestasis.index') !!}"><i class="fa fa-edit"></i><span>InvestorHasTransaksiInvestasis</span></a>
+    <a href="{!! route('investorHasTransaksiInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Investor Has Transaksi Investasis</span></a>
 </li>
 
 <li class="{{ Request::is('jenisPembayarans*') ? 'active' : '' }}">
@@ -64,7 +64,7 @@
 </li>
 
 <li class="{{ Request::is('paketInvestasis*') ? 'active' : '' }}">
-    <a href="{!! route('paketInvestasis.index') !!}"><i class="fa fa-edit"></i><span>PaketInvestasis</span></a>
+    <a href="{!! route('paketInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Paket Investasis</span></a>
 </li>
 
 <li class="{{ Request::is('peternaks*') ? 'active' : '' }}">
@@ -75,25 +75,32 @@
     <a href="{!! route('progres.index') !!}"><i class="fa fa-edit"></i><span>Progres</span></a>
 </li>
 
+<li class="{{ Request::is('statusKonfirmasis*') ? 'active' : '' }}">
+    <a href="{!! route('statusKonfirmasis.index') !!}"><i class="fa fa-edit"></i><span>Status Konfirmasis</span></a>
+</li>
+
 <li class="{{ Request::is('statusPenjualans*') ? 'active' : '' }}">
-    <a href="{!! route('statusPenjualans.index') !!}"><i class="fa fa-edit"></i><span>StatusPenjualans</span></a>
+    <a href="{!! route('statusPenjualans.index') !!}"><i class="fa fa-edit"></i><span>Status Penjualans</span></a>
 </li>
 
 <li class="{{ Request::is('statusTransaksiInvestasis*') ? 'active' : '' }}">
-    <a href="{!! route('statusTransaksiInvestasis.index') !!}"><i class="fa fa-edit"></i><span>StatusTransaksiInvestasis</span></a>
+    <a href="{!! route('statusTransaksiInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Status Transaksi Investasis</span></a>
+</li>
+
+<li class="{{ Request::is('ternakInvestasis*') ? 'active' : '' }}">
+    <a href="{!! route('ternakInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Ternak Investasis</span></a>
+</li>
+
+<li class="{{ Request::is('ternakNonInvestasis*') ? 'active' : '' }}">
+    <a href="{!! route('ternakNonInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Ternak Non Investasis</span></a>
 </li>
 
 <li class="{{ Request::is('transaksiInvestasis*') ? 'active' : '' }}">
-    <a href="{!! route('transaksiInvestasis.index') !!}"><i class="fa fa-edit"></i><span>TransaksiInvestasis</span></a>
+    <a href="{!! route('transaksiInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Transaksi Investasis</span></a>
 </li>
 
 <li class="{{ Request::is('transaksiPenjualans*') ? 'active' : '' }}">
-    <a href="{!! route('transaksiPenjualans.index') !!}"><i class="fa fa-edit"></i><span>TransaksiPenjualans</span></a>
-</li>
-
-
-<li class="{{ Request::is('ternakNonInvestasis*') ? 'active' : '' }}">
-    <a href="{!! route('ternakNonInvestasis.index') !!}"><i class="fa fa-edit"></i><span>TernakNonInvestasis</span></a>
+    <a href="{!! route('transaksiPenjualans.index') !!}"><i class="fa fa-edit"></i><span>Transaksi Penjualans</span></a>
 </li>
 
 <li class="{{ Request::is('ternaks*') ? 'active' : '' }}">
@@ -108,16 +115,7 @@
     <a href="{!! route('transInvesHasStatusInves.index') !!}"><i class="fa fa-edit"></i><span>Trans Inves Has Status Inves</span></a>
 </li>
 
-
-<li class="{{ Request::is('investorHasTransaksiInvestasis*') ? 'active' : '' }}">
-    <a href="{!! route('investorHasTransaksiInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Investor Has Transaksi Investasis</span></a>
-</li>
-
-<li class="{{ Request::is('ternaks*') ? 'active' : '' }}">
-    <a href="{!! route('ternaks.index') !!}"><i class="fa fa-edit"></i><span>Ternaks</span></a>
-</li>
-
-<li class="{{ Request::is('jenisTernaks*') ? 'active' : '' }}">
-    <a href="{!! route('jenisTernaks.index') !!}"><i class="fa fa-edit"></i><span>Jenis Ternaks</span></a>
+<li class="{{ Request::is('ternakNonInvestasis*') ? 'active' : '' }}">
+    <a href="{!! route('ternakNonInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Ternak Non Investasis</span></a>
 </li>
 

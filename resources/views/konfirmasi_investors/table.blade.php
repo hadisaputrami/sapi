@@ -1,7 +1,7 @@
 <table class="table table-responsive" id="konfirmasiInvestors-table">
     <thead>
         <tr>
-            <th>Status Konfirmasi</th>
+            <th>Status Konfirmasis Id</th>
         <th>Investors Id</th>
         <th>Bank Pengirim</th>
         <th>Bank Tujuan</th>
@@ -13,8 +13,8 @@
     <tbody>
     @foreach($konfirmasiInvestors as $konfirmasiInvestor)
         <tr>
-            <td>{!! $konfirmasiInvestor->status_konfirmasi !!}</td>
-            <td>{!! $konfirmasiInvestor->investors_id !!}</td>
+            <td>{!! $konfirmasiInvestor->statusKonfirmasi->nama or ""!!}</td>
+            <td>{!! $konfirmasiInvestor->investor->user->name or ""!!}</td>
             <td>{!! $konfirmasiInvestor->bank_pengirim !!}</td>
             <td>{!! $konfirmasiInvestor->bank_tujuan !!}</td>
             <td>{!! $konfirmasiInvestor->nominal !!}</td>

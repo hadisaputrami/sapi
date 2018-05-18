@@ -25,6 +25,6 @@
 <!-- Ternaks Id Field -->
 <div class="form-group">
     {!! Form::label('ternaks_id', 'Ternaks Id:') !!}
-    <p>{!! $transaksiPenjualan->ternaks_id !!}</p>
+    <p>{!! $transaksiPenjualan->ternak->kode !!}</p>
 </div>
 

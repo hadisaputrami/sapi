@@ -1,14 +1,16 @@
 <table class="table table-responsive" id="ternakNonInvestasis-table">
     <thead>
-        <th>Massa Awal</th>
+        <tr>
+            <th>Massa Awal</th>
         <th>Ternaks Id</th>
-        <th colspan="3">Action</th>
+            <th colspan="3">Action</th>
+        </tr>
     </thead>
     <tbody>
     @foreach($ternakNonInvestasis as $ternakNonInvestasi)
         <tr>
             <td>{!! $ternakNonInvestasi->massa_awal !!}</td>
-            <td>{!! $ternakNonInvestasi->ternaks_id !!}</td>
+            <td>{!! $ternakNonInvestasi->ternak->kode or "" !!}</td>
             <td>
                 {!! Form::open(['route' => ['ternakNonInvestasis.destroy', $ternakNonInvestasi->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

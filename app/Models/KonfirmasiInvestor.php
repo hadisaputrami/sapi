@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class KonfirmasiInvestor
  * @package App\Models
- * @version May 7, 2018, 9:01 pm UTC
+ * @version May 15, 2018, 7:18 pm UTC
  *
  * @property \App\Models\Investor investor
+ * @property \App\Models\StatusKonfirmasi statusKonfirmasi
  * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
  * @property \Illuminate\Database\Eloquent\Collection ternaks
  * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasiHasStatusTransaksiInvestasis
- * @property string status_konfirmasi
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasis
+ * @property integer status_konfirmasis_id
  * @property integer investors_id
  * @property string bank_pengirim
  * @property string bank_tujuan
@@ -35,7 +37,7 @@ class KonfirmasiInvestor extends Model
 
 
     public $fillable = [
-        'status_konfirmasi',
+        'status_konfirmasis_id',
         'investors_id',
         'bank_pengirim',
         'bank_tujuan',
@@ -50,7 +52,7 @@ class KonfirmasiInvestor extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'status_konfirmasi' => 'string',
+        'status_konfirmasis_id' => 'integer',
         'investors_id' => 'integer',
         'bank_pengirim' => 'string',
         'bank_tujuan' => 'string',
@@ -72,6 +74,14 @@ class KonfirmasiInvestor extends Model
      **/
     public function investor()
     {
-        return $this->belongsTo(\App\Models\Investor::class);
+        return $this->belongsTo(\App\Models\Investor::class,'investors_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function statusKonfirmasi()
+    {
+        return $this->belongsTo(\App\Models\StatusKonfirmasi::class,'status_konfirmasis_id');
     }
 }

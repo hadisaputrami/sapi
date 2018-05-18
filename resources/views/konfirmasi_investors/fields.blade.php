@@ -1,13 +1,13 @@
-<!-- Status Konfirmasi Field -->
+<!-- Status Konfirmasis Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('status_konfirmasi', 'Status Konfirmasi:') !!}
-    {!! Form::text('status_konfirmasi', null, ['class' => 'form-control']) !!}
+    {!! Form::label('status_konfirmasis_id', 'Status Konfirmasis Id:') !!}
+    {!! Form::select('status_konfirmasis_id',$status, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Investors Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('investors_id', 'Investors Id:') !!}
-    {!! Form::number('investors_id', null, ['class' => 'form-control']) !!}
+    {!! Form::select('investors_id',$investor, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Bank Pengirim Field -->

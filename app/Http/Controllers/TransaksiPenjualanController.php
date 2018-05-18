@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\Ternak;
 
 class TransaksiPenjualanController extends AppBaseController
 {
@@ -43,7 +44,9 @@ class TransaksiPenjualanController extends AppBaseController
      */
     public function create()
     {
-        return view('transaksi_penjualans.create');
+        $ternak=Ternak::pluck('kode','id');
+        return view('transaksi_penjualans.create',
+            compact('ternak'));
     }
 
     /**
@@ -94,6 +97,7 @@ class TransaksiPenjualanController extends AppBaseController
     public function edit($id)
     {
         $transaksiPenjualan = $this->transaksiPenjualanRepository->findWithoutFail($id);
+        $ternak=Ternak::pluck('kode','id');
 
         if (empty($transaksiPenjualan)) {
             Flash::error('Transaksi Penjualan not found');
@@ -101,7 +105,8 @@ class TransaksiPenjualanController extends AppBaseController
             return redirect(route('transaksiPenjualans.index'));
         }
 
-        return view('transaksi_penjualans.edit')->with('transaksiPenjualan', $transaksiPenjualan);
+        return view('transaksi_penjualans.edit',
+            compact('ternak','transaksiPenjualan'));
     }
 
     /**

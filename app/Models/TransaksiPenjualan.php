@@ -59,7 +59,7 @@ class TransaksiPenjualan extends Model
      **/
     public function ternak()
     {
-        return $this->belongsTo(\App\Models\Ternak::class);
+        return $this->belongsTo(\App\Models\Ternak::class,'ternaks_id');
     }
 
     /**

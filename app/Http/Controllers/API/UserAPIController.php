@@ -10,6 +10,7 @@ use App\Mail\NewUserEmail;
 use App\Mail\ResetPasswordEmail;
 use App\Role;
 use App\User;
+use App\Models\Biodata;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -125,9 +126,13 @@ class UserAPIController extends AppBaseController
             DB::beginTransaction();
             $users = $this->userRepository->create([
                 'name'=>$input['name'],
-                'kontak'=>$input['kontak'],
                 'email'=>$input['email'],
                 'password'=>bcrypt($input['password'])
+            ]);
+
+                $biodata=Biodata::create([
+                'users_id'=>$user->id,
+                'kontak'=>$requestUser['kontak']
             ]);
 
             $role = Role::where('name', 'investor')->firstOrFail();
