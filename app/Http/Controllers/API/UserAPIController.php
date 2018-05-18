@@ -131,7 +131,7 @@ class UserAPIController extends AppBaseController
             ]);
 
                 $biodata=Biodata::create([
-                'users_id'=>$user->id,
+                'users_id'=>$users->id,
                 'kontak'=>$requestUser['kontak']
             ]);
 
