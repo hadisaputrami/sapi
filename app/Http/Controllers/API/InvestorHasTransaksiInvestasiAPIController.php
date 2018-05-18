@@ -11,6 +11,7 @@ use App\Http\Controllers\AppBaseController;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\TransaksiInvestasi;
 
 /**
  * Class InvestorHasTransaksiInvestasiController
@@ -55,7 +56,9 @@ class InvestorHasTransaksiInvestasiAPIController extends AppBaseController
     {
         $input = $request->all();
 
+        $transaksiInvestasi=TransaksiInvestasi::find($input['transaksi_investasis_id']);
         $investorHasTransaksiInvestasis = $this->investorHasTransaksiInvestasiRepository->create($input);
+
 
         return $this->sendResponse($investorHasTransaksiInvestasis->toArray(), 'Investor Has Transaksi Investasi saved successfully');
     }
