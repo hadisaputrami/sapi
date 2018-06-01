@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Progres
  * @package App\Models
- * @version September 2, 2017, 2:03 am UTC
+ * @version May 30, 2018, 10:23 pm UTC
  *
- * @property \Illuminate\Database\Eloquent\Collection biodatas
- * @property \Illuminate\Database\Eloquent\Collection permissionRole
- * @property \Illuminate\Database\Eloquent\Collection roleUser
+ * @property \App\Models\TernakInvestasi ternakInvestasi
+ * @property \Illuminate\Database\Eloquent\Collection konfirmasiInvestors
+ * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
  * @property \Illuminate\Database\Eloquent\Collection ternaks
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasiHasStatusTransaksiInvestasis
+ * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasis
  * @property string foto
  * @property string deskripsi
  * @property decimal berat
@@ -60,5 +62,11 @@ class Progres extends Model
         
     ];
 
-    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function ternakInvestasi()
+    {
+        return $this->belongsTo(\App\Models\TernakInvestasi::class,'ternak_investasis_id');
+    }
 }

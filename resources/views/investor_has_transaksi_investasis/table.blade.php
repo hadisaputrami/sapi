@@ -15,7 +15,7 @@
         <tr>
             <td>{!! $investorHasTransaksiInvestasi->investor->user->name or ""!!}</td>
             <td>{!! $investorHasTransaksiInvestasi->transaksiInvestasi->kode_transaksi or ""!!}</td>
-            <td>{!! $investorHasTransaksiInvestasi->nominal_investasi !!}</td>
+            <td>{!! $investorHasTransaksiInvestasi->transaksiInvestasi->paketInvestasi->harga or "" !!}</td>
             <td>{!! $investorHasTransaksiInvestasi->scan_bukti_pembayaran !!}</td>
             <td>{!! $investorHasTransaksiInvestasi->jenisPembayaran->nama or ""!!}</td>
             <td>{!! $investorHasTransaksiInvestasi->jumlah_sapi !!}</td>

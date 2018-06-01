@@ -82,3 +82,9 @@ Route::resource('konfirmasi_investors', 'KonfirmasiInvestorAPIController');
 Route::resource('ternak_investasis', 'TernakInvestasiAPIController');
 
 Route::resource('ternak_non_investasis', 'TernakNonInvestasiAPIController');
+
+Route::resource('progres', 'ProgresAPIController');
+
+Route::resource('trans_inves_has_status_inves', 'TransInvesHasStatusInvesAPIController');
+
+Route::resource('trans_penj_has_status_penj', 'TransaksiPenjualanHasStatusPenjualanAPIController');

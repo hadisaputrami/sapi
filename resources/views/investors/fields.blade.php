@@ -19,10 +19,8 @@
 </div>
 
 <!-- Users Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('users_id', 'Users Id:') !!}
-    {!! Form::select('users_id', $investors,null, ['class' => 'form-control']) !!}
-</div>
+    {!! Form::hidden('users_id', Auth::id(),null, ['class' => 'form-control']) !!}
+
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

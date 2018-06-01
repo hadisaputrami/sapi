@@ -54,10 +54,10 @@ class InvestorHasTransaksiInvestasi extends Model
     protected $casts = [
         'investors_id' => 'integer',
         'transaksi_investasis_id' => 'integer',
-        'nominal_investasi' => 'string',
+        'nominal_investasi' => 'integer',
         'scan_bukti_pembayaran' => 'string',
         'jenis_pembayarans_id' => 'integer',
-        'jumlah_sapi' => 'string',
+        'jumlah_sapi' => 'integer',
         'id' => 'integer'
     ];
 

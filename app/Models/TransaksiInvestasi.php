@@ -99,4 +99,9 @@ class TransaksiInvestasi extends Model
     {
         return $this->hasMany(\App\Models\TransaksiInvestasiHasStatusTransaksiInvestasi::class);
     }
+
+    public function investors()
+    {
+        return$this->belongsToMany(\App\Models\Investor::class);
+    }
 }

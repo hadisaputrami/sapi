@@ -1,10 +1,12 @@
 <table class="table table-responsive" id="progres-table">
     <thead>
-        <th>Foto</th>
+        <tr>
+            <th>Foto</th>
         <th>Deskripsi</th>
         <th>Berat</th>
         <th>Ternak Investasis Id</th>
-        <th colspan="3">Action</th>
+            <th colspan="3">Action</th>
+        </tr>
     </thead>
     <tbody>
     @foreach($progres as $progres)
@@ -12,7 +14,7 @@
             <td>{!! $progres->foto !!}</td>
             <td>{!! $progres->deskripsi !!}</td>
             <td>{!! $progres->berat !!}</td>
-            <td>{!! $progres->ternak_investasis_id !!}</td>
+            <td>{!! $progres->ternakInvestasi->ternak->kode or "" !!}</td>
             <td>
                 {!! Form::open(['route' => ['progres.destroy', $progres->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

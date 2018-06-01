@@ -11,7 +11,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($transaksiPenjualanHasStatusPenjualan, ['route' => ['transaksiPenjualanHasStatusPenjualans.update', $transaksiPenjualanHasStatusPenjualan->id], 'method' => 'patch']) !!}
+                   {!! Form::model($transaksiPenjualanHasStatusPenjualan, ['route' => ['transPenjHasStatusPenj.update', $transaksiPenjualanHasStatusPenjualan->id], 'method' => 'patch']) !!}
 
                         @include('transaksi_penjualan_has_status_penjualans.fields')
 

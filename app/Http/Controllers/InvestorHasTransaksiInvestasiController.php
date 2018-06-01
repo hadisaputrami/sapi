@@ -13,6 +13,7 @@ use Response;
 use App\Models\TransaksiInvestasi;
 use App\Models\JenisPembayaran;
 use App\Models\Investor;
+use App\Models\PaketInvestasi;
 
 class InvestorHasTransaksiInvestasiController extends AppBaseController
 {
@@ -50,9 +51,10 @@ class InvestorHasTransaksiInvestasiController extends AppBaseController
         $investor=Investor::with('user')->get()->pluck('user.name','id');
         $transaksi_investasi =TransaksiInvestasi::pluck('kode_transaksi','id');
         $jenis_pembayaran=JenisPembayaran::pluck('nama','id');
+        $nominal = TransaksiInvestasi::with('paketInvestasi')->get()->pluck('paketInvestasi.harga','id');
 
         return view('investor_has_transaksi_investasis.create',
-            compact('transaksi_investasi','jenis_pembayaran','investor'));
+            compact('transaksi_investasi','jenis_pembayaran','investor','nominal'));
     }
 
     /**
@@ -106,6 +108,7 @@ class InvestorHasTransaksiInvestasiController extends AppBaseController
         $investor=Investor::with('user')->get()->pluck('user.name','id');
         $transaksi_investasi =TransaksiInvestasi::pluck('kode_transaksi','id');
         $jenis_pembayaran=JenisPembayaran::pluck('nama','id');
+        $nominal = TransaksiInvestasi::with('paketInvestasi')->get()->pluck('paketInvestasi.harga','id');
 
         if (empty($investorHasTransaksiInvestasi)) {
             Flash::error('Investor Has Transaksi Investasi not found');
@@ -114,7 +117,7 @@ class InvestorHasTransaksiInvestasiController extends AppBaseController
         }
 
         return view('investor_has_transaksi_investasis.edit',
-            compact('investor','transaksi_investasi','jenis_pembayaran','investorHasTransaksiInvestasi'));
+            compact('investor','transaksi_investasi','jenis_pembayaran','investorHasTransaksiInvestasi','nominal'));
     }
 
     /**

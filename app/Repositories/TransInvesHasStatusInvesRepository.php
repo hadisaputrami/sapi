@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class TransInvesHasStatusInvesRepository
  * @package App\Repositories
- * @version May 11, 2018, 11:59 pm UTC
+ * @version May 30, 2018, 11:37 pm UTC
  *
  * @method TransInvesHasStatusInves findWithoutFail($id, $columns = ['*'])
  * @method TransInvesHasStatusInves find($id, $columns = ['*'])

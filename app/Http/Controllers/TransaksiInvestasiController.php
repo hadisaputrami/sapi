@@ -99,14 +99,16 @@ class TransaksiInvestasiController extends AppBaseController
     public function edit($id)
     {
         $transaksiInvestasi = $this->transaksiInvestasiRepository->findWithoutFail($id);
-
+        $paket=PaketInvestasi::pluck('nama','id');
+        $asuransi=Asuransi::pluck('premi','id');
         if (empty($transaksiInvestasi)) {
             Flash::error('Transaksi Investasi not found');
 
             return redirect(route('transaksiInvestasis.index'));
         }
 
-        return view('transaksi_investasis.edit')->with('transaksiInvestasi', $transaksiInvestasi);
+        return view('transaksi_investasis.edit',
+            compact('transaksiInvestasi','paket','asuransi'));
     }
 
     /**

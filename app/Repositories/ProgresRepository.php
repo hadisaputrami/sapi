@@ -8,7 +8,7 @@ use InfyOm\Generator\Common\BaseRepository;
 /**
  * Class ProgresRepository
  * @package App\Repositories
- * @version September 2, 2017, 2:03 am UTC
+ * @version May 30, 2018, 10:23 pm UTC
  *
  * @method Progres findWithoutFail($id, $columns = ['*'])
  * @method Progres find($id, $columns = ['*'])

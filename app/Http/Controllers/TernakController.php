@@ -99,14 +99,16 @@ class TernakController extends AppBaseController
     public function edit($id)
     {
         $ternak = $this->ternakRepository->findWithoutFail($id);
-
+        $jenis=JenisTernak::pluck('jenis_ternak','id');
+        $peternak=Peternak::with('user')->get()->pluck('user.name','id');
         if (empty($ternak)) {
             Flash::error('Ternak not found');
 
             return redirect(route('ternaks.index'));
         }
 
-        return view('ternaks.edit')->with('ternak', $ternak);
+        return view('ternaks.edit',
+            compact('ternak','peternak','jenis'));
     }
 
     /**

@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\TransaksiInvestasi;
+use App\Models\StatusTransaksiInvestasi;
+
 
 class TransInvesHasStatusInvesController extends AppBaseController
 {
@@ -43,7 +46,10 @@ class TransInvesHasStatusInvesController extends AppBaseController
      */
     public function create()
     {
-        return view('trans_inves_has_status_inves.create');
+        $status=StatusTransaksiInvestasi::pluck('nama','id');
+        $tran=TransaksiInvestasi::pluck('kode_transaksi','id');
+        return view('trans_inves_has_status_inves.create',
+            compact('status','tran'));
     }
 
     /**
@@ -94,14 +100,16 @@ class TransInvesHasStatusInvesController extends AppBaseController
     public function edit($id)
     {
         $transInvesHasStatusInves = $this->transInvesHasStatusInvesRepository->findWithoutFail($id);
-
+        $status=StatusTransaksiInvestasi::pluck('nama','id');
+        $tran=TransaksiInvestasi::pluck('kode_transaksi','id');
         if (empty($transInvesHasStatusInves)) {
             Flash::error('Trans Inves Has Status Inves not found');
 
             return redirect(route('transInvesHasStatusInves.index'));
         }
 
-        return view('trans_inves_has_status_inves.edit')->with('transInvesHasStatusInves', $transInvesHasStatusInves);
+        return view('trans_inves_has_status_inves.edit',
+            compact('transInvesHasStatusInves','status','tran'));
     }
 
     /**

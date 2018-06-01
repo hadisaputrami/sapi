@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-use App\Models\TernakInvestasi;
+use App\Models\Ternak;
 
 class ProgresController extends AppBaseController
 {
@@ -44,8 +44,8 @@ class ProgresController extends AppBaseController
      */
     public function create()
     {
-        $ternak=TernakInvestasi::pluck('');
-        return view('progres.create');
+        $ternak=Ternak::pluck('kode','id');
+        return view('progres.create',compact('ternak'));
     }
 
     /**
@@ -96,14 +96,15 @@ class ProgresController extends AppBaseController
     public function edit($id)
     {
         $progres = $this->progresRepository->findWithoutFail($id);
-
+        $ternak=Ternak::pluck('kode','id');
         if (empty($progres)) {
             Flash::error('Progres not found');
 
             return redirect(route('progres.index'));
         }
 
-        return view('progres.edit')->with('progres', $progres);
+        return view('progres.edit',
+            compact('progres','ternak'));
     }
 
     /**

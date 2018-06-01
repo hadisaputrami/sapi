@@ -45,11 +45,11 @@ class BiodataController extends AppBaseController
      */
     public function create()
     {
-
+        $a=8+3;
         $agamas =Agama::pluck('nama','id');
         $user=User::pluck('name','id');
         return view('biodatas.create',
-            compact('agamas','user'));
+            compact('agamas','user','a'));
     }
 
     /**

@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class TransInvesHasStatusInves
  * @package App\Models
- * @version May 11, 2018, 11:59 pm UTC
+ * @version May 30, 2018, 11:08 pm UTC
  *
  * @property \App\Models\StatusTransaksiInvestasi statusTransaksiInvestasi
  * @property \App\Models\TransaksiInvestasi transaksiInvestasi
+ * @property \Illuminate\Database\Eloquent\Collection konfirmasiInvestors
  * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
  * @property \Illuminate\Database\Eloquent\Collection ternaks
  * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasis
@@ -64,7 +65,7 @@ class TransInvesHasStatusInves extends Model
      **/
     public function statusTransaksiInvestasi()
     {
-        return $this->belongsTo(\App\Models\StatusTransaksiInvestasi::class);
+        return $this->belongsTo(\App\Models\StatusTransaksiInvestasi::class,'status_transaksi_investasis_id');
     }
 
     /**
@@ -72,6 +73,6 @@ class TransInvesHasStatusInves extends Model
      **/
     public function transaksiInvestasi()
     {
-        return $this->belongsTo(\App\Models\TransaksiInvestasi::class);
+        return $this->belongsTo(\App\Models\TransaksiInvestasi::class,'transaksi_investasis_id');
     }
 }

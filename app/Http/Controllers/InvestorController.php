@@ -44,9 +44,9 @@ class InvestorController extends AppBaseController
      */
     public function create()
     {
-        $investor=Investor::with('user')->get()->pluck('user.name','id');
+        $nama=Investor::with('user')->get()->pluck('user.name','id');
         return view('investors.create',
-            compact('investor'));
+            compact('nama'));
     }
 
     /**
@@ -97,7 +97,7 @@ class InvestorController extends AppBaseController
     public function edit($id)
     {
         $investor = $this->investorRepository->findWithoutFail($id);
-        $investors=Investor::with('user')->get()->pluck('user.name','id');
+        $nama=Investor::with('user')->get()->pluck('user.name','id');
 
         if (empty($investor)) {
             Flash::error('Investor not found');
@@ -106,7 +106,7 @@ class InvestorController extends AppBaseController
         }
 
         return view('investors.edit',
-            compact('investor','investors'));
+            compact('investor','nama'));
     }
 
     /**

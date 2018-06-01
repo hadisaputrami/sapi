@@ -8,15 +8,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class TransaksiPenjualanHasStatusPenjualan
  * @package App\Models
- * @version May 11, 2018, 11:45 pm UTC
+ * @version May 31, 2018, 1:46 am UTC
  *
  * @property \App\Models\JenisPembayaran jenisPembayaran
  * @property \App\Models\StatusPenjualan statusPenjualan
  * @property \App\Models\TransaksiPenjualan transaksiPenjualan
+ * @property \Illuminate\Database\Eloquent\Collection konfirmasiInvestors
  * @property \Illuminate\Database\Eloquent\Collection ternakInvestasis
  * @property \Illuminate\Database\Eloquent\Collection ternaks
  * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasiHasStatusTransaksiInvestasis
  * @property \Illuminate\Database\Eloquent\Collection transaksiInvestasis
+ * @property integer transaksi_penjualans_id
  * @property integer status_penjualans_id
  * @property integer users_id
  * @property integer jenis_pembayarans_id
@@ -35,6 +37,7 @@ class TransaksiPenjualanHasStatusPenjualan extends Model
 
 
     public $fillable = [
+        'transaksi_penjualans_id',
         'status_penjualans_id',
         'users_id',
         'jenis_pembayarans_id'
@@ -46,6 +49,7 @@ class TransaksiPenjualanHasStatusPenjualan extends Model
      * @var array
      */
     protected $casts = [
+        'id' => 'integer',
         'transaksi_penjualans_id' => 'integer',
         'status_penjualans_id' => 'integer',
         'users_id' => 'integer',
@@ -66,7 +70,7 @@ class TransaksiPenjualanHasStatusPenjualan extends Model
      **/
     public function jenisPembayaran()
     {
-        return $this->belongsTo(\App\Models\JenisPembayaran::class);
+        return $this->belongsTo(\App\Models\JenisPembayaran::class,'jenis_pembayarans_id');
     }
 
     /**
@@ -74,7 +78,7 @@ class TransaksiPenjualanHasStatusPenjualan extends Model
      **/
     public function statusPenjualan()
     {
-        return $this->belongsTo(\App\Models\StatusPenjualan::class);
+        return $this->belongsTo(\App\Models\StatusPenjualan::class,'status_penjualans_id');
     }
 
     /**
@@ -82,6 +86,6 @@ class TransaksiPenjualanHasStatusPenjualan extends Model
      **/
     public function transaksiPenjualan()
     {
-        return $this->belongsTo(\App\Models\TransaksiPenjualan::class);
+        return $this->belongsTo(\App\Models\TransaksiPenjualan::class,'transaksi_penjualans_id');
     }
 }

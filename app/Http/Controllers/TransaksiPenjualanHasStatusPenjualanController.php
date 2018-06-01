@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\TransaksiPenjualan;
+use App\Models\StatusPenjualan;
+use App\Models\JenisPembayaran;
 
 class TransaksiPenjualanHasStatusPenjualanController extends AppBaseController
 {
@@ -43,7 +46,11 @@ class TransaksiPenjualanHasStatusPenjualanController extends AppBaseController
      */
     public function create()
     {
-        return view('transaksi_penjualan_has_status_penjualans.create');
+        $trans=TransaksiPenjualan::with('ternak')->get()->pluck('ternak.kode','id');
+        $status=StatusPenjualan::pluck('nama_status','id');
+        $jenis=JenisPembayaran::pluck('nama','id');
+        return view('transaksi_penjualan_has_status_penjualans.create',
+            compact('trans','status','jenis'));
     }
 
     /**
@@ -61,7 +68,7 @@ class TransaksiPenjualanHasStatusPenjualanController extends AppBaseController
 
         Flash::success('Transaksi Penjualan Has Status Penjualan saved successfully.');
 
-        return redirect(route('transaksiPenjualanHasStatusPenjualans.index'));
+        return redirect(route('transPenjHasStatusPenj.index'));
     }
 
     /**
@@ -78,7 +85,7 @@ class TransaksiPenjualanHasStatusPenjualanController extends AppBaseController
         if (empty($transaksiPenjualanHasStatusPenjualan)) {
             Flash::error('Transaksi Penjualan Has Status Penjualan not found');
 
-            return redirect(route('transaksiPenjualanHasStatusPenjualans.index'));
+            return redirect(route('transPenjHasStatusPenj.index'));
         }
 
         return view('transaksi_penjualan_has_status_penjualans.show')->with('transaksiPenjualanHasStatusPenjualan', $transaksiPenjualanHasStatusPenjualan);
@@ -94,14 +101,17 @@ class TransaksiPenjualanHasStatusPenjualanController extends AppBaseController
     public function edit($id)
     {
         $transaksiPenjualanHasStatusPenjualan = $this->transaksiPenjualanHasStatusPenjualanRepository->findWithoutFail($id);
-
+        $trans=TransaksiPenjualan::with('ternak')->get()->pluck('ternak.kode','id');
+        $status=StatusPenjualan::pluck('nama_status','id');
+        $jenis=JenisPembayaran::pluck('nama','id');
         if (empty($transaksiPenjualanHasStatusPenjualan)) {
             Flash::error('Transaksi Penjualan Has Status Penjualan not found');
 
-            return redirect(route('transaksiPenjualanHasStatusPenjualans.index'));
+            return redirect(route('transPenjHasStatusPenj.index'));
         }
 
-        return view('transaksi_penjualan_has_status_penjualans.edit')->with('transaksiPenjualanHasStatusPenjualan', $transaksiPenjualanHasStatusPenjualan);
+        return view('transaksi_penjualan_has_status_penjualans.edit',
+            compact('transaksiPenjualanHasStatusPenjualan','trans','status','jenis'));
     }
 
     /**
@@ -119,14 +129,14 @@ class TransaksiPenjualanHasStatusPenjualanController extends AppBaseController
         if (empty($transaksiPenjualanHasStatusPenjualan)) {
             Flash::error('Transaksi Penjualan Has Status Penjualan not found');
 
-            return redirect(route('transaksiPenjualanHasStatusPenjualans.index'));
+            return redirect(route('transPenjHasStatusPenj.index'));
         }
 
         $transaksiPenjualanHasStatusPenjualan = $this->transaksiPenjualanHasStatusPenjualanRepository->update($request->all(), $id);
 
         Flash::success('Transaksi Penjualan Has Status Penjualan updated successfully.');
 
-        return redirect(route('transaksiPenjualanHasStatusPenjualans.index'));
+        return redirect(route('transPenjHasStatusPenj.index'));
     }
 
     /**
@@ -143,13 +153,13 @@ class TransaksiPenjualanHasStatusPenjualanController extends AppBaseController
         if (empty($transaksiPenjualanHasStatusPenjualan)) {
             Flash::error('Transaksi Penjualan Has Status Penjualan not found');
 
-            return redirect(route('transaksiPenjualanHasStatusPenjualans.index'));
+            return redirect(route('transPenjHasStatusPenj.index'));
         }
 
         $this->transaksiPenjualanHasStatusPenjualanRepository->delete($id);
 
         Flash::success('Transaksi Penjualan Has Status Penjualan deleted successfully.');
 
-        return redirect(route('transaksiPenjualanHasStatusPenjualans.index'));
+        return redirect(route('transPenjHasStatusPenj.index'));
     }
 }

@@ -98,14 +98,16 @@ class KonfirmasiInvestorController extends AppBaseController
     public function edit($id)
     {
         $konfirmasiInvestor = $this->konfirmasiInvestorRepository->findWithoutFail($id);
-
+        $status=StatusKonfirmasi::pluck('nama','id');
+        $investor=Investor::with('user')->get()->pluck('user.name','id');
         if (empty($konfirmasiInvestor)) {
             Flash::error('Konfirmasi Investor not found');
 
             return redirect(route('konfirmasiInvestors.index'));
         }
 
-        return view('konfirmasi_investors.edit')->with('konfirmasiInvestor', $konfirmasiInvestor);
+        return view('konfirmasi_investors.edit',
+            compact('konfirmasiInvestor','status','investor'));
     }
 
     /**

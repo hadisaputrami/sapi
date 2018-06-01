@@ -87,6 +87,10 @@
     <a href="{!! route('statusTransaksiInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Status Transaksi Investasis</span></a>
 </li>
 
+<li class="{{ Request::is('ternaks*') ? 'active' : '' }}">
+    <a href="{!! route('ternaks.index') !!}"><i class="fa fa-edit"></i><span>Ternak</span></a>
+</li>
+
 <li class="{{ Request::is('ternakInvestasis*') ? 'active' : '' }}">
     <a href="{!! route('ternakInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Ternak Investasis</span></a>
 </li>
@@ -103,10 +107,6 @@
     <a href="{!! route('transaksiPenjualans.index') !!}"><i class="fa fa-edit"></i><span>Transaksi Penjualans</span></a>
 </li>
 
-<li class="{{ Request::is('ternaks*') ? 'active' : '' }}">
-    <a href="{!! route('ternaks.index') !!}"><i class="fa fa-edit"></i><span>Ternaks</span></a>
-</li>
-
 <li class="{{ Request::is('transPenjHasStatusPenj*') ? 'active' : '' }}">
     <a href="{!! route('transPenjHasStatusPenj.index') !!}"><i class="fa fa-edit"></i><span>Transaksi Penjualan Has Status Penjualans</span></a>
 </li>
@@ -115,7 +115,4 @@
     <a href="{!! route('transInvesHasStatusInves.index') !!}"><i class="fa fa-edit"></i><span>Trans Inves Has Status Inves</span></a>
 </li>
 
-<li class="{{ Request::is('ternakNonInvestasis*') ? 'active' : '' }}">
-    <a href="{!! route('ternakNonInvestasis.index') !!}"><i class="fa fa-edit"></i><span>Ternak Non Investasis</span></a>
-</li>
 

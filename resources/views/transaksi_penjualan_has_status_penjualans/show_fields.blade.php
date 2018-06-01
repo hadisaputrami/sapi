@@ -1,3 +1,9 @@
+<!-- Id Field -->
+<div class="form-group">
+    {!! Form::label('id', 'Id:') !!}
+    <p>{!! $transaksiPenjualanHasStatusPenjualan->id !!}</p>
+</div>
+
 <!-- Transaksi Penjualans Id Field -->
 <div class="form-group">
     {!! Form::label('transaksi_penjualans_id', 'Transaksi Penjualans Id:') !!}

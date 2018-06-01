@@ -42,6 +42,7 @@ trait MakeTransaksiPenjualanHasStatusPenjualanTrait
         $fake = Faker::create();
 
         return array_merge([
+            'transaksi_penjualans_id' => $fake->randomDigitNotNull,
             'status_penjualans_id' => $fake->randomDigitNotNull,
             'users_id' => $fake->randomDigitNotNull,
             'jenis_pembayarans_id' => $fake->randomDigitNotNull,

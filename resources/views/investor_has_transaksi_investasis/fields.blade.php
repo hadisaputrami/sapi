@@ -13,7 +13,7 @@
 <!-- Nominal Investasi Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('nominal_investasi', 'Nominal Investasi:') !!}
-    {!! Form::text('nominal_investasi', null, ['class' => 'form-control']) !!}
+    {!! Form::select('nominal_investasi',$nominal, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Scan Bukti Pembayaran Field -->
@@ -31,7 +31,7 @@
 <!-- Jumlah Sapi Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('jumlah_sapi', 'Jumlah Sapi:') !!}
-    {!! Form::text('jumlah_sapi', null, ['class' => 'form-control']) !!}
+    {!! Form::number('jumlah_sapi', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->
@@ -39,3 +39,4 @@
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('investorHasTransaksiInvestasis.index') !!}" class="btn btn-default">Cancel</a>
 </div>
+

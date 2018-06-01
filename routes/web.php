@@ -94,3 +94,8 @@ Route::resource('konfirmasiInvestors', 'KonfirmasiInvestorController');
 Route::resource('ternakInvestasis', 'TernakInvestasiController');
 
 Route::resource('ternakNonInvestasis', 'TernakNonInvestasiController');
+
+Route::resource('progres', 'ProgresController');
+
+Route::resource('transInvesHasStatusInves', 'TransInvesHasStatusInvesController');
+

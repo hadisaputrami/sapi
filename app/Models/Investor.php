@@ -80,4 +80,9 @@ class Investor extends Model
     {
         return $this->hasOne(\App\Models\InvestorHasTransaksiInvestasi::class);
     }
+
+    public function transaksiInvestasis()
+    {
+        return$this->belongsToMany(\App\Models\TransaksiInvestasi::class);
+    }
 }
