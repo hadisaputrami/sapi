@@ -19,8 +19,6 @@
 </div>
 
 <!-- Users Id Field -->
-    {!! Form::hidden('users_id', $nama,null, ['class' => 'form-control']) !!}
-
 <div class="form-group col-sm-6">
     {!! Form::label('users_id', 'Users Id:') !!}
     {!! Form::select('users_id',$nama, null, ['class' => 'form-control']) !!}
