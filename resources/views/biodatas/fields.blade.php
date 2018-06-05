@@ -28,7 +28,7 @@
 <!-- Foto Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('foto', 'Foto:') !!}
-    {!! Form::text('foto', null, ['class' => 'form-control']) !!}
+    {!! Form::file('foto', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Kontak Field -->
