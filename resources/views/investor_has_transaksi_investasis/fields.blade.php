@@ -19,7 +19,7 @@
 <!-- Scan Bukti Pembayaran Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('scan_bukti_pembayaran', 'Scan Bukti Pembayaran:') !!}
-    {!! Form::text('scan_bukti_pembayaran', null, ['class' => 'form-control']) !!}
+    {!! Form::file('scan_bukti_pembayaran', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Jenis Pembayarans Id Field -->
