@@ -12,6 +12,8 @@ use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\TransaksiInvestasi;
+use App\Models\Asuransi;
+
 
 /**
  * Class InvestorHasTransaksiInvestasiController
@@ -54,11 +56,18 @@ class InvestorHasTransaksiInvestasiAPIController extends AppBaseController
      */
     public function store(CreateInvestorHasTransaksiInvestasiAPIRequest $request)
     {
-        $input = $request->all();
+       $input = $request->all();
+        $input['investors_id']=Auth::user('investor')->investor->id;
 
-        $transaksiInvestasi=TransaksiInvestasi::find($input['transaksi_investasis_id']);
+        if($input['asuransi']===1){
+            $asuransi=Asuransi::create(['premi'=>200000,
+                                        'nama_penjamin'=>Auth::user()->name]);
+            $input['asuransis_id']=$asuransi->id;
+        }
+
+        $transaksiInvestasi=TransaksiInvestasi::create($input);
+
         $investorHasTransaksiInvestasis = $this->investorHasTransaksiInvestasiRepository->create($input);
-
 
         return $this->sendResponse($investorHasTransaksiInvestasis->toArray(), 'Investor Has Transaksi Investasi saved successfully');
     }

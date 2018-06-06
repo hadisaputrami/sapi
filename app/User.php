@@ -86,6 +86,11 @@ class User extends Authenticatable
         return $this->belongsTo(\App\Models\Biodata::class);
     }
 
+       public function investor()
+    {
+        return $this->hasOne(\App\Models\Investor::class);
+    }
+
     /**
      * Validation rules
      *
