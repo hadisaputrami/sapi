@@ -57,7 +57,7 @@ class InvestorHasTransaksiInvestasiAPIController extends AppBaseController
     public function store(CreateInvestorHasTransaksiInvestasiAPIRequest $request)
     {
        $input = $request->all();
-        $input['investors_id']=Auth::user('investor')->investor->id;
+        $input['investors_id']=Auth::user()->investor->id;
 
         if($input['asuransi']===1){
             $asuransi=Asuransi::create(['premi'=>200000,
