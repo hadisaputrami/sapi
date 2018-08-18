@@ -39,7 +39,7 @@ class InvestorHasTransaksiInvestasi extends Model
 
     public $fillable = [
         'investors_id',
-        'transaksi_investasis_id',
+       // 'transaksi_investasis_id',
         'nominal_investasi',
         'scan_bukti_pembayaran',
         'jenis_pembayarans_id',

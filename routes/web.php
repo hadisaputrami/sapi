@@ -49,7 +49,7 @@ Route::resource('peternaks', 'PeternakController');
 
 Route::resource('progres', 'ProgresController');
 
-Route::resource('roles', 'RoleController');
+//Route::resource('roles', 'RoleController');
 
 Route::resource('statusPenjualans', 'StatusPenjualanController');
 

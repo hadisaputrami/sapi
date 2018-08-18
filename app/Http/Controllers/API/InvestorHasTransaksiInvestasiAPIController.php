@@ -56,8 +56,11 @@ class InvestorHasTransaksiInvestasiAPIController extends AppBaseController
      */
     public function store(CreateInvestorHasTransaksiInvestasiAPIRequest $request)
     {
-       $input = $request->all();
-        $input['investors_id']=Auth::user()->investor->id;
+     try{
+            DB::beginTransaction();
+
+         $input = $request->all();
+         $input['investors_id']=Auth::user()->investor->id;
 
         if($input['asuransi']===1){
             $asuransi=Asuransi::create(['premi'=>200000,
@@ -65,11 +68,23 @@ class InvestorHasTransaksiInvestasiAPIController extends AppBaseController
             $input['asuransis_id']=$asuransi->id;
         }
 
+  
+
         $transaksiInvestasi=TransaksiInvestasi::create($input);
+        $input['transaksi_investasis_id']=$transaksiInvestasi->id;
 
         $investorHasTransaksiInvestasis = $this->investorHasTransaksiInvestasiRepository->create($input);
 
+        DB::commit();
+
         return $this->sendResponse($investorHasTransaksiInvestasis->toArray(), 'Investor Has Transaksi Investasi saved successfully');
+
+         }catch(Exception $e){
+            DB::rollback();
+            return $this->sendError($e->getMessage());
+
+
+        }
     }
 
     /**
