@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Redirect;
  */
 trait FcmTrait
 {
-    public function sendSingleNotification($token,$title,$body,$data_notifikasi){
+    public function sendNotification($token,$title,$body,$data_notifikasi){
         $optionBuilder = new OptionsBuilder();
         $optionBuilder->setTimeToLive(60*20);
         $optionBuilder->setPriority('high');
