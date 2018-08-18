@@ -88,7 +88,7 @@ class User extends Authenticatable
 
        public function investor()
     {
-        return $this->hasOne(\App\Models\Investor::class,'investor');
+        return $this->hasOne(\App\Models\Investor::class);
     }
 
     /**
