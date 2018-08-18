@@ -14,6 +14,7 @@ use Response;
 use App\Models\TransaksiInvestasi;
 use App\Models\Asuransi;
 use Auth;
+use DB;
 
 /**
  * Class InvestorHasTransaksiInvestasiController
