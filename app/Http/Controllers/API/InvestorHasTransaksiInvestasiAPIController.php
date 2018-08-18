@@ -13,7 +13,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\TransaksiInvestasi;
 use App\Models\Asuransi;
-
+use Auth;
 
 /**
  * Class InvestorHasTransaksiInvestasiController
