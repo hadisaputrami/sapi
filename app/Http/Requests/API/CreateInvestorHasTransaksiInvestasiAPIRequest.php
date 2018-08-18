@@ -24,6 +24,12 @@ class CreateInvestorHasTransaksiInvestasiAPIRequest extends APIRequest
      */
     public function rules()
     {
-        return InvestorHasTransaksiInvestasi::$rules;
+        return [
+            'asuransi' => 'required',
+            'paket_investasis_id' => 'required',
+            'nominal_investasi'=>'required',
+            'jenis_pembayarans_id'=>'required',
+            'jumlah_sapi'=>'required',
+        ];
     }
 }
