@@ -334,13 +334,13 @@ class UserAPIController extends AppBaseController
 
     public function storeTokenDevice(Request $request)
     {
-        $input = $request->only('token_device');
+        $input = $request->only('device_token');
 
         try {
             DB::beginTransaction();
 
             $users=Auth::user();
-            $users->token_device=$input['token_device'];
+            $users->device_token=$input['device_token'];
             $users->save();
 
             DB::commit();

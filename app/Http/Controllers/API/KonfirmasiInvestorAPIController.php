@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreateKonfirmasiInvestorAPIRequest;
 use App\Http\Requests\API\UpdateKonfirmasiInvestorAPIRequest;
 use App\Models\KonfirmasiInvestor;
+use App\Models\StatusKonfirmasi;
 use App\Repositories\KonfirmasiInvestorRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -53,11 +54,27 @@ class KonfirmasiInvestorAPIController extends AppBaseController
      */
     public function store(CreateKonfirmasiInvestorAPIRequest $request)
     {
-        $input = $request->all();
+        try{
+            DB::beginTransaction();
 
-        $konfirmasiInvestors = $this->konfirmasiInvestorRepository->create($input);
+            $input = $request->all();
+            $input['investors_id']=Auth::user()->investor->id;
+
+            $statusKonfirmasi=StatusKonfirmasi::where('nama','Menunggu Konfirmasi')->first();
+            $input['status_konfirmasis_id']=$statusKonfirmasi->id;
+
+           $konfirmasiInvestors = $this->konfirmasiInvestorRepository->create($input);
+
+            DB::commit();
 
         return $this->sendResponse($konfirmasiInvestors->toArray(), 'Konfirmasi Investor saved successfully');
+
+        }catch(Exception $e){
+            DB::rollback();
+            return $this->sendError($e->getMessage());
+
+
+        }
     }
 
     /**
