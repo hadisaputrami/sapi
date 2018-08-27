@@ -13,6 +13,7 @@ use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use DB;
+use Auth;
 
 /**
  * Class KonfirmasiInvestorController
