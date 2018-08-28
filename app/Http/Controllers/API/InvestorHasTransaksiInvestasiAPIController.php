@@ -61,15 +61,15 @@ class InvestorHasTransaksiInvestasiAPIController extends AppBaseController
             DB::beginTransaction();
 
          $input = $request->all();
-         //investor
+
          $input['investors_id']=Auth::user()->investor->id;
-         //asuransi
+
         if($input['asuransi']===1){
             $asuransi=Asuransi::create(['premi'=>200000,
                                         'nama_penjamin'=>Auth::user()->name]);
-            $input['asuransis_id']=$asuransi->id;
-        }
-         //transaksiinvestasi
+            $input['asuransis_id']=$asuransi->id; }
+
+  
         $transaksiInvestasi=TransaksiInvestasi::create($input);
         $input['transaksi_investasis_id']=$transaksiInvestasi->id;
 

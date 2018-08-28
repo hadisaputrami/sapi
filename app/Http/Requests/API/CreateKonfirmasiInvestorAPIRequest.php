@@ -24,6 +24,14 @@ class CreateKonfirmasiInvestorAPIRequest extends APIRequest
      */
     public function rules()
     {
-        return KonfirmasiInvestor::$rules;
+         return [
+        //return KonfirmasiInvestor::$rules;
+         'status_konfirmasis_id'=> 'required',
+        //'investors_id'=> 'required',
+        'bank_pengirim'=> 'required',
+        'bank_tujuan'=> 'required',
+       'nominal'=> 'required',
+        'nama_pengirim'=> 'required'
+         ];
     }
 }
