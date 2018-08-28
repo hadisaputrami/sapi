@@ -9,11 +9,13 @@ use App\Models\StatusKonfirmasi;
 use App\Repositories\KonfirmasiInvestorRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Auth;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-use DB;
-use Auth;
+use Illuminate\Support\Facades\DB;
+
+
 
 /**
  * Class KonfirmasiInvestorController

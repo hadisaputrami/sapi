@@ -66,6 +66,7 @@ class KonfirmasiInvestor extends Model
      * @var array
      */
     public static $rules = [
+
         
     ];
 

@@ -27,6 +27,8 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     
 Route::resource('trans_inves_has_status_inves', 'TransInvesHasStatusInvesAPIController');
 
+    Route::resource('konfirmasi_investors', 'KonfirmasiInvestorAPIController');
+
 });
 
 Route::post('users','UserAPIController@store');
@@ -44,8 +46,6 @@ Route::resource('agamas', 'AgamaAPIController');
 
 Route::resource('biodatas', 'BiodataAPIController');
 
-Route::resource('konfirmasi_investors', 'KonfirmasiInvestorAPIController');
-
 Route::resource('investors', 'InvestorAPIController');
 
 Route::resource('transaksi_investasis', 'TransaksiInvestasiAPIController');
@@ -59,8 +59,6 @@ Route::resource('ternaks', 'TernakAPIController');
 Route::resource('jenis_ternaks', 'JenisTernakAPIController');
 
 Route::resource('status_konfirmasis', 'StatusKonfirmasiAPIController');
-
-Route::resource('konfirmasi_investors', 'KonfirmasiInvestorAPIController');
 
 Route::resource('ternak_investasis', 'TernakInvestasiAPIController');
 
