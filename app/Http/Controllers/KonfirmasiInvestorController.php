@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\TraitController\FcmTrait;
 use App\Http\Requests\CreateKonfirmasiInvestorRequest;
 use App\Http\Requests\UpdateKonfirmasiInvestorRequest;
+use App\Models\KonfirmasiInvestor;
 use App\Repositories\KonfirmasiInvestorRepository;
 use App\Http\Controllers\AppBaseController;
+use App\User;
 use Illuminate\Http\Request;
 use Flash;
+use Mockery\Exception;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\StatusKonfirmasi;
 use App\Models\Investor;
 class KonfirmasiInvestorController extends AppBaseController
 {
+    use FcmTrait;
     /** @var  KonfirmasiInvestorRepository */
     private $konfirmasiInvestorRepository;
 
@@ -30,11 +35,35 @@ class KonfirmasiInvestorController extends AppBaseController
      */
     public function index(Request $request)
     {
+        if ($request->id != 0) {
+            $konfirmasiInvestors = KonfirmasiInvestor::find($request->id);
+
+            $konfirmasiInvestors->status_konfirmasis_id = 2;
+            $konfirmasiInvestors->save();
+
+            //Firebase
+            try{
+                $data=[];
+
+
+                $token_devices=$konfirmasiInvestors->investor->user->token_device;
+                if(!empty($token_devices)){
+                    $this->sendNotification($token_devices,
+                        "Konfirmasi Sapiku","Konfirmasi diterima",$data);
+                }
+            }catch(Exception $e){
+                //return $e->getMessage();
+            };
+        }
+
+
         $this->konfirmasiInvestorRepository->pushCriteria(new RequestCriteria($request));
         $konfirmasiInvestors = $this->konfirmasiInvestorRepository->all();
+        $status=StatusKonfirmasi::pluck('nama','id');
 
         return view('konfirmasi_investors.index')
-            ->with('konfirmasiInvestors', $konfirmasiInvestors);
+            ->with('konfirmasiInvestors', $konfirmasiInvestors)
+            ->with('status',$status);
     }
 
     /**
@@ -157,5 +186,9 @@ class KonfirmasiInvestorController extends AppBaseController
         Flash::success('Konfirmasi Investor deleted successfully.');
 
         return redirect(route('konfirmasiInvestors.index'));
+    }
+
+    public function konfirmasi($id) {
+        dd($id);
     }
 }

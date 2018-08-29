@@ -83,7 +83,7 @@ class InvestorAPIController extends AppBaseController
             DB::rollback();  }    
 
 
-        return $this->sendResponse($investors->toArray(), 'Investor saved successfully');            
+        return $this->sendResponse($investor->toArray(), 'Investor saved successfully');
                                    
     }
 

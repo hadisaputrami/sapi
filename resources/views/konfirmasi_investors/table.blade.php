@@ -13,7 +13,15 @@
     <tbody>
     @foreach($konfirmasiInvestors as $konfirmasiInvestor)
         <tr>
-            <td>{!! $konfirmasiInvestor->statusKonfirmasi->nama or ""!!}</td>
+            <td>
+                @if ($konfirmasiInvestor['status_konfirmasis_id']===1)
+                    <a href="{!! route('konfirmasiInvestors.index', ['id' => $konfirmasiInvestor->id]) !!}" class='btn btn-primary pull-center'>
+                        Konfirmasi
+                    </a>
+                @else
+                    Sudah di Konfirmasi
+                @endif
+            </td>
             <td>{!! $konfirmasiInvestor->investor->user->name or ""!!}</td>
             <td>{!! $konfirmasiInvestor->bank_pengirim !!}</td>
             <td>{!! $konfirmasiInvestor->bank_tujuan !!}</td>
