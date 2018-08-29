@@ -28,7 +28,7 @@ class User extends Authenticatable
         'remember_token',
         'verified',
         'verification_token',
-        'device_token'
+        'token_device'
     ];
 
     /**
@@ -44,7 +44,7 @@ class User extends Authenticatable
         'remember_token' => 'string',
         'verified' => 'boolean',
         'verification_token' => 'string',
-        'device_token' => 'string',
+        'token_device' => 'string',
     ];
 
     /**
