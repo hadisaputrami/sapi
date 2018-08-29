@@ -48,8 +48,10 @@ class KonfirmasiInvestorController extends AppBaseController
 
                 $token_devices=$konfirmasiInvestors->investor->user->token_device;
                 if(!empty($token_devices)){
-                    $this->sendNotification($token_devices,
+                    $log=$this->sendNotification($token_devices,
                         "Konfirmasi Sapiku","Konfirmasi diterima",$data);
+
+                    return $log;
                 }
             }catch(Exception $e){
                 //return $e->getMessage();
