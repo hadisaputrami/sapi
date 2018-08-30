@@ -38,8 +38,8 @@ class KonfirmasiInvestorController extends AppBaseController
         if ($request->id != 0) {
             $konfirmasiInvestors = KonfirmasiInvestor::find($request->id);
 
-            /*$konfirmasiInvestors->status_konfirmasis_id = 2;
-            $konfirmasiInvestors->save();*/
+            $konfirmasiInvestors->status_konfirmasis_id = 2;
+            $konfirmasiInvestors->save();
 
             //Firebase
             try{
